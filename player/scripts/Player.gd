@@ -10,6 +10,13 @@ const BOB_FREQ = 2.5
 const BOB_AMP = 0.05
 var t_bob : float = 0.0
 
+signal bob_top
+signal bob_bottom
+
+var landing : bool
+signal jump_start
+signal jump_land
+
 @onready var camera_pivot = $CameraPivot
 @onready var camera = $CameraPivot/Camera
 
@@ -36,6 +43,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jump_start.emit()
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -49,12 +57,29 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 10)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10)
+		
+		if landing:
+			jump_land.emit()
+			landing = false
 	else:
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 2)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 2)
+		
+		if !landing:
+			landing = true
 
 	#viewbob
 	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = Vector3(0, BOB_AMP * sin(t_bob * BOB_FREQ), 0)
+	var b : float = bob_calc(t_bob)
+	camera.transform.origin = Vector3(0, b, 0)
+	
+	#bob signals
+	if b/BOB_AMP < 0.05:
+		bob_bottom.emit()
+	elif b/BOB_AMP > 0.95:
+		bob_top.emit()
 
 	move_and_slide()
+
+func bob_calc(time : float) -> float:
+	return BOB_AMP * sin(time * BOB_FREQ)

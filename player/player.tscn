@@ -1,0 +1,75 @@
+[gd_scene load_steps=18 format=3 uid="uid://cyk67kv73er43"]
+
+[ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_06dfn"]
+[ext_resource type="Script" path="res://player/scripts/Arms.gd" id="2_3qal2"]
+[ext_resource type="PackedScene" uid="uid://c3j8r13vamxwo" path="res://player/models/first_person_arms.tscn" id="3_a8mq5"]
+[ext_resource type="AudioStream" uid="uid://duwirqatra2pl" path="res://sfx/footsteps/footsteps-001.wav" id="4_moicq"]
+[ext_resource type="AudioStream" uid="uid://dehvsvw3le0ge" path="res://sfx/footsteps/footsteps-002.wav" id="5_wqpwo"]
+[ext_resource type="AudioStream" uid="uid://1hb50ke1bhkt" path="res://sfx/footsteps/footsteps-003.wav" id="6_f0e4i"]
+[ext_resource type="AudioStream" uid="uid://5uq6ihf6a0qw" path="res://sfx/footsteps/footsteps-004.wav" id="7_fi7fj"]
+[ext_resource type="AudioStream" uid="uid://b2nxun3v22cj3" path="res://sfx/footsteps/footsteps-005.wav" id="8_702js"]
+[ext_resource type="AudioStream" uid="uid://dts6yny5u0d3e" path="res://sfx/footsteps/footsteps-006.wav" id="9_jp6qr"]
+[ext_resource type="Script" path="res://player/PlayerSoundManager.gd" id="10_xcv1q"]
+[ext_resource type="AudioStream" uid="uid://o4yrhpwnu5qc" path="res://sfx/weapons/sword-woosh-01.mp3" id="11_enhmx"]
+[ext_resource type="AudioStream" uid="uid://b88qj356syk2y" path="res://sfx/footsteps/jump-land.wav" id="11_yk06m"]
+[ext_resource type="AudioStream" uid="uid://3i8hupjg5ul6" path="res://sfx/weapons/sword-woosh-02.mp3" id="12_7rgu8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ybx0f"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jroho"]
+streams_count = 6
+stream_0/stream = ExtResource("4_moicq")
+stream_1/stream = ExtResource("5_wqpwo")
+stream_2/stream = ExtResource("6_f0e4i")
+stream_3/stream = ExtResource("7_fi7fj")
+stream_4/stream = ExtResource("8_702js")
+stream_5/stream = ExtResource("9_jp6qr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4gbd0"]
+streams_count = 2
+stream_0/stream = ExtResource("11_enhmx")
+stream_1/stream = ExtResource("12_7rgu8")
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605, 0)
+script = ExtResource("1_06dfn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_765p8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ybx0f")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732802, 0)
+script = ExtResource("2_3qal2")
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.793792, 0.578075)
+light_color = Color(1, 0.848128, 0.750666, 1)
+spot_range = 9.34016
+spot_angle = 79.1249
+
+[node name="FirstPersonArms" parent="CameraPivot" instance=ExtResource("3_a8mq5")]
+
+[node name="Sound" type="Node3D" parent="."]
+script = ExtResource("10_xcv1q")
+
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="Sound"]
+stream = SubResource("AudioStreamRandomizer_jroho")
+
+[node name="JumpingAudio" type="AudioStreamPlayer3D" parent="Sound"]
+stream = ExtResource("11_yk06m")
+volume_db = -20.0
+
+[node name="SwordAudio" type="AudioStreamPlayer3D" parent="Sound"]
+stream = SubResource("AudioStreamRandomizer_4gbd0")
+
+[connection signal="bob_bottom" from="." to="Sound" method="_on_player_bob_bottom"]
+[connection signal="bob_top" from="." to="Sound" method="_on_player_bob_top"]
+[connection signal="jump_land" from="." to="Sound" method="_on_player_jump_land"]
+[connection signal="swing_sword" from="CameraPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_swing_sword"]

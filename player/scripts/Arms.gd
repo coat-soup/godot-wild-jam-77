@@ -1,17 +1,9 @@
 extends Node3D
 
 signal hit_sword
+signal swing_sword
 
 var swinging : bool = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
@@ -21,6 +13,7 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 		hit_sword.emit()
 
 func swing():
+	swing_sword.emit()
 	swinging = true
 	$AnimationPlayer.speed_scale = 2
 	$AnimationPlayer.play("Swing")

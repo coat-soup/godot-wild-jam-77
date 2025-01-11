@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cxfswfwd6yvam"
+path.s3tc="res://.godot/imported/dungeontiles_brick_wall.png-76e17669b68828cdc7b1d1aae1ddb596.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "3a33849bec80e30770127aa750b4fa5b"
+}
+
+[deps]
+
+source_file="res://world/dungeontiles/models/dungeontiles_brick_wall.png"
+dest_files=["res://.godot/imported/dungeontiles_brick_wall.png-76e17669b68828cdc7b1d1aae1ddb596.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
