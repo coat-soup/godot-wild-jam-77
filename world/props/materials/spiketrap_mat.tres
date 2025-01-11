@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://7jx1f5i5lrii"]
+
+[ext_resource type="Texture2D" uid="uid://c1wig25p4nwq8" path="res://world/props/textures/spike_trap.png" id="1_ujms5"]
+[ext_resource type="Texture2D" uid="uid://dl0uksuws8hwc" path="res://world/props/textures/spike_trap_n.png" id="2_abqgk"]
+
+[resource]
+albedo_color = Color(0.784314, 0.784314, 0.784314, 1)
+albedo_texture = ExtResource("1_ujms5")
+roughness = 0.2
+normal_enabled = true
+normal_texture = ExtResource("2_abqgk")
+texture_filter = 0

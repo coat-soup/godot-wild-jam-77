@@ -69,7 +69,6 @@ surface_material_override/0 = ExtResource("2_wexh8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162172, 0)
 stream = ExtResource("2_8vkcy")
 autoplay = true
-stream_paused = true
 max_distance = 5.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]

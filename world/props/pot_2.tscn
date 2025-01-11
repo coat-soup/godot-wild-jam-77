@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://sfjwj4k1xn83"]
+
+[ext_resource type="PackedScene" uid="uid://26ddq1wxetuv" path="res://world/props/models/pot2-col.glb" id="1_le7kn"]
+[ext_resource type="Material" uid="uid://b7bgnivstq763" path="res://world/props/materials/ceramic_mat.tres" id="2_ttcvu"]
+
+[node name="pot2-col" instance=ExtResource("1_le7kn")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Pot2" parent="." index="0"]
+material_override = ExtResource("2_ttcvu")
