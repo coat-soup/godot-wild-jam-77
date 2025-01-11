@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxrfn7363q7u7"]
+[gd_scene load_steps=11 format=3 uid="uid://cxrfn7363q7u7"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_rwaff"]
+[ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_uvfk5"]
+[ext_resource type="Script" path="res://player/scripts/Arms.gd" id="2_ro0ta"]
+[ext_resource type="PackedScene" uid="uid://c3j8r13vamxwo" path="res://player/models/first_person_arms.tscn" id="3_5c4nu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp0x"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -97,13 +99,13 @@ use_collision = true
 size = Vector3(6.91699, 1, 4)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-0.984808, -0.173648, 8.74228e-08, -0.173648, 0.984808, 0, -8.60946e-08, -1.51808e-08, -1, 10.1923, 0.13506, -15.0525)
+transform = Transform3D(-0.984808, -0.173648, 8.74228e-08, -0.173648, 0.984808, 0, -8.60946e-08, -1.51808e-08, -1, 10.1923, 0.13506, -17.0525)
 material_override = SubResource("StandardMaterial3D_2fej3")
 use_collision = true
 size = Vector3(10.4541, 1, 4)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-0.939693, -0.34202, -8.74228e-08, -0.34202, 0.939693, 0, 8.21505e-08, 2.99003e-08, -1, 10.8636, 1.00289, -10.0525)
+transform = Transform3D(-0.939693, -0.34202, -8.74228e-08, -0.34202, 0.939693, 0, 8.21505e-08, 2.99003e-08, -1, 10.8636, 1.00289, -11.0525)
 material_override = SubResource("StandardMaterial3D_2fej3")
 use_collision = true
 size = Vector3(9.66455, 1, 4)
@@ -115,20 +117,20 @@ use_collision = true
 size = Vector3(9.8194, 1, 4)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-0.766044, -0.642788, -8.74228e-08, -0.642788, 0.766044, 0, 6.69697e-08, 5.61943e-08, -1, 10.9372, 2.73257, -0.0525218)
+transform = Transform3D(-0.766044, -0.642788, -8.74228e-08, -0.642788, 0.766044, 0, 6.69697e-08, 5.61943e-08, -1, 10.9372, 2.73257, 0.947478)
 material_override = SubResource("StandardMaterial3D_2fej3")
 use_collision = true
 size = Vector3(10.0117, 1, 4)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-0.642788, -0.766044, 8.74228e-08, -0.766044, 0.642788, 0, -5.61943e-08, -6.69697e-08, -1, 10.5752, 3.49289, 4.94748)
+transform = Transform3D(-0.642788, -0.766044, 8.74228e-08, -0.766044, 0.642788, 0, -5.61943e-08, -6.69697e-08, -1, 10.5752, 3.49289, 6.94748)
 material_override = SubResource("StandardMaterial3D_2fej3")
 use_collision = true
 size = Vector3(10.2993, 1, 4)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605, 0)
-script = ExtResource("1_rwaff")
+script = ExtResource("1_uvfk5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_765p8")
@@ -138,5 +140,8 @@ shape = SubResource("CapsuleShape3D_ybx0f")
 
 [node name="CameraPivot" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732802, 0)
+script = ExtResource("2_ro0ta")
 
 [node name="Camera" type="Camera3D" parent="Player/CameraPivot"]
+
+[node name="FirstPersonArms" parent="Player/CameraPivot" instance=ExtResource("3_5c4nu")]

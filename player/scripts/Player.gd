@@ -19,12 +19,15 @@ func _ready():
 func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("quit"):
 			get_tree().quit()
+		if event.is_action_pressed("attack"):
+			var arms = $CameraPivot/FirstPersonArms
+			arms.swing()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * SENSETIVITY)
-		camera.rotate_x(-event.relative.y * SENSETIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		camera_pivot.rotate_x(-event.relative.y * SENSETIVITY)
+		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
