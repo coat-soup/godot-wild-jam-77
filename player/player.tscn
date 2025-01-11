@@ -37,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605, 0)
 script = ExtResource("1_06dfn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_765p8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -50,6 +51,7 @@ script = ExtResource("2_3qal2")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.793792, 0.578075)
+visible = false
 light_color = Color(1, 0.848128, 0.750666, 1)
 spot_range = 9.34016
 spot_angle = 79.1249

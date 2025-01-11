@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdst4tv46kcy2"]
+
+[ext_resource type="PackedScene" uid="uid://2me7kqmpxvys" path="res://world/props/models/brazier.glb" id="1_gditm"]
+[ext_resource type="AudioStream" uid="uid://dpmjyco45tcds" path="res://sfx/props/fire.wav" id="2_4d5v6"]
+[ext_resource type="Material" uid="uid://ddrmovp3ky6ff" path="res://world/props/materials/darkmetal_mat.tres" id="2_aif4x"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6ssnv"]
+height = 0.873669
+radius = 0.327105
+
+[sub_resource type="Gradient" id="Gradient_sjnrf"]
+offsets = PackedFloat32Array(0, 0.666667)
+colors = PackedColorArray(0.824601, 0.690302, 7.70092e-07, 1, 0.989671, 0.111635, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mfvkn"]
+gradient = SubResource("Gradient_sjnrf")
+
+[sub_resource type="Curve" id="Curve_pltbm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.282609, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.120879), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yc7ne"]
+curve = SubResource("Curve_pltbm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3v5w"]
+emission_shape_scale = Vector3(0.7, 0.7, 0.7)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 0.999998
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_yc7ne")
+color_ramp = SubResource("GradientTexture1D_mfvkn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vv6f8"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_t1sk7"]
+material = SubResource("StandardMaterial3D_vv6f8")
+
+[node name="brazier" instance=ExtResource("1_gditm")]
+
+[node name="Brazier" parent="." index="0"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Cube_004" parent="Brazier" index="0"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_aif4x")
+
+[node name="Cube_005" parent="Brazier" index="1"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_aif4x")
+
+[node name="Cube_006" parent="Brazier" index="2"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_aif4x")
+
+[node name="Cube_007" parent="Brazier" index="3"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_aif4x")
+
+[node name="Cube_008" parent="Brazier" index="4"]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_aif4x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Brazier" index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Brazier/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473716, 0)
+shape = SubResource("CylinderShape3D_6ssnv")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.16728, 0)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_a3v5w")
+draw_pass_1 = SubResource("QuadMesh_t1sk7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34396, 0)
+stream = ExtResource("2_4d5v6")
+autoplay = true
+max_distance = 10.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86708, 0)
+light_color = Color(0.853129, 0.51791, 0.188832, 1)
+shadow_enabled = true
+omni_range = 8.76055
