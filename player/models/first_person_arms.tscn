@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3j8r13vamxwo"]
+[gd_scene load_steps=23 format=3 uid="uid://c3j8r13vamxwo"]
 
 [ext_resource type="PackedScene" uid="uid://cabp2sepknfky" path="res://player/models/FirstPersonArms.glb" id="1_0ssfh"]
 [ext_resource type="Script" path="res://player/scripts/Arms.gd" id="2_7a8ya"]
+[ext_resource type="Material" uid="uid://bn63o7s7ibaw0" path="res://player/materials_textures/player_arms_mat.tres" id="3_cvqcd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmtb1"]
 size = Vector3(0.0773925, 0.0385132, 1.62319)
@@ -137,14 +138,44 @@ bones/23/rotation = Quaternion(0.501206, -0.498791, -0.498791, 0.501206)
 [node name="SwordHilt" parent="Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, -0.00017372, 1.89237e-06, -3.42944e-07, 0.00906958, 0.999959, -0.000173731, -0.999959, 0.00906958, 1.47835, -0.409517, 0.0670179)
 
+[node name="SwordHilt" parent="Armature/Skeleton3D/SwordHilt" index="0"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
 [node name="Cube_003" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 1.89239e-06, 0.00017372, -3.42944e-07, 0.999959, -0.0090697, -0.000173731, 0.0090697, 0.999959, 1.47898, -0.396145, -1.53519)
+
+[node name="Cube_003" parent="Armature/Skeleton3D/Cube_003" index="0"]
+surface_material_override/0 = ExtResource("3_cvqcd")
 
 [node name="Cube_004" parent="Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, 1.89239e-06, 0.00017372, -3.42944e-07, 0.999959, -0.0090697, -0.000173731, 0.0090697, 0.999959, 1.47915, -0.405193, -0.537643)
 
+[node name="Cube_004" parent="Armature/Skeleton3D/Cube_004" index="0"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
 [node name="Cylinder_001" parent="Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 1.89239e-06, 0.00017372, -3.42944e-07, 0.999959, -0.0090697, -0.000173731, 0.0090697, 0.999959, 1.4793, -0.412727, 0.292973)
+
+[node name="Cylinder_001" parent="Armature/Skeleton3D/Cylinder_001" index="0"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
+[node name="Arm_L" parent="Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
+[node name="Arm_R" parent="Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
+[node name="Cube_007" parent="Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
+[node name="Elbow_R" parent="Armature/Skeleton3D" index="7"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
+[node name="Hand_L" parent="Armature/Skeleton3D" index="8"]
+surface_material_override/0 = ExtResource("3_cvqcd")
+
+[node name="Hand_R" parent="Armature/Skeleton3D" index="9"]
+surface_material_override/0 = ExtResource("3_cvqcd")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_1yeam")

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bn63o7s7ibaw0"]
+
+[ext_resource type="Texture2D" uid="uid://vf83kv4a112c" path="res://player/materials_textures/player_arms.png" id="1_o0ilg"]
+[ext_resource type="Texture2D" uid="uid://dleyis14dsu2h" path="res://player/materials_textures/player_arms_n.png" id="2_f8py3"]
+[ext_resource type="Texture2D" uid="uid://cu5yueebv5b0d" path="res://player/materials_textures/player_arms_m.png" id="3_ohq0q"]
+
+[resource]
+albedo_texture = ExtResource("1_o0ilg")
+roughness_texture = ExtResource("3_ohq0q")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_f8py3")
+texture_filter = 0
