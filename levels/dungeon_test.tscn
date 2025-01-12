@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyi3omqki5u3f"]
+[gd_scene load_steps=13 format=3 uid="uid://dyi3omqki5u3f"]
 
 [ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="1_7hi68"]
 [ext_resource type="MeshLibrary" uid="uid://144bif61d05y" path="res://world/dungeontiles/dungeontileset.tres" id="2_cbvqs"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://sfjwj4k1xn83" path="res://world/props/pot_2.tscn" id="5_hxbyd"]
 [ext_resource type="PackedScene" uid="uid://de5qrfgt25he3" path="res://world/props/pot_1.tscn" id="5_vqxlb"]
 [ext_resource type="PackedScene" uid="uid://gyslfu8cd11i" path="res://world/props/spike_trap.tscn" id="7_ahbng"]
+[ext_resource type="PackedScene" uid="uid://behyuimsd1sib" path="res://world/props/iron_bars.tscn" id="8_csvfl"]
+[ext_resource type="PackedScene" uid="uid://clkygn8hp1oke" path="res://world/props/ritual_table.tscn" id="9_ocu7h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ww6ph"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,6 +52,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.1543
 [node name="torch2" parent="." instance=ExtResource("3_7p08n")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 5.39051, 2.20075, -3.17343)
 
+[node name="torch5" parent="." instance=ExtResource("3_7p08n")]
+transform = Transform3D(1.31135e-07, 0, 1, 0, 1, 0, -1, 0, 1.31135e-07, 7.33245, 2.20075, -8.03526)
+
 [node name="torch3" parent="." instance=ExtResource("3_7p08n")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -6.27553, 2.20075, -3.17343)
 
@@ -73,3 +78,9 @@ transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 
 
 [node name="spike_trap3" parent="." instance=ExtResource("7_ahbng")]
 transform = Transform3D(-6.55671e-08, 1.5, 0, 6.55671e-08, 2.86603e-15, -1.5, -1.5, -6.55671e-08, -6.55671e-08, -9, 1.36372, -8.79664)
+
+[node name="iron_bars" parent="." instance=ExtResource("8_csvfl")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0106242, 2.10641, 10.9974)
+
+[node name="ritual_table" parent="." instance=ExtResource("9_ocu7h")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 5.73403, 0, -8.2929)

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://clkygn8hp1oke"]
+
+[ext_resource type="PackedScene" uid="uid://gm6skuajm3rh" path="res://world/props/models/ritual_table.glb" id="1_7nfco"]
+[ext_resource type="Script" path="res://world/props/scripts/RitualTable.gd" id="2_kt17w"]
+[ext_resource type="Material" uid="uid://dkyatohuemphm" path="res://world/props/materials/ritualtable_mat.tres" id="2_mad0p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kfpkv"]
+points = PackedVector3Array(-0.982841, 0.114993, -0.646425, -1.0347, 0.0501169, -0.436408, -1.20917, 0.102972, -0.397384, -1.11517, 0.144002, -0.589427, -1.13918, 0.358417, -0.54047, -0.846173, 0.408474, -0.645361, -0.81935, 0.0501169, -0.645124, -0.909526, 0.0501169, -0.247675, -1.31928, 0.15626, 0.00798786, -1.28121, 0.124571, -0.250277, -1.28121, 0.378992, -0.250277, -1.31187, 0.430112, -0.0216936, -0.918467, 0.452776, -0.542244, -0.933794, 0.427787, -0.607638, 0.242323, 0.418248, -0.625731, 0.380268, 0.182786, -0.635428, 0.412711, 0.148574, -0.635191, -0.0964113, 0.0501169, -0.63933, -0.372048, 0.0501169, 0.561531, -1.1379, 0.193822, 0.455931, -1.15859, 0.385495, 0.443041, -1.32183, 0.409498, 0.0504408, -1.32183, 0.39728, 0.0480757, -1.30599, 0.419549, -0.0680489, -1.13739, 0.452776, 0.186905, -1.2572, 0.452776, -0.0245317, 1.00741, 0.452776, -0.325723, 0.836512, 0.449544, -0.540352, 1.15277, 0.234104, -0.523205, 0.507485, 0.0501169, -0.572635, 0.941759, 0.126818, -0.565185, -0.623927, 0.168794, 0.555027, 0.778268, 0.0501169, 0.561531, 0.965261, 0.147628, 0.560821, 0.857715, 0.370754, 0.559166, 0.383589, 0.452776, 0.553844, -0.627248, 0.418879, 0.54332, -1.04773, 0.425777, 0.462198, -1.06765, 0.452776, 0.309297, 0.932052, 0.452776, 0.438429, 1.26414, 0.312066, -0.21693, 1.19262, 0.350377, -0.366402, 1.14153, 0.316717, -0.514573, 1.28484, 0.141598, -0.227099, 1.14715, 0.139982, -0.535385, 1.15328, 0.116373, -0.507241, 0.93384, 0.0501169, -0.479688, 0.134009, 0.452776, 0.551125, -0.460435, 0.452776, 0.544621, 0.956831, 0.0501169, 0.40047, 1.1382, 0.190748, 0.479108, 1.0488, 0.316874, 0.490224, 0.977779, 0.394324, 0.503705, 1.15506, 0.284712, 0.452265, 1.27538, 0.273479, 0.146935, 1.2879, 0.139706, 0.15746, 1.22123, 0.125596, -0.362026, 1.20105, 0.12059, -0.408027, 1.15813, 0.10983, -0.498727, 0.9507, 0.0501169, 0.164555, 1.22966, 0.123428, 0.280561)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gvjxb"]
+points = PackedVector3Array(1.15799, -0.0710449, -1.0383, -0.735756, -0.0710449, -1.01188, 1.08623, 0.0972397, -0.966832, 1.7192, -0.0710449, -0.882373, -1.6922, -0.0710449, -0.868946, -1.57959, 0.0972397, -0.808309, -0.684604, 0.0972397, -0.941928, 1.61137, 0.0972397, -0.820869, 1.80936, 0.0972397, -0.432356, 1.9308, -0.0710449, -0.467006, -1.82836, -0.0710449, 0.0811138, -1.70692, 0.0972397, 0.0802475, 1.55838, 0.0972397, 0.543042, 1.66289, -0.0710449, 0.575959, -1.24323, -0.0710449, 0.853159, -1.16926, 0.0972397, 0.804, 0.896709, 0.0972397, 0.99046, 0.955221, -0.0710449, 1.05435, -0.400137, -0.0710449, 1.17411, -0.371064, 0.0972397, 1.10242)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s884y"]
+size = Vector3(2.0332, 0.52002, 0.848389)
+
+[node name="ritual_table" instance=ExtResource("1_7nfco")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_kt17w")
+
+[node name="Cube_014" parent="TableCut" index="0"]
+surface_material_override/0 = ExtResource("2_mad0p")
+
+[node name="Cube_015" parent="TableCut" index="1"]
+surface_material_override/0 = ExtResource("2_mad0p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TableCut/Cube_015" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TableCut/Cube_015/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_kfpkv")
+
+[node name="Plane" parent="TableCut" index="2"]
+surface_material_override/0 = ExtResource("2_mad0p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TableCut/Plane" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TableCut/Plane/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_gvjxb")
+
+[node name="TriggerArea" type="Area3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66292, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0302734, 0.23999, -0.0418701)
+shape = SubResource("BoxShape3D_s884y")
+
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

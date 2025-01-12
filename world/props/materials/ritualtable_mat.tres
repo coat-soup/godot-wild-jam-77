@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dkyatohuemphm"]
+
+[ext_resource type="Texture2D" uid="uid://cbxiqhn4vtivw" path="res://world/props/textures/ritual_table.png" id="1_455bi"]
+[ext_resource type="Texture2D" uid="uid://bte0klpg8g57f" path="res://world/props/textures/ritual_table_n.png" id="2_ceaj2"]
+
+[resource]
+albedo_texture = ExtResource("1_455bi")
+normal_enabled = true
+normal_texture = ExtResource("2_ceaj2")
+texture_filter = 0

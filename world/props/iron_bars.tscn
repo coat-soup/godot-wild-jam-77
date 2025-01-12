@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://behyuimsd1sib"]
+
+[ext_resource type="PackedScene" uid="uid://bir881nibv261" path="res://world/props/models/iron_bars.glb" id="1_iimm2"]
+[ext_resource type="Material" uid="uid://ddrmovp3ky6ff" path="res://world/props/materials/darkmetal_mat.tres" id="2_88cwl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ravlo"]
+size = Vector3(3, 3, 0.2)
+
+[node name="iron_bars" instance=ExtResource("1_iimm2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Cube_012" parent="IronBars" index="0"]
+surface_material_override/0 = ExtResource("2_88cwl")
+
+[node name="Cube_013" parent="IronBars" index="1"]
+surface_material_override/0 = ExtResource("2_88cwl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ravlo")
