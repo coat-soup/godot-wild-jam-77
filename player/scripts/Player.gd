@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var arms: Node3D = $CameraPivot/FirstPersonArms
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSETIVITY = 0.005;
@@ -26,8 +28,11 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("quit"):
 			get_tree().quit()
 		if event.is_action_pressed("attack"):
-			var arms = $CameraPivot/FirstPersonArms
 			arms.swing()
+
+		if event.is_action_released("block"):
+			arms.end_block()
+			
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -36,6 +41,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("block"):
+		arms.block()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -58,8 +66,9 @@ func _physics_process(delta: float) -> void:
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10)
 		
 		if landing:
-			jump_land.emit()
 			landing = false
+			if velocity.y < 1:
+				jump_land.emit()
 	else:
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 2)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 2)
