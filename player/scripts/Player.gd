@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
-@onready var arms: Node3D = $CameraPivot/FirstPersonArms
+@onready var arms: Node3D = $CameraPivot/ArmsPivot/FirstPersonArms
+@onready var camera_pivot: Node3D = $CameraPivot
+@onready var camera = $CameraPivot/Camera
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -18,8 +20,6 @@ var landing : bool
 signal jump_start
 signal jump_land
 
-@onready var camera_pivot = $CameraPivot
-@onready var camera = $CameraPivot/Camera
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -36,11 +36,14 @@ func _input(event: InputEvent) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * SENSETIVITY)
-		camera_pivot.rotate_x(-event.relative.y * SENSETIVITY)
+		var sens_mul = 1.0 if !arms.swinging else 0.3
+		rotate_y(-event.relative.x * SENSETIVITY * sens_mul)
+		camera_pivot.rotate_x(-event.relative.y * SENSETIVITY * sens_mul)
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
+	#arms_pivot.rotation = lerp(arms_pivot.rotation, camera_pivot.rotation, delta * (1 if arms.swinging else 20))
+	
 	if Input.is_action_pressed("block"):
 		arms.block()
 	

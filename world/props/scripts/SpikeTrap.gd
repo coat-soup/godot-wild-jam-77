@@ -10,10 +10,14 @@ var bloody_mat = preload("res://world/props/materials/spiketrap_bloody_mat.tres"
 
 var armed : bool = true
 
+@export var damage : int = 30
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if armed:
 		if is_instance_of(body, CharacterBody3D):
+			var health = HierarchyUtil.get_child_of_type(body, Health) as Health
+			health.take_damage(damage, self)
 			animation_player.play("Trigger")
 			audio.stream = trigger_sound
 			audio.play()

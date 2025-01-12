@@ -33,7 +33,7 @@ glow_enabled = true
 environment = SubResource("Environment_m2jhu")
 
 [node name="Player" parent="." instance=ExtResource("1_7hi68")]
-transform = Transform3D(-0.30395, 0, 0.952688, 0, 1, 0, -0.952688, 0, -0.30395, -6.00481, 1.1605, -4.76808)
+transform = Transform3D(0.841558, 0, 0.540167, 0, 1, 0, -0.540167, 0, 0.841558, -1.1075, 1.1605, -1.02636)
 
 [node name="TileMap" type="GridMap" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
