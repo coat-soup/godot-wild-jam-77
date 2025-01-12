@@ -102,5 +102,7 @@ texture_progress = ExtResource("17_5rty3")
 [connection signal="bob_top" from="." to="Sound" method="_on_player_bob_top"]
 [connection signal="jump_land" from="." to="Sound" method="_on_player_jump_land"]
 [connection signal="swing_sword" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_swing_sword"]
+[connection signal="sword_bounce" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_sword_bounce"]
+[connection signal="sword_hit" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_sword_hit"]
 [connection signal="successful_block" from="Health" to="Sound" method="_on_health_successful_block"]
 [connection signal="took_damage" from="Health" to="UI" method="_on_health_took_damage"]

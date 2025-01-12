@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3j8r13vamxwo"]
+[gd_scene load_steps=26 format=3 uid="uid://c3j8r13vamxwo"]
 
 [ext_resource type="PackedScene" uid="uid://cabp2sepknfky" path="res://player/models/FirstPersonArms.glb" id="1_0ssfh"]
 [ext_resource type="Script" path="res://player/scripts/Arms.gd" id="2_7a8ya"]
@@ -6,6 +6,19 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmtb1"]
 size = Vector3(0.0773925, 0.0385132, 1.27595)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xeped"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_jrx0b"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mguj2"]
+graph_offset = Vector2(-49.6365, 51.0909)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_xeped")
+nodes/Animation/position = Vector2(380, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_jrx0b")
+nodes/TimeScale/position = Vector2(600, 160)
+nodes/output/position = Vector2(820, 180)
+node_connections = [&"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3fggg"]
 animation = &"Block"
@@ -90,6 +103,8 @@ advance_mode = 2
 advance_expression = "!blocking"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1yeam"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_mguj2")
+states/BlendTree/position = Vector2(364, -26)
 states/Block/node = SubResource("AnimationNodeAnimation_3fggg")
 states/Block/position = Vector2(602, -76)
 states/Idle/node = SubResource("AnimationNodeAnimation_adtpw")
@@ -102,38 +117,44 @@ states/Swing2/position = Vector2(765, 292)
 states/Swing3/node = SubResource("AnimationNodeAnimation_p2gyg")
 states/Swing3/position = Vector2(462, 292)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_jssyq"), "Idle", "Swing1", SubResource("AnimationNodeStateMachineTransition_d2oot"), "Swing1", "Idle", SubResource("AnimationNodeStateMachineTransition_5ldb8"), "Swing1", "Swing2", SubResource("AnimationNodeStateMachineTransition_i63jm"), "Swing2", "Idle", SubResource("AnimationNodeStateMachineTransition_yijy5"), "Swing2", "Swing3", SubResource("AnimationNodeStateMachineTransition_jelnr"), "Swing3", "Idle", SubResource("AnimationNodeStateMachineTransition_ttikf"), "Idle", "Block", SubResource("AnimationNodeStateMachineTransition_aemc0"), "Swing2", "Block", SubResource("AnimationNodeStateMachineTransition_0258j"), "Swing1", "Block", SubResource("AnimationNodeStateMachineTransition_rbm11"), "Swing3", "Block", SubResource("AnimationNodeStateMachineTransition_kvwci"), "Block", "Idle", SubResource("AnimationNodeStateMachineTransition_61v83")]
-graph_offset = Vector2(-46, -95)
+graph_offset = Vector2(-6, -77)
 
 [node name="FirstPersonArms" instance=ExtResource("1_0ssfh")]
 script = ExtResource("2_7a8ya")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/rotation = Quaternion(-0.174146, -0.360765, 0.724326, 0.561136)
-bones/2/rotation = Quaternion(-0.183194, -0.248154, 0.00613625, 0.951221)
-bones/3/rotation = Quaternion(0.10513, 0.00328117, 0.0272063, 0.994081)
+bones/1/position = Vector3(0.269744, -0.400718, -1.93715e-07)
+bones/1/rotation = Quaternion(-0.175282, -0.095616, 0.93994, -0.276852)
+bones/2/rotation = Quaternion(-0.580605, -0.205467, 0.0194478, 0.787594)
+bones/3/rotation = Quaternion(0.319935, 0.213419, -0.0984816, 0.917821)
 bones/4/rotation = Quaternion(-9.04906e-08, 3.68665e-08, -0.83134, 0.555764)
 bones/5/rotation = Quaternion(3.36919e-08, -1.01076e-07, -0.695319, 0.718701)
-bones/6/rotation = Quaternion(-0.390788, -0.251285, -0.444036, 0.766141)
+bones/6/rotation = Quaternion(-0.444368, -0.176529, -0.317952, 0.818707)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.371639, -0.46685, -0.109496, 0.79495)
+bones/7/rotation = Quaternion(0.189161, -0.344907, -0.238915, 0.887793)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(0.421507, -0.537996, 0.652852, 0.326613)
-bones/14/rotation = Quaternion(-0.0510663, 0.00900144, 0.688714, 0.723176)
-bones/15/rotation = Quaternion(0.179889, 0.393762, -0.299904, 0.850088)
+bones/13/position = Vector3(-0.269744, -0.400718, -1.93715e-07)
+bones/13/rotation = Quaternion(-0.121595, -0.216029, 0.875129, -0.415566)
+bones/14/rotation = Quaternion(-0.000197122, 0.0124461, 0.00265847, 0.999919)
+bones/15/rotation = Quaternion(-0.0915306, -0.0782493, -0.0970467, 0.987968)
 bones/16/rotation = Quaternion(-6.02851e-08, -6.55732e-08, 0.880573, 0.473911)
-bones/17/rotation = Quaternion(-0.0227556, -0.0278903, 0.632087, 0.774061)
-bones/18/rotation = Quaternion(-0.221479, 0.786632, -0.394725, -0.419939)
+bones/17/rotation = Quaternion(3.72529e-09, 1.21072e-07, -0.0157063, 0.999877)
+bones/18/rotation = Quaternion(-0.0220402, 0.84909, -0.515528, -0.113096)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-0.00380706, -0.064448, 0.0600313, 0.996107)
 bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(0.694266, -0.891095, -0.517281)
+bones/21/position = Vector3(0.814103, -1.12743, -0.578523)
 bones/21/rotation = Quaternion(0.501206, -0.498791, -0.498791, 0.501206)
+bones/22/position = Vector3(0.788053, -1.15769, -0.373679)
 bones/22/rotation = Quaternion(-0.508476, 0.491378, -0.491378, 0.508476)
+bones/23/position = Vector3(-0.791459, -0.398197, 0.823563)
 bones/23/rotation = Quaternion(0.501206, -0.498791, -0.498791, 0.501206)
 
 [node name="SwordHilt" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.56773, 0.526111, 0.633159, -0.0580409, 0.741634, -0.668289, -0.821167, -0.416157, -0.390512, -0.465744, -0.457428, -0.689397)
+transform = Transform3D(0.321586, -0.112479, 0.940176, -0.707085, 0.631867, 0.317451, -0.629773, -0.766873, 0.123668, 0.736614, -1.07618, -0.589423)
 
 [node name="WeaponHitbox" type="Area3D" parent="Armature/Skeleton3D/SwordHilt" index="0"]
 transform = Transform3D(0.809014, 0, 0, 0, -3.53631e-08, -0.809014, 0, 0.809014, -3.53631e-08, 0, 0, 0)
@@ -146,19 +167,19 @@ shape = SubResource("BoxShape3D_xmtb1")
 surface_material_override/0 = ExtResource("3_cvqcd")
 
 [node name="Cube_003" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.56773, 0.633159, -0.526111, -0.0580409, -0.668289, -0.741634, -0.821167, -0.390512, 0.416157, 0.375979, 0.731592, -1.35648)
+transform = Transform3D(0.321586, 0.940176, 0.112478, -0.707085, 0.317451, -0.631867, -0.629773, 0.123668, 0.766873, 0.555593, -0.0647717, -1.81887)
 
 [node name="Cube_003" parent="Armature/Skeleton3D/Cube_003" index="0"]
 surface_material_override/0 = ExtResource("3_cvqcd")
 
 [node name="Cube_004" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.56773, 0.633159, -0.526111, -0.0580409, -0.668289, -0.741634, -0.821167, -0.390512, 0.416157, -0.148865, -0.0082567, -0.941326)
+transform = Transform3D(0.321586, 0.940176, 0.112478, -0.707085, 0.317451, -0.631867, -0.629773, 0.123668, 0.766873, 0.667801, -0.695117, -1.05384)
 
 [node name="Cube_004" parent="Armature/Skeleton3D/Cube_004" index="0"]
 surface_material_override/0 = ExtResource("3_cvqcd")
 
 [node name="Cylinder_001" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.56773, 0.633159, -0.526111, -0.0580409, -0.668289, -0.741634, -0.821167, -0.390512, 0.416157, -0.58588, -0.624296, -0.595645)
+transform = Transform3D(0.321586, 0.940176, 0.112478, -0.707085, 0.317451, -0.631867, -0.629773, 0.123668, 0.766873, 0.761231, -1.21998, -0.416841)
 
 [node name="Cylinder_001" parent="Armature/Skeleton3D/Cylinder_001" index="0"]
 surface_material_override/0 = ExtResource("3_cvqcd")
@@ -185,6 +206,7 @@ surface_material_override/0 = ExtResource("3_cvqcd")
 tree_root = SubResource("AnimationNodeStateMachine_1yeam")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+parameters/BlendTree/TimeScale/scale = 1.0
 
 [connection signal="body_entered" from="Armature/Skeleton3D/SwordHilt/WeaponHitbox" to="." method="_on_weapon_hitbox_body_entered"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var arms: Node3D = $CameraPivot/ArmsPivot/FirstPersonArms
 @onready var camera_pivot: Node3D = $CameraPivot
-@onready var camera = $CameraPivot/Camera
+@onready var camera: Camera3D = $CameraPivot/Camera
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5

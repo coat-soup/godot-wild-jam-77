@@ -7,6 +7,7 @@ extends Node3D
 
 @onready var sword_bounce_sound = load("res://sfx/weapons/sword_bounce.wav")
 @onready var sword_block_sound = load("res://sfx/weapons/sword_block.wav")
+@onready var sword_hit_sound = load("res://sfx/weapons/sword_slice.wav")
 
 var can_footstep : bool = false
 
@@ -26,13 +27,23 @@ func _on_first_person_arms_swing_sword() -> void:
 	sword_whoosh.pitch_scale = randf_range(.8, 1)
 	sword_whoosh.play()
 
-
+func _on_first_person_arms_sword_bounce() -> void:
+	sword_clangs.pitch_scale = randf_range(.8, 1.2)
+	sword_clangs.stream = sword_bounce_sound
+	sword_clangs.play()
+	
 func _on_player_jump_land() -> void:
 	jumping_audio.pitch_scale = randf_range(.8, 1.2)
 	jumping_audio.play()
 
 
 func _on_health_successful_block() -> void:
-	sword_whoosh.pitch_scale = randf_range(.8, .2)
+	sword_clangs.pitch_scale = randf_range(.8, 1.2)
 	sword_clangs.stream = sword_block_sound
+	sword_clangs.play()
+
+
+func _on_first_person_arms_sword_hit() -> void:
+	sword_clangs.pitch_scale = randf_range(.8, 1.2)
+	sword_clangs.stream = sword_hit_sound
 	sword_clangs.play()
