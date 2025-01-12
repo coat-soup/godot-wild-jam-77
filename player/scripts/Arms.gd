@@ -10,6 +10,7 @@ signal swing_sword
 @onready var at: AnimationTree = $AnimationTree
 
 @export var damage : int = 30
+@export var attack_speed : float = 1
 
 var blocking : bool = false
 var swinging : bool = false
@@ -19,6 +20,7 @@ var idle : bool = true
 
 var timer : float = 0
 var bounce_timer : float = 0
+var bounce_time : float = 10
 
 var combo_interval = 1
 var combo_window = 0.75
@@ -26,41 +28,49 @@ var can_swing = true
 
 var to_damage : Array[Node3D]
 
+
 func swing():
-	#at.set("parameters/BlendTree/TimeScale/scale", 1000)
-	#print(at.get("parameters/BlendTree/TimeScale/scale"))
-	#print(at.get("parameters/BlendTree/Animation"))
-	#load("res://player/AttackAnimation").animation = "Block"
-	
 	if can_swing and (timer > 0 or idle):
 		swing_sword.emit()
 		swinging = true
 		swing_trigger = true
 		idle = false
+		can_swing = false
 		
 		# bounce timer
-		bounce_timer = 0.7
+		bounce_timer = bounce_time
 		to_damage.clear()
-		
+
+
+func set_attack_speed(speed: float, rel: bool = false):
+	attack_speed = speed if !rel else attack_speed * speed
+	at.set("parameters/BlendTree 2/TimeScale/scale", attack_speed)
+
+
 func block():
 	if !swinging:
 		blocking = true
 		can_swing = false
 		swinging = false
-	
+
+
 func end_block():
 	blocking = false
 	can_swing = true
 	idle = true
 	swinging = false
 
+
 func bounce_sword():
-	sword_bounce.emit()	
-	var temp_rate = ap.speed_scale
-	ap.speed_scale = 0
+	sword_bounce.emit()
+	swinging = false
 	
-	#await get_tree().create_timer(1.0).timeout
-	#ap.speed_scale = temp_rate
+	var temp_scale = at.get("parameters/BlendTree 2/TimeScale/scale")
+	at.set("parameters/BlendTree 2/TimeScale/scale", -0.5)
+	await get_tree().create_timer(0.3).timeout
+	at.set("parameters/BlendTree 2/TimeScale/scale", temp_scale)
+	idle = true
+	
 	reset_combo()
 
 
@@ -78,15 +88,14 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 			else:
 				if bounce_timer > 0:
 					bounce_sword()
+					return
 
 func _process(delta: float) -> void:
 	if timer > 0:
 		timer -= delta
 		if timer <= 0:
 			if can_swing:
-				can_swing = false
-				idle = true
-				timer = combo_interval
+				reset_combo()
 			else:
 				can_swing = true
 	if bounce_timer > 0:
@@ -111,5 +120,5 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func reset_combo():
 	print("Ending combo")
 	can_swing = false
-	timer = combo_interval
+	timer = combo_interval/attack_speed
 	idle = true

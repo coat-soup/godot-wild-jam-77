@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyi3omqki5u3f"]
+[gd_scene load_steps=14 format=3 uid="uid://dyi3omqki5u3f"]
 
 [ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="1_7hi68"]
 [ext_resource type="MeshLibrary" uid="uid://144bif61d05y" path="res://world/dungeontiles/dungeontileset.tres" id="2_cbvqs"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://gyslfu8cd11i" path="res://world/props/spike_trap.tscn" id="7_ahbng"]
 [ext_resource type="PackedScene" uid="uid://behyuimsd1sib" path="res://world/props/iron_bars.tscn" id="8_csvfl"]
 [ext_resource type="PackedScene" uid="uid://clkygn8hp1oke" path="res://world/props/ritual_table.tscn" id="9_ocu7h"]
+[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/target_dummy.tscn" id="10_nukk4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ww6ph"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -62,6 +63,9 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -6.27553
 [node name="brazier" parent="." instance=ExtResource("4_keatd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.31123, 4.47035e-08, -6.55627)
 
+[node name="brazier3" parent="." instance=ExtResource("4_keatd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03871, 4.47035e-08, 2.97982)
+
 [node name="brazier2" parent="." instance=ExtResource("4_keatd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136257, 2.83122e-07, 15.7018)
 
@@ -85,3 +89,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0106242, 2.10641, 10
 
 [node name="ritual_table" parent="." instance=ExtResource("9_ocu7h")]
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 5.73403, 0, -8.2929)
+
+[node name="TargetDummy" parent="." instance=ExtResource("10_nukk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76778, 0.447841, 2.2942)
+
+[node name="TargetDummy2" parent="." instance=ExtResource("10_nukk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76778, 0.447841, 4.82857)
