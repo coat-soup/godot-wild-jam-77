@@ -1,36 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5bv25uu2jith"]
+[gd_scene load_steps=6 format=3 uid="uid://c5bv25uu2jith"]
 
 [ext_resource type="Script" path="res://player/PlayerHUD.gd" id="1_uvdbr"]
 [ext_resource type="Texture2D" uid="uid://0wta44t65n7x" path="res://ui/textures/health_bar_background.png" id="2_0ejho"]
 [ext_resource type="Texture2D" uid="uid://bdviuoolkc10s" path="res://ui/textures/health_bar_overlay.png" id="3_525hp"]
 [ext_resource type="Texture2D" uid="uid://baitnsd857ox7" path="res://ui/textures/health_bar_fill.png" id="4_qxbbk"]
+[ext_resource type="Script" path="res://system/VersionText.gd" id="5_2jina"]
 
 [node name="UI" type="Node"]
 script = ExtResource("1_uvdbr")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1080, 720)
-size_2d_override = Vector2i(1080, 720)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-offset_left = 14.0
-offset_top = 285.0
-offset_right = 142.0
-offset_bottom = 413.0
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = 8.0
+offset_top = 987.0
+offset_right = 136.0
+offset_bottom = 1115.0
 max_value = 1.0
 step = 0.0
 value = 1.0
 texture_under = ExtResource("2_0ejho")
 texture_over = ExtResource("3_525hp")
 texture_progress = ExtResource("4_qxbbk")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = -17.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "test version text"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("5_2jina")
 metadata/_edit_use_anchors_ = true

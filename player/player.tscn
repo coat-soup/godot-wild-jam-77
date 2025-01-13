@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cyk67kv73er43"]
+[gd_scene load_steps=18 format=3 uid="uid://cyk67kv73er43"]
 
 [ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_06dfn"]
 [ext_resource type="PackedScene" uid="uid://c3j8r13vamxwo" path="res://player/models/first_person_arms.tscn" id="3_a8mq5"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://b88qj356syk2y" path="res://sfx/footsteps/jump-land.wav" id="11_yk06m"]
 [ext_resource type="AudioStream" uid="uid://3i8hupjg5ul6" path="res://sfx/weapons/sword-woosh-02.mp3" id="12_7rgu8"]
 [ext_resource type="Script" path="res://system/Health_Player.gd" id="13_stqgr"]
-[ext_resource type="PackedScene" uid="uid://c5bv25uu2jith" path="res://ui/ui.tscn" id="14_r3gfs"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
 
@@ -79,8 +78,6 @@ stream = SubResource("AudioStreamRandomizer_4gbd0")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("13_stqgr")
-
-[node name="UI" parent="." instance=ExtResource("14_r3gfs")]
 
 [connection signal="bob_bottom" from="." to="Sound" method="_on_player_bob_bottom"]
 [connection signal="bob_top" from="." to="Sound" method="_on_player_bob_top"]
