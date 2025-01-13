@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyi3omqki5u3f"]
+[gd_scene load_steps=15 format=3 uid="uid://dyi3omqki5u3f"]
 
 [ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="1_7hi68"]
 [ext_resource type="MeshLibrary" uid="uid://144bif61d05y" path="res://world/dungeontiles/dungeontileset.tres" id="2_cbvqs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://behyuimsd1sib" path="res://world/props/iron_bars.tscn" id="8_csvfl"]
 [ext_resource type="PackedScene" uid="uid://clkygn8hp1oke" path="res://world/props/ritual_table.tscn" id="9_ocu7h"]
 [ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/target_dummy.tscn" id="10_nukk4"]
+[ext_resource type="PackedScene" uid="uid://bludxqpn5k6ss" path="res://enemies/coffin_enemy.tscn" id="11_i38bs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ww6ph"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -95,3 +96,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76778, 0.447841, 2.2942)
 
 [node name="TargetDummy2" parent="." instance=ExtResource("10_nukk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76778, 0.447841, 4.82857)
+
+[node name="CoffinEnemy" parent="." instance=ExtResource("11_i38bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38312, 1.78814e-07, -8.28827)

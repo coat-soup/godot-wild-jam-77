@@ -28,6 +28,8 @@ var can_swing = true
 
 var to_damage : Array[Node3D]
 
+func _ready():
+	set_attack_speed(attack_speed)
 
 func swing():
 	if can_swing and (timer > 0 or idle):
@@ -76,12 +78,13 @@ func bounce_sword():
 
 func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 	if swinging:
-		if !to_damage.has(body.owner):
-			to_damage.append(body.owner)
+		body = body if is_instance_of(body, CharacterBody3D) else body.owner
+		if body.name != "Player" and !to_damage.has(body):
+			to_damage.append(body)
 			print("arms got sword hit")
 			print("hit ", body.name)
 			
-			var health = HierarchyUtil.get_child_of_type(body.owner, Health) as Health
+			var health = HierarchyUtil.get_child_of_type(body, Health) as Health
 			if health:
 				health.take_damage(damage, self)
 				sword_hit.emit()
@@ -89,6 +92,7 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 				if bounce_timer > 0:
 					bounce_sword()
 					return
+
 
 func _process(delta: float) -> void:
 	if timer > 0:

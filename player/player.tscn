@@ -32,7 +32,7 @@ streams_count = 2
 stream_0/stream = ExtResource("11_enhmx")
 stream_1/stream = ExtResource("12_7rgu8")
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605, 0)
 script = ExtResource("1_06dfn")
 

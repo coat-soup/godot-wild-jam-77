@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbyevw4vq02kk"]
+
+[ext_resource type="Script" path="res://enemies/scripts/Enemy.gd" id="1_rqq7d"]
+[ext_resource type="Script" path="res://system/Health.gd" id="2_mjoxq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mgkgp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd5q7"]
+albedo_color = Color(0.712271, 0, 0.178863, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fmoty"]
+radius = 0.425325
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_rqq7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_mgkgp")
+surface_material_override/0 = SubResource("StandardMaterial3D_kd5q7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fmoty")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 1.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_mjoxq")
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

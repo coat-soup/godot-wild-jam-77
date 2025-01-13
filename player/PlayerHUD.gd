@@ -1,12 +1,14 @@
 extends Node
 
 @onready var health_bar: TextureProgressBar = $HealthBar
-@onready var player: Node3D = $"../ViewBox/SubViewport/DungeonTest/Player"
+var player: Node3D
 
 
 var health : Health
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
+	
 	if player == null:
 		push_error("UI can't find player")
 	else:
