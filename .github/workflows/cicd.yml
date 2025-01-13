@@ -24,7 +24,7 @@ jobs:
       - name: find latest godot patch for project version
         run: |
           # Read the version number from the project.godot file
-          version_prefix=$(grep -oP 'config/features=PackedStringArray\("\K[^\"]+' ./src/project.godot)
+          version_prefix=$(grep -oP 'config/features=PackedStringArray\("\K[^\"]+' ./project.godot)
 
           echo found minor version: ${version_prefix}
           # Initialize the patch number and the last valid version variable
@@ -87,7 +87,7 @@ jobs:
           # Defining all the required inputs
           godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/${{ env.GODOT_VERSION }}/Godot_v${{ env.GODOT_VERSION }}-stable_export_templates.tpz
-          relative_project_path: ./src
+          relative_project_path: ./
           use_preset_export_path: true
           archive_output: ${{ startsWith(github.ref, 'refs/tags/') }}
 
