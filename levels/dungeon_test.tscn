@@ -98,4 +98,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76778, 0.447841, 2.2942)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76778, 0.447841, 4.82857)
 
 [node name="CoffinEnemy" parent="." instance=ExtResource("11_i38bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38312, 1.78814e-07, -8.28827)
+transform = Transform3D(-0.660513, 0, 0.750815, 0, 1, 0, -0.750815, 0, -0.660513, -6.26317, 8.9407e-07, -6.97178)
