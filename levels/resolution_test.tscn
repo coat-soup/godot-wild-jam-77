@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://vftll5w86k8u"]
+
+[ext_resource type="Script" path="res://system/GlobalResolutionManager.gd" id="1_3fwgj"]
+[ext_resource type="PackedScene" uid="uid://dyi3omqki5u3f" path="res://levels/dungeon_test.tscn" id="3_d4v2p"]
+[ext_resource type="Script" path="res://system/VersionText.gd" id="3_oxiw0"]
+
+[node name="HDWorld" type="Node"]
+script = ExtResource("1_3fwgj")
+
+[node name="ViewBox" type="SubViewportContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="SubViewport" type="SubViewport" parent="ViewBox"]
+handle_input_locally = false
+audio_listener_enable_3d = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="DungeonTest" parent="ViewBox/SubViewport" instance=ExtResource("3_d4v2p")]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = -17.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "test version text"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("3_oxiw0")
+metadata/_edit_use_anchors_ = true

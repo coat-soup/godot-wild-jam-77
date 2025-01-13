@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cyk67kv73er43"]
+[gd_scene load_steps=19 format=3 uid="uid://cyk67kv73er43"]
 
 [ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_06dfn"]
 [ext_resource type="PackedScene" uid="uid://c3j8r13vamxwo" path="res://player/models/first_person_arms.tscn" id="3_a8mq5"]
@@ -13,10 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b88qj356syk2y" path="res://sfx/footsteps/jump-land.wav" id="11_yk06m"]
 [ext_resource type="AudioStream" uid="uid://3i8hupjg5ul6" path="res://sfx/weapons/sword-woosh-02.mp3" id="12_7rgu8"]
 [ext_resource type="Script" path="res://system/Health_Player.gd" id="13_stqgr"]
-[ext_resource type="Script" path="res://player/PlayerHUD.gd" id="14_u8mfm"]
-[ext_resource type="Texture2D" uid="uid://0wta44t65n7x" path="res://ui/textures/health_bar_background.png" id="15_re0bl"]
-[ext_resource type="Texture2D" uid="uid://bdviuoolkc10s" path="res://ui/textures/health_bar_overlay.png" id="16_emuff"]
-[ext_resource type="Texture2D" uid="uid://baitnsd857ox7" path="res://ui/textures/health_bar_fill.png" id="17_5rty3"]
+[ext_resource type="PackedScene" uid="uid://c5bv25uu2jith" path="res://ui/ui.tscn" id="14_r3gfs"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
 
@@ -83,20 +80,7 @@ stream = SubResource("AudioStreamRandomizer_4gbd0")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("13_stqgr")
 
-[node name="UI" type="Node" parent="."]
-script = ExtResource("14_u8mfm")
-
-[node name="HealthBar" type="TextureProgressBar" parent="UI"]
-offset_left = 14.0
-offset_top = 285.0
-offset_right = 142.0
-offset_bottom = 413.0
-max_value = 1.0
-step = 0.0
-value = 1.0
-texture_under = ExtResource("15_re0bl")
-texture_over = ExtResource("16_emuff")
-texture_progress = ExtResource("17_5rty3")
+[node name="UI" parent="." instance=ExtResource("14_r3gfs")]
 
 [connection signal="bob_bottom" from="." to="Sound" method="_on_player_bob_bottom"]
 [connection signal="bob_top" from="." to="Sound" method="_on_player_bob_top"]
@@ -105,4 +89,3 @@ texture_progress = ExtResource("17_5rty3")
 [connection signal="sword_bounce" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_sword_bounce"]
 [connection signal="sword_hit" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_sword_hit"]
 [connection signal="successful_block" from="Health" to="Sound" method="_on_health_successful_block"]
-[connection signal="took_damage" from="Health" to="UI" method="_on_health_took_damage"]
