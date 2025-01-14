@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="1_c72eo"]
 [ext_resource type="PackedScene" uid="uid://gyslfu8cd11i" path="res://world/props/spike_trap.tscn" id="1_geqo6"]
 [ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/target_dummy.tscn" id="2_h6in5"]
-[ext_resource type="PackedScene" uid="uid://dbyevw4vq02kk" path="res://enemies/enemy.tscn" id="4_kvhdr"]
+[ext_resource type="PackedScene" uid="uid://bludxqpn5k6ss" path="res://enemies/coffin_enemy.tscn" id="4_8g3jx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sgp0x"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -145,8 +145,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2682, 0, 5.09995)
 
 [node name="Player" parent="." instance=ExtResource("1_c72eo")]
 
-[node name="Enemy" parent="." instance=ExtResource("4_kvhdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03626, 0, 1.34104)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_kvhdr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10668, 0, -6.94554)
+[node name="CoffinEnemy" parent="." instance=ExtResource("4_8g3jx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88491, 0, -5.62669)
