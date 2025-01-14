@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5bv25uu2jith"]
+[gd_scene load_steps=7 format=3 uid="uid://c5bv25uu2jith"]
 
 [ext_resource type="Script" path="res://player/PlayerHUD.gd" id="1_uvdbr"]
 [ext_resource type="Texture2D" uid="uid://0wta44t65n7x" path="res://ui/textures/health_bar_background.png" id="2_0ejho"]
 [ext_resource type="Texture2D" uid="uid://bdviuoolkc10s" path="res://ui/textures/health_bar_overlay.png" id="3_525hp"]
 [ext_resource type="Texture2D" uid="uid://baitnsd857ox7" path="res://ui/textures/health_bar_fill.png" id="4_qxbbk"]
 [ext_resource type="Script" path="res://system/VersionText.gd" id="5_2jina"]
+[ext_resource type="PackedScene" uid="uid://onydq804bkh3" path="res://ui/pause_menu.tscn" id="5_kdrak"]
 
 [node name="UI" type="Node"]
 script = ExtResource("1_uvdbr")
@@ -21,6 +22,13 @@ texture_under = ExtResource("2_0ejho")
 texture_over = ExtResource("3_525hp")
 texture_progress = ExtResource("4_qxbbk")
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_kdrak")]
+visible = false
+offset_left = 872.0
+offset_top = 442.0
+offset_right = 872.0
+offset_bottom = 442.0
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 3

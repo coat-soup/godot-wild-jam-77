@@ -6,6 +6,8 @@ signal sword_hit
 signal sword_bounce
 signal swing_sword
 
+@onready var weapon_hitbox: Area3D = $Armature/Skeleton3D/SwordHilt/WeaponHitbox
+
 @onready var ap: AnimationPlayer = $AnimationPlayer
 @onready var at: AnimationTree = $AnimationTree
 
@@ -38,6 +40,10 @@ func swing():
 		swing_trigger = true
 		idle = false
 		can_swing = false
+		
+		# damage everything already inside trigger
+		for body in weapon_hitbox.get_overlapping_bodies():
+			_on_weapon_hitbox_body_entered(body)
 		
 		# bounce timer
 		bounce_timer = bounce_time
@@ -75,6 +81,9 @@ func bounce_sword():
 	
 	reset_combo()
 
+# to make sure stuff takes damages that starts inside the hitbox
+func _on_weapon_hitbox_body_exited(body: Node3D) -> void:
+	_on_weapon_hitbox_body_entered(body)
 
 func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 	if swinging:

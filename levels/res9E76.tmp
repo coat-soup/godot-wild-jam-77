@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://vftll5w86k8u"]
+
+[ext_resource type="Script" path="res://system/GlobalResolutionManager.gd" id="1_3fwgj"]
+[ext_resource type="PackedScene" uid="uid://dyi3omqki5u3f" path="res://levels/dungeon_test.tscn" id="2_hwdj7"]
+[ext_resource type="PackedScene" uid="uid://onydq804bkh3" path="res://ui/pause_menu.tscn" id="4_ix0pb"]
+[ext_resource type="PackedScene" uid="uid://c5bv25uu2jith" path="res://ui/ui.tscn" id="4_j58em"]
+
+[node name="HDWorld" type="Node"]
+script = ExtResource("1_3fwgj")
+
+[node name="ViewBox" type="SubViewportContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="SubViewport" type="SubViewport" parent="ViewBox"]
+handle_input_locally = false
+audio_listener_enable_3d = true
+gui_embed_subwindows = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="DungeonTest" parent="ViewBox/SubViewport" instance=ExtResource("2_hwdj7")]
+
+[node name="UI" parent="." instance=ExtResource("4_j58em")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("4_ix0pb")]

@@ -18,7 +18,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if enemy.attack_trigger:
-		print("STARTINNGGG")
 		override_spin_start = 1
 	
 	var is_attacking = enemy.state == enemy.EnemyState.attacking

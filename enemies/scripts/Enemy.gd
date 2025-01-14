@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		state = EnemyState.walking
 	
 	if state == EnemyState.walking:
-		set_target(player.position)
+		set_target(player.global_position)
 		
 		var cur_pos = global_transform.origin
 		var next_pos = nav_agent.get_next_path_position()
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 			rotation.y = lerp_angle(rotation.y, rotation.y + deg_to_rad(angle), delta * turn_rate)
 			#rotate_y(turn_rate * delta * (1 if angle > 0 else -1))
 		
-		if position.distance_to(nav_agent.target_position) <=2:
+		if global_position.distance_to(nav_agent.target_position) <=2:
 			nav_agent.velocity = Vector3.ZERO
 			attack_trigger = true
 			await change_state_delay(EnemyState.attacking, attack_windup_time)

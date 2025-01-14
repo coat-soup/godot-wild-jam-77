@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://btsl2btttc1ne"]
+
+[ext_resource type="PackedScene" uid="uid://bludxqpn5k6ss" path="res://enemies/coffin_enemy.tscn" id="1_syh1x"]
+
+[node name="EnemyClusterSpawn" type="Node3D"]
+
+[node name="CoffinEnemy" parent="." instance=ExtResource("1_syh1x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66952, 0, -2.25601)
+
+[node name="CoffinEnemy2" parent="." instance=ExtResource("1_syh1x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10989, 2.38419e-07, -2.75457)
+
+[node name="CoffinEnemy3" parent="." instance=ExtResource("1_syh1x")]
