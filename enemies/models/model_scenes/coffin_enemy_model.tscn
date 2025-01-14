@@ -1,9 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://dp045f86rh5sp"]
+[gd_scene load_steps=28 format=3 uid="uid://dp045f86rh5sp"]
 
 [ext_resource type="PackedScene" uid="uid://dktvidwy5k8rx" path="res://enemies/models/assets/coffin_enemy.glb" id="1_hc0qv"]
 [ext_resource type="Material" uid="uid://brsqeuoqmmcr5" path="res://enemies/materials/coffin_enemy_mat.tres" id="2_4j50x"]
-[ext_resource type="Script" path="res://enemies/models/model_scenes/EnemyModelInterface.gd" id="2_lbsbr"]
+[ext_resource type="Script" path="res://enemies/scripts/EnemyModelInterface.gd" id="2_lbsbr"]
 [ext_resource type="Script" path="res://enemies/scripts/CoffinEnemyBladeSpinner.gd" id="3_s4mbj"]
+[ext_resource type="AudioStream" uid="uid://wdsuhmq74gyr" path="res://sfx/enemies/coffin_enemy_whirr.wav" id="4_00xub"]
+[ext_resource type="AudioStream" uid="uid://ce1c4flixj5q8" path="res://sfx/enemies/coffin_enemy_bladewhistle.wav" id="5_habb0"]
+[ext_resource type="AudioStream" uid="uid://ymhqxr23wk6l" path="res://sfx/enemies/coffin_enemy_footstep.wav" id="7_s37b0"]
+[ext_resource type="AudioStream" uid="uid://kigo3qp5t7k8" path="res://sfx/enemies/coffin_enemy_attack.wav" id="7_x83is"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_aolyp"]
 height = 0.230752
@@ -95,17 +99,17 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_3lkjb")
 nodes/TimeScale/position = Vector2(60, 140)
 node_connections = [&"TimeScale", 0, &"StateMachine", &"output", 0, &"TimeScale"]
 
-[node name="coffin_enemy" node_paths=PackedStringArray("attack_collider") instance=ExtResource("1_hc0qv")]
+[node name="coffin_enemy" node_paths=PackedStringArray("attack_collider", "attack_audio") instance=ExtResource("1_hc0qv")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_lbsbr")
 attack_collider = NodePath("Armature/Skeleton3D/Circle_006/Area3D")
+attack_audio = [NodePath("Armature/Skeleton3D/Circle_006/Area3D/AttackAudio"), NodePath("Attack_Audio_Generic")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 0.785683, 0)
-bones/1/rotation = Quaternion(0.495711, -0.113774, 0.858485, 0.0658002)
+bones/1/rotation = Quaternion(0.495699, -0.113927, 0.858465, 0.0658884)
 bones/1/scale = Vector3(1.00001, 1, 1)
-bones/2/rotation = Quaternion(-6.08384e-05, -0.43209, 0.90183, 3.08295e-05)
-bones/3/rotation = Quaternion(3.88734e-05, -0.449945, 0.893056, 7.62379e-05)
+bones/2/rotation = Quaternion(-6.08537e-05, -0.431664, 0.902035, 3.08696e-05)
+bones/3/rotation = Quaternion(3.889e-05, -0.449553, 0.893254, 7.62764e-05)
 bones/5/rotation = Quaternion(0.698942, 0.698941, 0.107148, -0.107149)
 bones/6/rotation = Quaternion(-3.93636e-06, 0.613119, 0.789991, 7.17835e-07)
 bones/6/scale = Vector3(0.999994, 0.999999, 0.999999)
@@ -114,10 +118,10 @@ bones/7/scale = Vector3(0.999999, 0.999994, 0.999999)
 bones/8/scale = Vector3(0.999994, 0.999998, 0.999999)
 bones/9/rotation = Quaternion(0.99128, 6.09037e-07, -3.39782e-07, -0.131772)
 bones/9/scale = Vector3(0.999994, 0.999999, 0.999999)
-bones/10/rotation = Quaternion(-0.495651, -0.113964, 0.858495, -0.0657978)
+bones/10/rotation = Quaternion(-0.495639, -0.114117, 0.858474, -0.065886)
 bones/10/scale = Vector3(0.999991, 0.999999, 0.999997)
-bones/11/rotation = Quaternion(-4.44212e-08, -0.431696, 0.902019, -1.84634e-08)
-bones/12/rotation = Quaternion(6.63794e-07, -0.449583, 0.893238, -1.89992e-07)
+bones/11/rotation = Quaternion(-4.26976e-08, -0.43127, 0.902223, -1.88912e-08)
+bones/12/rotation = Quaternion(6.65029e-07, -0.449191, 0.893436, -1.92143e-07)
 bones/12/scale = Vector3(1, 0.999999, 1)
 bones/13/scale = Vector3(1.00001, 1, 0.999999)
 bones/14/rotation = Quaternion(0.697844, 0.699971, 0.100199, -0.114082)
@@ -127,10 +131,10 @@ bones/16/rotation = Quaternion(-0.703637, 0.703638, 0.0699587, 0.0699577)
 bones/17/rotation = Quaternion(-0.787067, 3.60329e-06, -3.26933e-06, 0.616868)
 bones/18/rotation = Quaternion(0.99128, 1.32208e-07, -1.34187e-06, -0.131771)
 bones/18/scale = Vector3(1.00001, 1, 1)
-bones/19/rotation = Quaternion(0.998989, -1.11433e-07, -3.1849e-08, 0.0449632)
-bones/20/rotation = Quaternion(-1.25568e-07, -0.368405, 0.929665, 4.10133e-08)
+bones/19/rotation = Quaternion(0.998986, -1.11543e-07, -3.17344e-08, 0.0450141)
+bones/20/rotation = Quaternion(-1.25612e-07, -0.367903, 0.929864, 4.12892e-08)
 bones/20/scale = Vector3(1, 1, 0.999999)
-bones/21/rotation = Quaternion(2.05601e-07, -0.504408, 0.863466, 7.22456e-08)
+bones/21/rotation = Quaternion(2.05723e-07, -0.50412, 0.863634, 7.23297e-08)
 bones/21/scale = Vector3(1, 1, 0.999999)
 bones/22/scale = Vector3(1, 0.999995, 0.999998)
 bones/23/rotation = Quaternion(0.698941, 0.698942, 0.107147, -0.107147)
@@ -139,16 +143,16 @@ bones/25/rotation = Quaternion(-0.703637, 0.703638, 0.0699576, 0.0699602)
 bones/25/scale = Vector3(0.999998, 1, 0.999994)
 bones/26/rotation = Quaternion(-0.787067, 4.03918e-09, 4.01247e-08, 0.616868)
 bones/27/scale = Vector3(1, 1, 0.999993)
-bones/28/rotation = Quaternion(-0.688494, 0.688494, -0.161171, 0.161171)
-bones/29/rotation = Quaternion(-0.0709857, 5.67674e-09, -0.0399522, 0.996677)
-bones/30/rotation = Quaternion(0.623257, 7.67591e-08, 0.350971, 0.698835)
+bones/28/rotation = Quaternion(0.040298, -0.0333661, -0.719857, 0.692148)
+bones/29/rotation = Quaternion(-0.407294, -1.227e-08, -0.0670704, 0.910831)
+bones/30/rotation = Quaternion(-0.459783, -6.31549e-09, -0.0757139, 0.884798)
 bones/32/rotation = Quaternion(-0.230086, 0.118524, 0.858691, 0.442337)
 bones/33/rotation = Quaternion(-0.707107, 0.707107, 2.66925e-08, -2.66925e-08)
 bones/34/rotation = Quaternion(-0.183013, 0.183013, 0.683013, 0.683013)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/rotation = Quaternion(0.707107, -0.707107, -2.66926e-08, 2.66925e-08)
 bones/36/rotation = Quaternion(0.707107, -0.707107, -2.66926e-08, 2.66925e-08)
-bones/37/rotation = Quaternion(0.232386, -0.317379, 0.0805191, 0.915851)
+bones/37/rotation = Quaternion(0.232384, -0.317358, 0.0805245, 0.915859)
 bones/38/rotation = Quaternion(0.0805246, 0.915859, -0.232384, -0.317358)
 bones/38/scale = Vector3(1, 1, 1)
 bones/39/rotation = Quaternion(-0.273649, -0.155165, 0.0732232, 0.946403)
@@ -186,8 +190,8 @@ bones/67/rotation = Quaternion(0, 0.866026, 0, 0.5)
 bones/67/scale = Vector3(1, 1, 1)
 bones/68/rotation = Quaternion(0, 0.866026, 0, 0.5)
 bones/68/scale = Vector3(1, 1, 1)
-bones/71/position = Vector3(2.07498, 2.64261, 1.86191)
-bones/71/rotation = Quaternion(0.219358, -0.906987, -0.329219, -0.144469)
+bones/71/position = Vector3(-2.08138, 1.85769, 1.62831)
+bones/71/rotation = Quaternion(0.731405, 0.242092, -0.169597, 0.614553)
 bones/72/rotation = Quaternion(0.707107, -0.707107, -2.66925e-08, 2.66925e-08)
 bones/74/rotation = Quaternion(0.707107, -0.707107, -2.66925e-08, 2.66925e-08)
 bones/78/rotation = Quaternion(-0.230086, 0.118524, 0.858691, 0.442337)
@@ -205,349 +209,349 @@ bones/87/rotation = Quaternion(-0.585697, 0.600668, 0.396329, 0.372934)
 bones/87/scale = Vector3(1, 1, 1)
 
 [node name="Cube_004" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.49974, 0.743575, 0.444248, 0.000433554, 0.512668, -0.858588, -0.866176, 0.429262, 0.255879, 1.24437, 0.696627, 0.717875)
+transform = Transform3D(0.499739, 0.743387, 0.444564, 0.000433576, 0.513032, -0.85837, -0.866176, 0.429153, 0.256061, 1.24411, 0.696535, 0.717727)
 
 [node name="Cube_004" parent="Armature/Skeleton3D/Cube_004" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cylinder_001" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.000497997, 0.499744, 0.866173, -1, 0.000425496, -0.000820607, -0.000778511, -0.866173, 0.499744, 1.17453, 0.943964, 0.67802)
+transform = Transform3D(-0.000130951, 0.499744, 0.866174, -1, 0.000425521, -0.000396758, -0.000566781, -0.866173, 0.499744, 1.17418, 0.943837, 0.677819)
 
 [node name="Cylinder_001" parent="Armature/Skeleton3D/Cylinder_001" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_003" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.499791, -0.804663, 0.320511, 0.000254424, 0.370179, 0.92896, -0.866145, -0.464206, 0.185217, 1.02653, 0.701931, 0.592228)
+transform = Transform3D(0.499791, -0.80508, 0.319464, 0.000254416, 0.36897, 0.929441, -0.866146, -0.464446, 0.184613, 1.02645, 0.701581, 0.592184)
 
 [node name="Cube_003" parent="Armature/Skeleton3D/Cube_003" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cylinder" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.362364, 0.499787, 0.786706, -0.908216, 0.00026612, -0.418501, -0.209371, -0.866148, 0.453818, 0.882717, 0.479604, 0.509498)
+transform = Transform3D(-0.36134, 0.499787, 0.787177, -0.90876, 0.000266104, -0.417319, -0.20878, -0.866148, 0.45409, 0.882892, 0.479039, 0.509598)
 
 [node name="Cylinder" parent="Armature/Skeleton3D/Cylinder" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_001" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.499879, 0.757979, 0.419034, 0.000188162, 0.483724, -0.87522, -0.866095, 0.437583, 0.241661, 0.822987, 0.764935, 0.474764)
+transform = Transform3D(0.499879, 0.75783, 0.419304, 0.000188153, 0.484035, -0.875048, -0.866096, 0.437496, 0.241816, 0.823072, 0.764346, 0.474813)
 
 [node name="Cube_001" parent="Armature/Skeleton3D/Cube_001" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Icosphere" parent="Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.499883, 0.000506341, 0.866093, 0.000177681, 0.999999, -0.000686556, -0.866093, 0.000497416, 0.499883, 0.75327, 1.03549, 0.4349)
+transform = Transform3D(0.499883, 0.000198141, 0.866093, 0.000177673, 0.999999, -0.000330746, -0.866093, 0.000319511, 0.499883, 0.753272, 1.03488, 0.434901)
 
 [node name="Icosphere" parent="Armature/Skeleton3D/Icosphere" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_009" parent="Armature/Skeleton3D" index="6"]
-transform = Transform3D(0.500005, -0.743383, -0.444272, 7.49346e-06, 0.51301, -0.858382, 0.866023, 0.429194, 0.256511, -1.24375, 0.697113, 0.7184)
+transform = Transform3D(0.500005, -0.743195, -0.444588, 7.52282e-06, 0.513374, -0.858164, 0.866023, 0.429085, 0.256693, -1.24349, 0.69702, 0.718251)
 
 [node name="Cube_009" parent="Armature/Skeleton3D/Cube_009" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cylinder_004" parent="Armature/Skeleton3D" index="7"]
-transform = Transform3D(0.000362083, 0.482703, -0.875785, -1, -9.04454e-06, -0.000417262, -0.000209972, 0.875785, 0.482703, -1.17416, 0.944418, 0.677908)
+transform = Transform3D(-5.43892e-06, 0.482703, -0.875785, -0.999999, -5.85802e-07, 7.00355e-06, 2.26498e-06, 0.875785, 0.482703, -1.17382, 0.94429, 0.677707)
 
 [node name="Cylinder_004" parent="Armature/Skeleton3D/Cylinder_004" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_008" parent="Armature/Skeleton3D" index="8"]
-transform = Transform3D(0.499997, 0.804891, -0.319611, -4.76319e-06, 0.369058, 0.929407, 0.866027, -0.464698, 0.184531, -1.02613, 0.702177, 0.592755)
+transform = Transform3D(0.499997, 0.805307, -0.318563, -4.72118e-06, 0.367848, 0.929886, 0.866027, -0.464938, 0.183926, -1.02605, 0.701828, 0.592711)
 
 [node name="Cube_008" parent="Armature/Skeleton3D/Cube_008" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cylinder_003" parent="Armature/Skeleton3D" index="9"]
-transform = Transform3D(0.361488, 0.500001, -0.786971, -0.908719, 1.48851e-06, -0.417411, -0.208704, 0.866025, 0.45436, -0.882819, 0.479651, 0.509694)
+transform = Transform3D(0.360463, 0.500001, -0.787441, -0.909261, 1.52399e-06, -0.416228, -0.208112, 0.866025, 0.454631, -0.882994, 0.479086, 0.509795)
 
 [node name="Cylinder_003" parent="Armature/Skeleton3D/Cylinder_003" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_006" parent="Armature/Skeleton3D" index="10"]
-transform = Transform3D(0.500004, -0.757824, -0.419164, 8.13609e-06, 0.484016, -0.875059, 0.866023, 0.43753, 0.242015, -0.82276, 0.764961, 0.475338)
+transform = Transform3D(0.500004, -0.757675, -0.419434, 8.17219e-06, 0.484327, -0.874887, 0.866023, 0.437444, 0.242171, -0.822845, 0.764372, 0.475387)
 
 [node name="Cube_006" parent="Armature/Skeleton3D/Cube_006" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Icosphere_001" parent="Armature/Skeleton3D" index="11"]
-transform = Transform3D(0.499999, -0.00030683, -0.866026, -9.59961e-07, 1, -0.000355989, 0.866026, 0.000178277, 0.499998, -0.753271, 1.03549, 0.434901)
+transform = Transform3D(0.499999, 1.62423e-06, -0.866026, -9.21748e-07, 1, 2.08616e-07, 0.866026, 1.3411e-07, 0.499998, -0.753273, 1.03488, 0.434902)
 
 [node name="Icosphere_001" parent="Armature/Skeleton3D/Icosphere_001" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_014" parent="Armature/Skeleton3D" index="12"]
-transform = Transform3D(-1, -3.36648e-07, -1.92102e-07, -4.22047e-08, 0.587237, -0.809412, 3.85305e-07, -0.809416, -0.587239, -0.000275542, 0.675162, -1.37522)
+transform = Transform3D(-1, -3.36602e-07, -1.9233e-07, -4.21915e-08, 0.587654, -0.809109, 3.8538e-07, -0.809113, -0.587656, -0.000275542, 0.675018, -1.37487)
 
 [node name="Cube_014" parent="Armature/Skeleton3D/Cube_014" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cylinder_007" parent="Armature/Skeleton3D" index="13"]
-transform = Transform3D(1.04552e-06, -1, 1.59563e-07, -0.996083, -1.07683e-06, 0.0884192, -0.0884163, -2.598e-07, -0.996082, 9.5635e-08, 0.914337, -1.27306)
+transform = Transform3D(1.0453e-06, -1, 1.59486e-07, -0.996038, -1.07649e-06, 0.0889326, -0.0889297, -2.60258e-07, -0.996037, 9.58653e-08, 0.91414, -1.27259)
 
 [node name="Cylinder_007" parent="Armature/Skeleton3D/Cylinder_007" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_013" parent="Armature/Skeleton3D" index="14"]
-transform = Transform3D(-1, -1.4277e-07, -7.89235e-08, -1.29674e-07, 0.402124, 0.915584, -9.89775e-08, 0.915582, -0.402132, -0.000275459, 0.678473, -1.09385)
+transform = Transform3D(-1, -1.42871e-07, -7.88108e-08, -1.29494e-07, 0.401041, 0.916058, -9.92686e-08, 0.916057, -0.401049, -0.000275459, 0.678064, -1.09366)
 
 [node name="Cube_013" parent="Armature/Skeleton3D/Cube_013" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cylinder_006" parent="Armature/Skeleton3D" index="15"]
-transform = Transform3D(-1.05845e-06, -1, 3.96173e-06, -0.893179, -8.5089e-07, -0.449697, 0.449705, -4.00682e-06, -0.893178, 2.07587e-07, 0.462025, -0.920347)
+transform = Transform3D(-1.05857e-06, -1, 3.96183e-06, -0.89371, -8.46091e-07, -0.448641, 0.448649, -4.00796e-06, -0.893709, 2.0774e-07, 0.461411, -0.920408)
 
 [node name="Cylinder_006" parent="Armature/Skeleton3D/Cylinder_006" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_011" parent="Armature/Skeleton3D" index="16"]
-transform = Transform3D(-1, 3.00072e-07, 3.80633e-07, -2.62353e-07, 0.325214, -0.945638, -4.07547e-07, -0.945641, -0.325217, -0.000275538, 0.755296, -0.901278)
+transform = Transform3D(-1, 3.00207e-07, 3.80939e-07, -2.62558e-07, 0.325311, -0.945605, -4.07801e-07, -0.945608, -0.325313, -0.000275538, 0.754682, -0.901307)
 
 [node name="Cube_011" parent="Armature/Skeleton3D/Cube_011" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Icosphere_002" parent="Armature/Skeleton3D" index="17"]
-transform = Transform3D(-1, -1.87677e-07, 4.46878e-07, -2.62353e-07, 0.984839, -0.17347, -4.07547e-07, -0.173474, -0.984839, 6.04109e-08, 1.03566, -0.86893)
+transform = Transform3D(-1, -1.87879e-07, 4.47144e-07, -2.62557e-07, 0.984857, -0.17337, -4.07801e-07, -0.173373, -0.984857, 6.04118e-08, 1.03505, -0.86893)
 
 [node name="Icosphere_002" parent="Armature/Skeleton3D/Icosphere_002" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_022" parent="Armature/Skeleton3D" index="18"]
-transform = Transform3D(0.258087, -0.272112, 0.927009, -0.485887, 0.79278, 0.367986, -0.835048, -0.545394, 0.0723901, 2.21962, 2.375, 1.37114)
+transform = Transform3D(-0.152014, -0.214649, 0.964789, 0.140117, 0.961594, 0.236016, -0.978396, 0.171061, -0.116099, -2.17272, 1.95416, 1.06627)
 
 [node name="Cube_022" parent="Armature/Skeleton3D/Cube_022" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Icosphere_004" parent="Armature/Skeleton3D" index="19"]
-transform = Transform3D(0.144705, -0.0717146, -0.986872, 0.92521, 0.363387, 0.109257, 0.350782, -0.928874, 0.118935, 2.34286, 2.14208, 0.976985)
+transform = Transform3D(0.481657, -0.263024, -0.835957, 0.502695, 0.864283, 0.0177036, 0.717847, -0.428759, 0.548509, -2.2441, 2.01749, 0.601847)
 
 [node name="Icosphere_004" parent="Armature/Skeleton3D/Icosphere_004" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_021" parent="Armature/Skeleton3D" index="20"]
-transform = Transform3D(-0.94701, 0.0738816, 0.312592, 0.0796388, 0.996808, 0.00567197, -0.311175, 0.0302659, -0.949871, 1.80977, 2.19392, 0.809339)
+transform = Transform3D(0.727741, -0.165383, 0.665613, 0.142461, 0.985775, 0.0891745, -0.670893, 0.0299281, 0.74095, -1.83078, 2.1016, 0.220991)
 
 [node name="Cube_021" parent="Armature/Skeleton3D/Cube_021" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Icosphere_003" parent="Armature/Skeleton3D" index="21"]
-transform = Transform3D(0.97643, 0.0738815, 0.202792, -0.0661331, 0.996808, -0.0447315, -0.20545, 0.0302658, 0.978199, 1.31235, 2.22221, 0.645811)
+transform = Transform3D(-0.297436, -0.165383, -0.940309, -0.0787877, 0.985775, -0.148458, 0.951485, 0.029928, -0.306235, -1.44706, 2.16297, -0.131099)
 
 [node name="Icosphere_003" parent="Armature/Skeleton3D/Icosphere_003" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_012" parent="Armature/Skeleton3D" index="22"]
-transform = Transform3D(-0.896095, 2.6094e-08, 0.443862, -5.96046e-08, 1, -1.03316e-07, -0.443862, -1.11161e-07, -0.896095, 0.970983, 2.21991, 0.480956)
+transform = Transform3D(0.993806, -0.0386145, -0.104207, 0.0396358, 0.999184, 0.00774671, 0.103822, -0.011829, 0.994525, -1.07679, 2.17635, -0.112478)
 
 [node name="Cube_012" parent="Armature/Skeleton3D/Cube_012" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_020" parent="Armature/Skeleton3D" index="23"]
-transform = Transform3D(-0.896095, 2.6094e-08, 0.443862, -5.96046e-08, 1, -1.03316e-07, -0.443862, -1.11161e-07, -0.896095, 1.07251, 2.2212, 0.531247)
+transform = Transform3D(0.993806, -0.0386145, -0.104207, 0.0396358, 0.999184, 0.00774671, 0.103822, -0.011829, 0.994525, -1.18944, 2.17315, -0.124257)
 
 [node name="Cube_020" parent="Armature/Skeleton3D/Cube_020" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_002" parent="Armature/Skeleton3D" index="24"]
-transform = Transform3D(1, -1.77026e-05, -4.15146e-05, 1.76132e-05, 1, 1.40071e-05, 4.1604e-05, -1.39773e-05, 1, -0.522936, 3.92032, 0.563501)
+transform = Transform3D(1, -5.96046e-08, -8.9407e-08, 0, 1, 1.19209e-07, 8.9407e-08, -5.96046e-08, 1, -0.522936, 3.91971, 0.563502)
 
 [node name="Circle_002" parent="Armature/Skeleton3D/Circle_002" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_039" parent="Armature/Skeleton3D" index="25"]
-transform = Transform3D(0.94111, -0.0536684, -0.333813, 0.223539, 0.8395, 0.495247, 0.253657, -0.540702, 0.802059, -0.26883, 4.12248, 0.760126)
+transform = Transform3D(0.941125, -0.053676, -0.333771, 0.223519, 0.839509, 0.495242, 0.253621, -0.540689, 0.80208, -0.268818, 4.12186, 0.760118)
 
 [node name="Cube_039" parent="Armature/Skeleton3D/Cube_039" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_040" parent="Armature/Skeleton3D" index="26"]
-transform = Transform3D(-0.803542, 0.446175, -0.394016, -0.539952, -0.824965, 0.166988, -0.250543, 0.346931, 0.903807, -0.522522, 3.61021, 0.952388)
+transform = Transform3D(-0.803562, 0.446175, -0.393975, -0.539935, -0.824977, 0.166982, -0.250517, 0.346901, 0.903825, -0.522511, 3.60959, 0.952384)
 
 [node name="Cube_040" parent="Armature/Skeleton3D/Cube_040" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_041" parent="Armature/Skeleton3D" index="27"]
-transform = Transform3D(-0.942202, -0.288343, -0.170627, 0.201585, -0.894646, 0.398713, -0.267617, 0.341272, 0.901063, -0.166828, 3.82195, 0.927183)
+transform = Transform3D(-0.94221, -0.288344, -0.170583, 0.201605, -0.894646, 0.398703, -0.267575, 0.341272, 0.901076, -0.166815, 3.82132, 0.927167)
 
 [node name="Cube_041" parent="Armature/Skeleton3D/Cube_041" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_003" parent="Armature/Skeleton3D" index="28"]
-transform = Transform3D(1, 5.96046e-08, -2.98023e-08, -8.9407e-08, 1, 1.19209e-07, -8.9407e-08, -5.96046e-08, 1, 0.522936, 3.92032, 0.563502)
+transform = Transform3D(1, 5.96046e-08, -2.98023e-08, -8.9407e-08, 1, 1.19209e-07, -8.9407e-08, -5.96046e-08, 1, 0.522936, 3.91971, 0.563502)
 
 [node name="Circle_003" parent="Armature/Skeleton3D/Circle_003" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_042" parent="Armature/Skeleton3D" index="29"]
-transform = Transform3D(0.744834, 0.653066, 0.136851, -0.633858, 0.628448, 0.450864, 0.20844, -0.422563, 0.882039, 0.175994, 3.81633, 0.906927)
+transform = Transform3D(0.744834, 0.653066, 0.136851, -0.633858, 0.628448, 0.450864, 0.20844, -0.422563, 0.882039, 0.175994, 3.81572, 0.906927)
 
 [node name="Cube_042" parent="Armature/Skeleton3D/Cube_042" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_043" parent="Armature/Skeleton3D" index="30"]
-transform = Transform3D(0.941125, -0.053676, -0.333771, 0.223519, 0.839509, 0.495242, 0.253621, -0.540689, 0.80208, 0.270259, 4.12686, 0.761598)
+transform = Transform3D(0.941125, -0.053676, -0.333771, 0.223519, 0.839509, 0.495242, 0.253621, -0.540689, 0.80208, 0.270259, 4.12624, 0.761598)
 
 [node name="Cube_043" parent="Armature/Skeleton3D/Cube_043" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_044" parent="Armature/Skeleton3D" index="31"]
-transform = Transform3D(-0.803562, 0.446175, -0.393975, -0.539935, -0.824978, 0.166982, -0.250517, 0.346901, 0.903826, 0.522704, 3.6084, 0.956881)
+transform = Transform3D(-0.803562, 0.446175, -0.393975, -0.539935, -0.824978, 0.166982, -0.250517, 0.346901, 0.903826, 0.522704, 3.60779, 0.956881)
 
 [node name="Cube_044" parent="Armature/Skeleton3D/Cube_044" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle" parent="Armature/Skeleton3D" index="32"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.86373, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.86311, 0)
 
 [node name="Circle" parent="Armature/Skeleton3D/Circle" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_004" parent="Armature/Skeleton3D" index="33"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13937, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13875, 0)
 
 [node name="Circle_004" parent="Armature/Skeleton3D/Circle_004" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_007" parent="Armature/Skeleton3D" index="34"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61323, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.61261, 0)
 
 [node name="Cube_007" parent="Armature/Skeleton3D/Cube_007" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_025" parent="Armature/Skeleton3D" index="35"]
-transform = Transform3D(0.980322, 0.0887694, 0.176321, -0.056794, 0.982254, -0.178751, -0.18906, 0.16522, 0.967966, 0.133537, 2.45117, 1.20372)
+transform = Transform3D(0.980322, 0.0887694, 0.176321, -0.056794, 0.982254, -0.178751, -0.18906, 0.16522, 0.967966, 0.133537, 2.45055, 1.20372)
 
 [node name="Cube_025" parent="Armature/Skeleton3D/Cube_025" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_026" parent="Armature/Skeleton3D" index="36"]
-transform = Transform3D(0.847363, 0.142105, 0.511647, -0.056794, 0.982254, -0.178751, -0.527968, 0.122409, 0.840396, 0.407056, 2.41778, 1.05271)
+transform = Transform3D(0.847363, 0.142105, 0.511647, -0.056794, 0.982254, -0.178751, -0.527968, 0.122409, 0.840396, 0.407056, 2.41716, 1.05271)
 
 [node name="Cube_026" parent="Armature/Skeleton3D/Cube_026" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_027" parent="Armature/Skeleton3D" index="37"]
-transform = Transform3D(0.820499, 0.0907644, 0.564396, -3.72529e-09, 0.987315, -0.158777, -0.571648, 0.130276, 0.810091, 0.343606, 2.06119, 1.02206)
+transform = Transform3D(0.820499, 0.0907644, 0.564396, -3.72529e-09, 0.987315, -0.158777, -0.571648, 0.130276, 0.810091, 0.343606, 2.06057, 1.02206)
 
 [node name="Cube_027" parent="Armature/Skeleton3D/Cube_027" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_028" parent="Armature/Skeleton3D" index="38"]
-transform = Transform3D(-0.599364, -0.739391, -0.306698, 0.800441, -0.550021, -0.238267, 0.00748177, -0.388302, 0.921502, -0.17741, 2.47473, 1.20586)
+transform = Transform3D(-0.599364, -0.739391, -0.306698, 0.800441, -0.550021, -0.238267, 0.00748177, -0.388302, 0.921502, -0.17741, 2.47411, 1.20586)
 
 [node name="Cube_028" parent="Armature/Skeleton3D/Cube_028" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_029" parent="Armature/Skeleton3D" index="39"]
-transform = Transform3D(0.941125, -0.0536761, -0.333771, 0, 0.987314, -0.158777, 0.33806, 0.149429, 0.929186, -0.389939, 2.0551, 1.02206)
+transform = Transform3D(0.941125, -0.0536761, -0.333771, 0, 0.987314, -0.158777, 0.33806, 0.149429, 0.929186, -0.389939, 2.05448, 1.02206)
 
 [node name="Cube_029" parent="Armature/Skeleton3D/Cube_029" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_030" parent="Armature/Skeleton3D" index="40"]
-transform = Transform3D(-0.508075, -0.716911, -0.477387, 0.856445, -0.479349, -0.191643, -0.0914443, -0.506225, 0.85754, -0.465214, 2.42599, 1.04766)
+transform = Transform3D(-0.508075, -0.716911, -0.477387, 0.856445, -0.479349, -0.191643, -0.0914443, -0.506225, 0.85754, -0.465214, 2.42538, 1.04766)
 
 [node name="Cube_030" parent="Armature/Skeleton3D/Cube_030" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_031" parent="Armature/Skeleton3D" index="41"]
-transform = Transform3D(0.980322, 0.0887694, 0.176321, -0.056794, 0.982254, -0.178751, -0.18906, 0.16522, 0.967966, 0.19141, 2.9179, 1.31434)
+transform = Transform3D(0.980322, 0.0887694, 0.176321, -0.056794, 0.982254, -0.178751, -0.18906, 0.16522, 0.967966, 0.19141, 2.91729, 1.31434)
 
 [node name="Cube_031" parent="Armature/Skeleton3D/Cube_031" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_032" parent="Armature/Skeleton3D" index="42"]
-transform = Transform3D(0.847363, 0.142105, 0.511647, -0.056794, 0.982254, -0.178751, -0.527968, 0.122409, 0.840396, 0.452653, 2.87574, 1.14423)
+transform = Transform3D(0.847363, 0.142105, 0.511647, -0.056794, 0.982254, -0.178751, -0.527968, 0.122409, 0.840396, 0.452653, 2.87513, 1.14423)
 
 [node name="Cube_032" parent="Armature/Skeleton3D/Cube_032" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_033" parent="Armature/Skeleton3D" index="43"]
-transform = Transform3D(-0.599364, -0.739391, -0.306698, 0.800441, -0.550021, -0.238267, 0.00748177, -0.388302, 0.921502, -0.17741, 2.93269, 1.30194)
+transform = Transform3D(-0.599364, -0.739391, -0.306698, 0.800441, -0.550021, -0.238267, 0.00748177, -0.388302, 0.921502, -0.17741, 2.93208, 1.30194)
 
 [node name="Cube_033" parent="Armature/Skeleton3D/Cube_033" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_034" parent="Armature/Skeleton3D" index="44"]
-transform = Transform3D(-0.508075, -0.716911, -0.477387, 0.856445, -0.479349, -0.191643, -0.0914443, -0.506225, 0.85754, -0.530101, 2.88396, 1.13917)
+transform = Transform3D(-0.508075, -0.716911, -0.477387, 0.856445, -0.479349, -0.191643, -0.0914443, -0.506225, 0.85754, -0.530101, 2.88334, 1.13917)
 
 [node name="Cube_034" parent="Armature/Skeleton3D/Cube_034" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_035" parent="Armature/Skeleton3D" index="45"]
-transform = Transform3D(1, 0, 0, 0, 0.987314, -0.158777, 0, 0.158777, 0.987314, 0.00138609, 2.06728, 1.16211)
+transform = Transform3D(1, 0, 0, 0, 0.987314, -0.158777, 0, 0.158777, 0.987314, 0.00138609, 2.06666, 1.16211)
 
 [node name="Cube_035" parent="Armature/Skeleton3D/Cube_035" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_036" parent="Armature/Skeleton3D" index="46"]
-transform = Transform3D(1, 0, 0, 0, 0.987314, -0.158777, 0, 0.158777, 0.987314, 0.00138609, 1.70362, 1.05908)
+transform = Transform3D(1, 0, 0, 0, 0.987314, -0.158777, 0, 0.158777, 0.987314, 0.00138609, 1.70301, 1.05908)
 
 [node name="Cube_036" parent="Armature/Skeleton3D/Cube_036" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_037" parent="Armature/Skeleton3D" index="47"]
-transform = Transform3D(0.820499, 0.0907644, 0.564396, -3.72529e-09, 0.987315, -0.158777, -0.571648, 0.130276, 0.810091, 0.299763, 1.69754, 0.919024)
+transform = Transform3D(0.820499, 0.0907644, 0.564396, -3.72529e-09, 0.987315, -0.158777, -0.571648, 0.130276, 0.810091, 0.299763, 1.69692, 0.919024)
 
 [node name="Cube_037" parent="Armature/Skeleton3D/Cube_037" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_038" parent="Armature/Skeleton3D" index="48"]
-transform = Transform3D(0.941125, -0.0536761, -0.333771, 0, 0.987314, -0.158777, 0.33806, 0.149429, 0.929186, -0.296991, 1.69145, 0.919024)
+transform = Transform3D(0.941125, -0.0536761, -0.333771, 0, 0.987314, -0.158777, 0.33806, 0.149429, 0.929186, -0.296991, 1.69083, 0.919024)
 
 [node name="Cube_038" parent="Armature/Skeleton3D/Cube_038" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_007" parent="Armature/Skeleton3D" index="49"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334578, 2.34391, 0.998315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0334578, 2.3433, 0.998315)
 
 [node name="Circle_007" parent="Armature/Skeleton3D/Circle_007" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube" parent="Armature/Skeleton3D" index="50"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.543666, 1.09264, 0.313885)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.543666, 1.09202, 0.313885)
 
 [node name="Cube" parent="Armature/Skeleton3D/Cube" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_002" parent="Armature/Skeleton3D" index="51"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.544922, 1.09966, 0.306718)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.544922, 1.09904, 0.306718)
 
 [node name="Cube_002" parent="Armature/Skeleton3D/Cube_002" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_016" parent="Armature/Skeleton3D" index="52"]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.543666, 1.09264, 0.313886)
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.543666, 1.09202, 0.313886)
 
 [node name="Cube_016" parent="Armature/Skeleton3D/Cube_016" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_017" parent="Armature/Skeleton3D" index="53"]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.538087, 1.09966, 0.318558)
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -0.538087, 1.09904, 0.318558)
 
 [node name="Cube_017" parent="Armature/Skeleton3D/Cube_017" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_018" parent="Armature/Skeleton3D" index="54"]
-transform = Transform3D(-1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -5.96046e-08, 1.09264, -0.627771)
+transform = Transform3D(-1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -5.96046e-08, 1.09202, -0.627771)
 
 [node name="Cube_018" parent="Armature/Skeleton3D/Cube_018" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Cube_019" parent="Armature/Skeleton3D" index="55"]
-transform = Transform3D(-1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -0.00683528, 1.09966, -0.625276)
+transform = Transform3D(-1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -0.00683528, 1.09904, -0.625276)
 
 [node name="Cube_019" parent="Armature/Skeleton3D/Cube_019" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_001" parent="Armature/Skeleton3D" index="56"]
-transform = Transform3D(0.493034, 0.862021, -0.117629, -0.686994, 0.302787, -0.660575, -0.533814, 0.406496, 0.741487, 1.35271, 3.67062, 2.67597)
+transform = Transform3D(-0.562587, -0.825257, -0.0494675, 0.127433, -0.145681, 0.98109, -0.816858, 0.545645, 0.187123, -1.25586, 1.6734, 2.86352)
 
 [node name="Circle_001" parent="Armature/Skeleton3D/Circle_001" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_006" parent="Armature/Skeleton3D" index="57"]
-transform = Transform3D(0.493034, 0.862021, -0.117629, -0.686994, 0.302787, -0.660575, -0.533814, 0.406496, 0.741487, 1.35478, 3.66986, 2.66282)
+transform = Transform3D(-0.562587, -0.825257, -0.0494675, 0.127433, -0.145681, 0.98109, -0.816858, 0.545645, 0.187123, -1.25708, 1.66572, 2.85267)
 
 [node name="Circle_006" parent="Armature/Skeleton3D/Circle_006" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
@@ -557,32 +561,41 @@ surface_material_override/0 = ExtResource("2_4j50x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/Circle_006/Area3D" index="0"]
 shape = SubResource("CylinderShape3D_aolyp")
 
+[node name="WhirrAudio" type="AudioStreamPlayer3D" parent="Armature/Skeleton3D/Circle_006/Area3D" index="1"]
+stream = ExtResource("4_00xub")
+autoplay = true
+max_distance = 20.0
+
+[node name="AttackAudio" type="AudioStreamPlayer3D" parent="Armature/Skeleton3D/Circle_006/Area3D" index="2"]
+stream = ExtResource("5_habb0")
+max_distance = 5.0
+
 [node name="Cube_023" parent="Armature/Skeleton3D" index="58"]
-transform = Transform3D(0.493034, 0.862021, -0.117629, -0.686994, 0.302787, -0.660575, -0.533814, 0.406496, 0.741487, 1.80881, 3.03787, 2.17182)
+transform = Transform3D(-0.562587, -0.825257, -0.0494675, 0.127433, -0.145681, 0.98109, -0.816858, 0.545645, 0.187123, -1.7751, 1.78292, 2.1013)
 
 [node name="Cube_023" parent="Armature/Skeleton3D/Cube_023" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_008" parent="Armature/Skeleton3D" index="59"]
-transform = Transform3D(0.493034, 0.862021, -0.117629, -0.686994, 0.302787, -0.660575, -0.533814, 0.406496, 0.741487, 1.3685, 3.67617, 2.68342)
+transform = Transform3D(-0.562587, -0.825257, -0.0494675, 0.127433, -0.145681, 0.98109, -0.816858, 0.545645, 0.187123, -1.27098, 1.67073, 2.87351)
 
 [node name="Circle_008" parent="Armature/Skeleton3D/Circle_008" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_009" parent="Armature/Skeleton3D" index="60"]
-transform = Transform3D(0.493034, 0.862021, -0.117629, -0.686994, 0.302787, -0.660575, -0.533814, 0.406496, 0.741487, 1.45882, 3.70789, 2.72601)
+transform = Transform3D(-0.562587, -0.825257, -0.0494675, 0.127433, -0.145681, 0.98109, -0.816858, 0.545645, 0.187123, -1.35744, 1.65546, 2.93068)
 
 [node name="Circle_009" parent="Armature/Skeleton3D/Circle_009" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Circle_010" parent="Armature/Skeleton3D" index="61"]
-transform = Transform3D(0.493034, 0.862021, -0.117629, -0.686994, 0.302787, -0.660575, -0.533814, 0.406496, 0.741487, 1.25143, 3.63504, 2.62821)
+transform = Transform3D(-0.562587, -0.825257, -0.0494675, 0.127433, -0.145681, 0.98109, -0.816858, 0.545645, 0.187123, -1.1589, 1.69051, 2.79941)
 
 [node name="Circle_010" parent="Armature/Skeleton3D/Circle_010" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
 
 [node name="Icosphere_005" parent="Armature/Skeleton3D" index="62"]
-transform = Transform3D(0.0269588, 0.988106, 0.151391, 0.306366, -0.152325, 0.939647, 0.951532, 0.0210492, -0.306828, 2.09183, 2.63866, 1.86107)
+transform = Transform3D(-0.0429782, -0.998554, 0.0323066, 0.327441, -0.0446289, -0.943817, 0.943894, -0.0299851, 0.328886, -2.09855, 1.85725, 1.62603)
 
 [node name="Icosphere_005" parent="Armature/Skeleton3D/Icosphere_005" index="0"]
 surface_material_override/0 = ExtResource("2_4j50x")
@@ -635,3 +648,14 @@ parameters/TimeScale/scale = 1.0
 
 [node name="Spinner" type="Node" parent="." index="3"]
 script = ExtResource("3_s4mbj")
+
+[node name="Attack_Audio_Generic" type="AudioStreamPlayer3D" parent="." index="4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+stream = ExtResource("7_x83is")
+max_distance = 20.0
+
+[node name="Footsetp_Audio" type="AudioStreamPlayer3D" parent="." index="5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+stream = ExtResource("7_s37b0")
+volume_db = -10.0
+max_distance = 15.0

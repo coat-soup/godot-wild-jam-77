@@ -4,6 +4,7 @@ extends Node3D
 @onready var jumping_audio: AudioStreamPlayer3D = $JumpingAudio
 @onready var sword_whoosh: AudioStreamPlayer3D = $SwordWhooshes
 @onready var sword_clangs: AudioStreamPlayer3D = $SwordClangs
+@onready var health_audio: AudioStreamPlayer3D = $HealthAudio
 
 @onready var sword_bounce_sound = load("res://sfx/weapons/sword_bounce.wav")
 @onready var sword_block_sound = load("res://sfx/weapons/sword_block.wav")
@@ -47,3 +48,9 @@ func _on_first_person_arms_sword_hit() -> void:
 	sword_clangs.pitch_scale = randf_range(.8, 1.2)
 	sword_clangs.stream = sword_hit_sound
 	sword_clangs.play()
+
+
+func _on_health_took_damage(_amount, _source) -> void:
+	print("AAAA")
+	sword_clangs.pitch_scale = randf_range(.8, 1.2)
+	health_audio.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyk67kv73er43"]
+[gd_scene load_steps=19 format=3 uid="uid://cyk67kv73er43"]
 
 [ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_06dfn"]
 [ext_resource type="PackedScene" uid="uid://c3j8r13vamxwo" path="res://player/models/first_person_arms.tscn" id="3_a8mq5"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://o4yrhpwnu5qc" path="res://sfx/weapons/sword-woosh-01.mp3" id="11_enhmx"]
 [ext_resource type="AudioStream" uid="uid://b88qj356syk2y" path="res://sfx/footsteps/jump-land.wav" id="11_yk06m"]
 [ext_resource type="AudioStream" uid="uid://3i8hupjg5ul6" path="res://sfx/weapons/sword-woosh-02.mp3" id="12_7rgu8"]
+[ext_resource type="AudioStream" uid="uid://ggywmxpjxqjg" path="res://sfx/weapons/player_damaged.wav" id="13_c0bxj"]
 [ext_resource type="Script" path="res://system/Health_Player.gd" id="13_stqgr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
@@ -76,6 +77,10 @@ volume_db = -10.0
 [node name="SwordWhooshes" type="AudioStreamPlayer3D" parent="Sound"]
 stream = SubResource("AudioStreamRandomizer_4gbd0")
 
+[node name="HealthAudio" type="AudioStreamPlayer3D" parent="Sound"]
+stream = ExtResource("13_c0bxj")
+volume_db = 20.0
+
 [node name="Health" type="Node" parent="."]
 script = ExtResource("13_stqgr")
 
@@ -86,3 +91,4 @@ script = ExtResource("13_stqgr")
 [connection signal="sword_bounce" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_sword_bounce"]
 [connection signal="sword_hit" from="CameraPivot/ArmsPivot/FirstPersonArms" to="Sound" method="_on_first_person_arms_sword_hit"]
 [connection signal="successful_block" from="Health" to="Sound" method="_on_health_successful_block"]
+[connection signal="took_damage" from="Health" to="Sound" method="_on_health_took_damage"]

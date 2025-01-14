@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name Enemy
+
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 @export var speed: float = 3.0
@@ -16,7 +18,7 @@ var anim_tree : AnimationTree
 
 var attack_trigger: bool = false
 
-enum EnemyState {idle, walking, attacking}
+enum EnemyState {idle, walking, attacking, nothing_lol = -1, }
 var state : EnemyState = EnemyState.idle
 
 
@@ -64,7 +66,8 @@ func _physics_process(delta: float) -> void:
 		if position.distance_to(nav_agent.target_position) <=2:
 			nav_agent.velocity = Vector3.ZERO
 			attack_trigger = true
-			change_state_delay(EnemyState.attacking, attack_windup_time)
+			await change_state_delay(EnemyState.attacking, attack_windup_time)
+			model_interface.play_attack_audio()
 
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
@@ -95,6 +98,6 @@ func on_anim_finished(anim_name):
 
 func change_state_delay(new_state, delay_time: float, intermediate_null: bool = true):
 	if intermediate_null:
-		state = -1
+		state = EnemyState.nothing_lol
 	await get_tree().create_timer(delay_time).timeout
 	state = new_state
