@@ -13,6 +13,7 @@ script = ExtResource("1_kc8yv")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("1_22uwh")
+max_health = 10000000000000
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.186772, 0, 0, 0, 1.2493, 0, 0, 0, 0.186772, 0.00670612, 4.01823, -0.00450611)

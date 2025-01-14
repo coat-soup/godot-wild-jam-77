@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cyk67kv73er43"]
+[gd_scene load_steps=20 format=3 uid="uid://cyk67kv73er43"]
 
 [ext_resource type="Script" path="res://player/scripts/Player.gd" id="1_06dfn"]
 [ext_resource type="PackedScene" uid="uid://c3j8r13vamxwo" path="res://player/models/first_person_arms.tscn" id="3_a8mq5"]
+[ext_resource type="Script" path="res://system/CameraShake.gd" id="3_wn4oe"]
 [ext_resource type="AudioStream" uid="uid://duwirqatra2pl" path="res://sfx/footsteps/footsteps-001.wav" id="4_moicq"]
 [ext_resource type="AudioStream" uid="uid://dehvsvw3le0ge" path="res://sfx/footsteps/footsteps-002.wav" id="5_wqpwo"]
 [ext_resource type="AudioStream" uid="uid://1hb50ke1bhkt" path="res://sfx/footsteps/footsteps-003.wav" id="6_f0e4i"]
@@ -53,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000198126, 0)
 [node name="FirstPersonArms" parent="CameraPivot/ArmsPivot" instance=ExtResource("3_a8mq5")]
 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
+script = ExtResource("3_wn4oe")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.793792, 0.578075)

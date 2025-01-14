@@ -18,9 +18,11 @@ func take_damage(amount : int, source : Node3D):
 	cur_health -= amount
 	took_damage.emit(amount, source)
 	
+	
 	if cur_health <= 0:
 		die()
 	
 func die():
 	print(parent.name, " died")
 	died.emit()
+	parent.queue_free()
