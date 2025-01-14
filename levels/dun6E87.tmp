@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://eqjmqnhqmchq"]
+
+[ext_resource type="Script" path="res://system/DungeonGenerator.gd" id="1_2rl5c"]
+
+[node name="DungeonGenerationTest" type="Node2D"]
+script = ExtResource("1_2rl5c")
+
+[node name="MinimapHolder" type="Node2D" parent="."]
+position = Vector2(63, 60)
