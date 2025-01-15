@@ -1,6 +1,6 @@
 extends Node3D
 
-const ENEMY_CLUSTER_SPAWN = preload("res://system/enemy_cluster_spawn.tscn")
+const ENEMY_CLUSTER_SPAWN = preload("res://system/debug_testing/enemy_cluster_spawn.tscn")
 const ENEMY = preload("res://enemies/enemy.tscn")
 
 

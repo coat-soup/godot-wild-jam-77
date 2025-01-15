@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://onydq804bkh3"]
+[gd_scene load_steps=4 format=3 uid="uid://chrkpa4e6ejex"]
 
-[ext_resource type="Script" path="res://ui/PauseMenu.gd" id="1_j32ul"]
-[ext_resource type="Shader" path="res://ui/BackgroundBlur.gdshader" id="1_o2aq3"]
+[ext_resource type="Script" path="res://ui/scripts/PauseMenu.gd" id="1_2658x"]
+[ext_resource type="Shader" path="res://ui/BackgroundBlur.gdshader" id="2_s75a2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5erc5"]
-shader = ExtResource("1_o2aq3")
+shader = ExtResource("2_s75a2")
 shader_parameter/amount = 3.0
 
 [node name="PauseMenu" type="Control"]
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j32ul")
+script = ExtResource("1_2658x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5erc5")

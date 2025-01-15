@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://wna3nbn4nvab"]
 
-[ext_resource type="Script" path="res://system/Health.gd" id="1_22uwh"]
-[ext_resource type="Script" path="res://system/TargetDummy.gd" id="1_kc8yv"]
+[ext_resource type="Script" path="res://system/generic_components/Health.gd" id="1_22uwh"]
+[ext_resource type="Script" path="res://system/debug_testing/TargetDummy.gd" id="1_kc8yv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nlepw"]
 

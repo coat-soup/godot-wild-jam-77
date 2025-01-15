@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="1_c72eo"]
 [ext_resource type="PackedScene" uid="uid://gyslfu8cd11i" path="res://world/props/spike_trap.tscn" id="1_geqo6"]
-[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/target_dummy.tscn" id="2_h6in5"]
+[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/debug_testing/target_dummy.tscn" id="2_h6in5"]
 [ext_resource type="PackedScene" uid="uid://bludxqpn5k6ss" path="res://enemies/coffin_enemy.tscn" id="4_8g3jx"]
 [ext_resource type="PackedScene" uid="uid://dbyevw4vq02kk" path="res://enemies/enemy.tscn" id="4_kvhdr"]
 

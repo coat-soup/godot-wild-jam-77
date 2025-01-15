@@ -4,9 +4,6 @@ class_name DungeonGeneration
 
 @onready var map_holder: Node2D = $MinimapHolder
 
-const MINIMAP_TILE = preload("res://ui/minimap_tile.tscn")
-const MAP_SPACING = 100
-
 const OFFSETS: Array[Vector2i] = [Vector2i(0, 1), Vector2i(-1,0), Vector2i(1,0), Vector2i(0,-1)]
 
 var map : Array
@@ -17,15 +14,9 @@ var special_distribution: Array[int] = [1,2,3,5]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("starting script")
+	return
 	await generate()
 	#draw_map(map, map_holder)
-
-
-func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_SPACE):
-		await generate()
-		#draw_map(map, map_holder)
 
 
 func generate(size_x = 10, size_y = 10, n_rooms = 20) -> Array:
@@ -44,8 +35,6 @@ func random_walk(x:int, y:int, n_rooms:int = 10, display_delay:float=0) -> Array
 	var start_pos = Vector2i(x/2, y/2)
 	m[start_pos.y][start_pos.x] = 1
 	visited.append(start_pos)
-	
-	print("starting at ", start_pos)
 	
 	var iterations = 1000
 	
@@ -82,36 +71,7 @@ static func pure_random(x, y) -> Array:
 	for _y in y:
 		for _x in x:
 			m[_y][_x] = randi_range(0,1)
-			print(m[_y][_x])
 	return m
-
-
-static func draw_map(m, holder):
-	for c in holder.get_children():
-			c.queue_free()
-	for y in m.size():
-		for x in m[0].size():
-			if m[y][x] != 0:
-				var tile = MINIMAP_TILE.instantiate()
-				tile.position.x = x * MAP_SPACING
-				tile.position.y = y * MAP_SPACING
-				holder.add_child(tile)
-				
-				var n = get_adjacent_cells(Vector2i(x,y), m)
-				tile.get_node("Label").text = str(m[y][x])
-				
-				var color = Color.WHITE
-				match m[y][x]:
-					2, 5:
-						color = Color.BURLYWOOD
-					3:
-						color = Color.AQUAMARINE
-					4:
-						color = Color.ORCHID
-				(tile.get_node("ColorRect") as ColorRect).color = color
-				
-				(tile.get_node("Corridor1") as ColorRect).visible = is_valid_cell(Vector2i(x + 1, y), m) and m[y][x + 1] > 0
-				(tile.get_node("Corridor2") as ColorRect).visible = is_valid_cell(Vector2i(x, y + 1), m) and m[y + 1][x] > 0
 
 
 static func initialise_map(x, y) -> Array:

@@ -2,19 +2,20 @@ extends Node
 
 class_name PlayerHUD
 
+@onready var menu: Control = $Menu
 @onready var pause_menu: Control = $PauseMenu
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var stamina_bar: TextureProgressBar = $StaminaBar
 @onready var stamina_anim: AnimationPlayer = $AnimationPlayer
 
-@onready var dungeon_generator: DungeonGeneration = $"../ViewBox/SubViewport/DungeonGenerationTest" as DungeonGeneration
-@onready var dungeon_spawner: DungeonSpawner = $"../ViewBox/SubViewport/DungeonGenerationTest/DungeonSpawner" as DungeonSpawner
+
 @onready var minimap_tile_holder: Node2D = $Minimap/MinimapTileHolder
 @onready var player_icon: TextureRect = $Minimap/PlayerIcon
 
 var player: Node3D
 
 var paused : bool = false
+var in_menu : bool = false
 
 var health : Health
 var stamina : Stamina
@@ -24,8 +25,6 @@ var dead = false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	
-	dungeon_spawner.generation_completed.connect(on_world_generated)
 	
 	if player == null:
 		push_error("UI can't find player")
@@ -47,7 +46,12 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
-		toggle_pause()
+		if in_menu:
+			toggle_menu()
+		else:
+			toggle_pause()
+	if event.is_action_pressed("menu"):
+		toggle_menu()
 
 
 func update_health_bar(_amount = null, _source = null):
@@ -79,13 +83,12 @@ func on_die():
 	$DeathText.show()
 	toggle_pause()
 
-
-func on_world_generated():
-	dungeon_generator.draw_map(dungeon_generator.map, minimap_tile_holder)
-
-func _process(delta: float) -> void:
-	var map_dimension = max(dungeon_spawner.size_x, dungeon_spawner.size_y)
-	var player_01 = Vector2(player.global_position.x, player.global_position.z) / (dungeon_spawner.tile_size * map_dimension)
-	minimap_tile_holder.position = -player_01 * dungeon_generator.MAP_SPACING * map_dimension * minimap_tile_holder.scale
-	minimap_tile_holder.position += $Minimap.size/2
-	player_icon.rotation = -player.rotation.y
+func toggle_menu():
+	in_menu = !in_menu
+	
+	if in_menu:
+		menu.show()
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	else:
+		menu.hide()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

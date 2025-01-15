@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://gyslfu8cd11i" path="res://world/props/spike_trap.tscn" id="7_ahbng"]
 [ext_resource type="PackedScene" uid="uid://behyuimsd1sib" path="res://world/props/iron_bars.tscn" id="8_csvfl"]
 [ext_resource type="PackedScene" uid="uid://clkygn8hp1oke" path="res://world/props/ritual_table.tscn" id="9_ocu7h"]
-[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/target_dummy.tscn" id="10_nukk4"]
-[ext_resource type="Script" path="res://system/DebugEnemySpawnTrigger.gd" id="11_ul3d5"]
+[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/debug_testing/target_dummy.tscn" id="10_nukk4"]
+[ext_resource type="Script" path="res://system/debug_testing/DebugEnemySpawnTrigger.gd" id="11_ul3d5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ww6ph"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

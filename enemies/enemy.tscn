@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/scripts/Enemy.gd" id="1_rqq7d"]
 [ext_resource type="PackedScene" uid="uid://dp045f86rh5sp" path="res://enemies/models/model_scenes/coffin_enemy_model.tscn" id="2_354du"]
-[ext_resource type="Script" path="res://system/Health.gd" id="2_mjoxq"]
+[ext_resource type="Script" path="res://system/generic_components/Health.gd" id="2_mjoxq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mgkgp"]
 

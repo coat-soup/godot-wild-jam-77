@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://vftll5w86k8u"]
 
-[ext_resource type="Script" path="res://system/GlobalResolutionManager.gd" id="1_3fwgj"]
+[ext_resource type="Script" path="res://system/utility/GlobalResolutionManager.gd" id="1_3fwgj"]
 [ext_resource type="PackedScene" uid="uid://eqjmqnhqmchq" path="res://levels/dungeon_generation_test.tscn" id="2_5uvu2"]
-[ext_resource type="PackedScene" uid="uid://c5bv25uu2jith" path="res://ui/ui.tscn" id="4_j58em"]
+[ext_resource type="PackedScene" uid="uid://c5bv25uu2jith" path="res://ui/scenes/ui.tscn" id="4_j58em"]
 
 [node name="HDWorld" type="Node"]
 script = ExtResource("1_3fwgj")

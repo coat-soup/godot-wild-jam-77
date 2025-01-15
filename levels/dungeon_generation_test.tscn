@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://eqjmqnhqmchq"]
 
-[ext_resource type="Script" path="res://system/DungeonGenerator.gd" id="1_2rl5c"]
-[ext_resource type="Script" path="res://system/DungeonSpawner.gd" id="2_yctm7"]
+[ext_resource type="Script" path="res://system/generation/DungeonGenerator.gd" id="1_2rl5c"]
+[ext_resource type="Script" path="res://system/generation/DungeonSpawner.gd" id="2_yctm7"]
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="3_ptkqv"]
 [ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="4_e3ei5"]
 

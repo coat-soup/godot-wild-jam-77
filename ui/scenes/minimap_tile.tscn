@@ -2,18 +2,20 @@
 
 [node name="MinimapTile" type="Node2D"]
 
-[node name="Corridor1" type="ColorRect" parent="."]
-offset_left = 31.0
-offset_top = -5.0
-offset_right = 67.0
-offset_bottom = 5.0
-color = Color(0.513233, 0.513233, 0.513233, 1)
-
-[node name="Corridor2" type="ColorRect" parent="."]
+[node name="CorridorDown" type="ColorRect" parent="."]
+visible = false
 offset_left = -5.0
 offset_top = 31.0
 offset_right = 5.0
 offset_bottom = 67.0
+color = Color(0.513233, 0.513233, 0.513233, 1)
+
+[node name="CorridorRight" type="ColorRect" parent="."]
+visible = false
+offset_left = 31.0
+offset_top = -5.0
+offset_right = 67.0
+offset_bottom = 5.0
 color = Color(0.513233, 0.513233, 0.513233, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
