@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name DungeonGeneration
+
 @onready var map_holder: Node2D = $MinimapHolder
 
 const MINIMAP_TILE = preload("res://ui/minimap_tile.tscn")
@@ -14,21 +16,22 @@ var map : Array
 func _ready() -> void:
 	print("starting script")
 	generate()
+	draw_map(map, map_holder)
 
 
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_SPACE):
 		generate()
+		draw_map(map, map_holder)
 
 
-func generate():
-	for c in map_holder.get_children():
-		c.queue_free()
-	map = await random_walk(10,10, 20)
-	draw_map()
+func generate(size_x = 10, size_y = 10, n_rooms = 20) -> Array:
+	map = await random_walk(size_x,size_y, n_rooms)
+	map = assign_special_rooms(map)
+	return map
 
-																	# skip chance with 2 adjacent, 3 adjacent
-func random_walk(x:int, y:int, n_rooms:int = 10) -> Array:
+
+func random_walk(x:int, y:int, n_rooms:int = 10, display_delay:float=0) -> Array:
 	n_rooms = min(n_rooms, x*y)
 	
 	var visited : Array[Vector2i] = []
@@ -63,14 +66,14 @@ func random_walk(x:int, y:int, n_rooms:int = 10) -> Array:
 						visited.append(cell)
 						n_rooms -= 1
 						
-						draw_map(m)
-						await get_tree().create_timer(0.1/2).timeout
+						#draw_map(m)
+						await get_tree().create_timer(display_delay).timeout
 						break
 	
 	return m
 	
 	
-func pure_random(x, y) -> Array:
+static func pure_random(x, y) -> Array:
 	var m = initialise_map(x,y)
 	# pure random
 	for _y in y:
@@ -80,20 +83,25 @@ func pure_random(x, y) -> Array:
 	return m
 
 
-func draw_map(m = map):
+static func draw_map(m, holder):
+	for c in holder.get_children():
+			c.queue_free()
 	for y in m.size():
 		for x in m[0].size():
-			if m[y][x] == 1:
+			if m[y][x] != 0:
 				var tile = MINIMAP_TILE.instantiate()
 				tile.position.x = x * MAP_SPACING
 				tile.position.y = y * MAP_SPACING
-				map_holder.add_child(tile)
+				holder.add_child(tile)
 				
 				var n = get_adjacent_cells(Vector2i(x,y), m)
-				tile.get_node("Label").text = str(n) + "\n" + str(get_avoidance(n))
+				tile.get_node("Label").text = str(m[y][x])
+				
+				if m[y][x] == 2 or m[y][x] == 4:
+					(tile.get_node("ColorRect") as ColorRect).color = Color.BURLYWOOD
 
 
-func initialise_map(x, y) -> Array:
+static func initialise_map(x, y) -> Array:
 	var m = []
 	for _y in y:
 		m.append([])
@@ -102,7 +110,7 @@ func initialise_map(x, y) -> Array:
 	return m
 
 
-func get_adjacent_cells(pos: Vector2i, m) -> int:
+static func get_adjacent_cells(pos: Vector2i, m) -> int:
 	var n = 0
 	for i in OFFSETS:
 		var cell = pos + i
@@ -112,11 +120,11 @@ func get_adjacent_cells(pos: Vector2i, m) -> int:
 	return n
 
 
-func is_valid_cell(pos, m) -> bool:
+static func is_valid_cell(pos, m) -> bool:
 	return pos.x > 0 and pos.x < m[0].size() and pos.y > 0 and pos.y < m.size()
 
 
-func is_square(cell, m) -> bool:
+static func is_square(cell, m) -> bool:
 	var sets = [[Vector2i(0,1),Vector2i(1,1),Vector2i(1,0)],
 				[Vector2i(1,0),Vector2i(1,-1),Vector2i(0,-1)],
 				[Vector2i(0,-1),Vector2i(-1,-1),Vector2i(-1,0)],
@@ -134,7 +142,8 @@ func is_square(cell, m) -> bool:
 		
 	return false
 
-func get_avoidance(neighbours: int) -> float:	
+
+static func get_avoidance(neighbours: int) -> float:	
 	match neighbours:
 		1:
 			return 0
@@ -146,3 +155,27 @@ func get_avoidance(neighbours: int) -> float:
 			return 10
 		_:
 			return 0
+
+
+static func assign_special_rooms(m) -> Array:
+	# 0 = empty, 1 = standard room, 2 = start_room, 3 = special_room, 4 = end_room
+	
+	var special_room = get_random_room_of_value(m, 1)
+	if is_valid_cell(special_room, m):
+		m[special_room.y][special_room.x] = 2
+	special_room = get_random_room_of_value(m, 1)
+	if is_valid_cell(special_room, m):
+		m[special_room.y][special_room.x] = 4
+	
+	return m
+
+
+static func get_random_room_of_value(m, value: int) -> Vector2i:
+	var iter = 1000
+	while iter > 0:
+		iter -= 1
+		var rand_room = Vector2i(randi() % m[0].size(), randi() % m.size())
+		if m[rand_room.y][rand_room.x] == value:
+			return rand_room
+			
+	return Vector2i(-1,-1)

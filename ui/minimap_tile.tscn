@@ -1,16 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://g0vmw1ghekvx"]
-
-[ext_resource type="Texture2D" uid="uid://5g3duvkoqg0w" path="res://ui/textures/blank_square.png" id="1_ltwt4"]
+[gd_scene format=3 uid="uid://g0vmw1ghekvx"]
 
 [node name="MinimapTile" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ltwt4")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
 
 [node name="Label" type="Label" parent="."]
-offset_left = -21.0
-offset_top = -12.0
-offset_right = 19.0
-offset_bottom = 11.0
+offset_left = -18.0
+offset_top = 22.0
+offset_right = 83.0
+offset_bottom = 45.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "nNeighbours"
+horizontal_alignment = 1

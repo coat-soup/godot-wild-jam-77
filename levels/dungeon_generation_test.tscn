@@ -1,9 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://eqjmqnhqmchq"]
+[gd_scene load_steps=8 format=3 uid="uid://eqjmqnhqmchq"]
 
 [ext_resource type="Script" path="res://system/DungeonGenerator.gd" id="1_2rl5c"]
+[ext_resource type="Script" path="res://system/DungeonSpawner.gd" id="2_yctm7"]
+[ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="3_ptkqv"]
+[ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="4_e3ei5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vnbqf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_37e2g"]
+sky_material = SubResource("ProceduralSkyMaterial_vnbqf")
+
+[sub_resource type="Environment" id="Environment_sttsh"]
+background_mode = 2
+sky = SubResource("Sky_37e2g")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="DungeonGenerationTest" type="Node2D"]
 script = ExtResource("1_2rl5c")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sttsh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="MinimapHolder" type="Node2D" parent="."]
 position = Vector2(63, 60)
+
+[node name="DungeonSpawner" type="Node" parent="."]
+script = ExtResource("2_yctm7")
+room_prefabs = Array[PackedScene]([ExtResource("3_ptkqv")])
+
+[node name="Player" parent="." instance=ExtResource("4_e3ei5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9574, 0)

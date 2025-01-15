@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://eqjmqnhqmchq"]
+
+[ext_resource type="Script" path="res://system/DungeonGenerator.gd" id="1_2rl5c"]
+[ext_resource type="Script" path="res://system/DungeonSpawner.gd" id="2_yctm7"]
+[ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="3_ptkqv"]
+[ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="4_e3ei5"]
+
+[node name="DungeonGenerationTest" type="Node2D"]
+script = ExtResource("1_2rl5c")
+
+[node name="MinimapHolder" type="Node2D" parent="."]
+position = Vector2(63, 60)
+
+[node name="DungeonSpawner" type="Node" parent="."]
+script = ExtResource("2_yctm7")
+dungeon_rooms = Array[PackedScene]([ExtResource("3_ptkqv")])
+
+[node name="Player" parent="." instance=ExtResource("4_e3ei5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9574, 0)
