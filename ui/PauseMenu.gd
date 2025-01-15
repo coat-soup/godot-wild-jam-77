@@ -14,7 +14,7 @@ func _on_resume_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	hud.toggle_pause()
+	Engine.time_scale = 1
 	get_tree().reload_current_scene()
 
 

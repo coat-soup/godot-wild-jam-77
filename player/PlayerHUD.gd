@@ -6,7 +6,6 @@ class_name PlayerHUD
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var stamina_bar: TextureProgressBar = $StaminaBar
 @onready var stamina_anim: AnimationPlayer = $StaminaBar/AnimationPlayer
-@onready var death_blackout: ColorRect = $DeathBlackout
 
 var player: Node3D
 

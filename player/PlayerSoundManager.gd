@@ -55,7 +55,7 @@ func _on_player_dash() -> void:
 	jumping_audio.play()
 
 
-func _on_health_successful_block(damage) -> void:
+func _on_health_successful_block(_damage) -> void:
 	sword_clangs.pitch_scale = randf_range(.8, 1.2)
 	sword_clangs.stream = sword_block_sound
 	sword_clangs.play()
