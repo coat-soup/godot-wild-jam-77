@@ -2,6 +2,8 @@ extends Node
 
 class_name DungeonSpawner
 
+signal generation_completed
+
 @onready var generation: DungeonGeneration = $".."
 @onready var player: Player = $"../Player"
 
@@ -40,6 +42,9 @@ func generate():
 	
 	player.position = starting_room.scene_instance.position
 	player.position.y += 0.5
+	
+	print("EMITTING")
+	generation_completed.emit()
 
 func spawn_dungeon():
 	for y in range(size_y):

@@ -9,16 +9,16 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_37e2g"]
+[sub_resource type="Sky" id="Sky_fhyll"]
 sky_material = SubResource("ProceduralSkyMaterial_vnbqf")
 
 [sub_resource type="Environment" id="Environment_sttsh"]
 background_mode = 2
-sky = SubResource("Sky_37e2g")
+sky = SubResource("Sky_fhyll")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="DungeonGenerationTest" type="Node2D"]
+[node name="DungeonGenerationTest" type="Node3D"]
 script = ExtResource("1_2rl5c")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -29,7 +29,8 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="MinimapHolder" type="Node2D" parent="."]
-position = Vector2(63, 60)
+position = Vector2(32, 31)
+scale = Vector2(0.2, 0.2)
 
 [node name="DungeonSpawner" type="Node" parent="."]
 script = ExtResource("2_yctm7")

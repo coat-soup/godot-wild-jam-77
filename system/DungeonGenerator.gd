@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 
 class_name DungeonGeneration
 
@@ -11,23 +11,26 @@ const OFFSETS: Array[Vector2i] = [Vector2i(0, 1), Vector2i(-1,0), Vector2i(1,0),
 
 var map : Array
 
+  # [minFountain, maxFountain, minBody, maxBody]
+var special_distribution: Array[int] = [1,2,3,5]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("starting script")
-	generate()
-	draw_map(map, map_holder)
+	await generate()
+	#draw_map(map, map_holder)
 
 
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_SPACE):
-		generate()
-		draw_map(map, map_holder)
+		await generate()
+		#draw_map(map, map_holder)
 
 
 func generate(size_x = 10, size_y = 10, n_rooms = 20) -> Array:
 	map = await random_walk(size_x,size_y, n_rooms)
-	map = assign_special_rooms(map)
+	map = assign_special_rooms(map, special_distribution)
 	return map
 
 
@@ -66,7 +69,7 @@ func random_walk(x:int, y:int, n_rooms:int = 10, display_delay:float=0) -> Array
 						visited.append(cell)
 						n_rooms -= 1
 						
-						#draw_map(m)
+						#draw_map(m, map_holder)
 						await get_tree().create_timer(display_delay).timeout
 						break
 	
@@ -97,8 +100,18 @@ static func draw_map(m, holder):
 				var n = get_adjacent_cells(Vector2i(x,y), m)
 				tile.get_node("Label").text = str(m[y][x])
 				
-				if m[y][x] == 2 or m[y][x] == 4:
-					(tile.get_node("ColorRect") as ColorRect).color = Color.BURLYWOOD
+				var color = Color.WHITE
+				match m[y][x]:
+					2, 5:
+						color = Color.BURLYWOOD
+					3:
+						color = Color.AQUAMARINE
+					4:
+						color = Color.ORCHID
+				(tile.get_node("ColorRect") as ColorRect).color = color
+				
+				(tile.get_node("Corridor1") as ColorRect).visible = is_valid_cell(Vector2i(x + 1, y), m) and m[y][x + 1] > 0
+				(tile.get_node("Corridor2") as ColorRect).visible = is_valid_cell(Vector2i(x, y + 1), m) and m[y + 1][x] > 0
 
 
 static func initialise_map(x, y) -> Array:
@@ -157,15 +170,26 @@ static func get_avoidance(neighbours: int) -> float:
 			return 0
 
 
-static func assign_special_rooms(m) -> Array:
-	# 0 = empty, 1 = standard room, 2 = start_room, 3 = special_room, 4 = end_room
+static func assign_special_rooms(m, distribution) -> Array:
+	# 0 = empty, 1 = standard room, 2 = start room, 3 = fountain room, 4 = body part room, 5 = end room
 	
 	var special_room = get_random_room_of_value(m, 1)
 	if is_valid_cell(special_room, m):
 		m[special_room.y][special_room.x] = 2
 	special_room = get_random_room_of_value(m, 1)
 	if is_valid_cell(special_room, m):
-		m[special_room.y][special_room.x] = 4
+		m[special_room.y][special_room.x] = 5
+		
+	#fountains
+	for x in range(randi_range(distribution[0], distribution[1])):
+		special_room = get_random_room_of_value(m, 1)
+		if is_valid_cell(special_room, m):
+			m[special_room.y][special_room.x] = 3
+	#bodyparts
+	for x in range(randi_range(distribution[2], distribution[3])):
+		special_room = get_random_room_of_value(m, 1)
+		if is_valid_cell(special_room, m):
+			m[special_room.y][special_room.x] = 4
 	
 	return m
 
