@@ -10,6 +10,9 @@ extends Node3D
 @onready var sword_block_sound = load("res://sfx/weapons/sword_block.wav")
 @onready var sword_hit_sound = load("res://sfx/weapons/sword_slice.wav")
 
+@onready var damaged_sound = load("res://sfx/interactions/player_damaged.wav")
+@onready var no_stamina_sound = load("res://sfx/interactions/out_of_breath.wav")
+
 var can_footstep : bool = false
 
 
@@ -38,7 +41,7 @@ func _on_player_jump_land() -> void:
 	jumping_audio.play()
 
 
-func _on_health_successful_block() -> void:
+func _on_health_successful_block(damage) -> void:
 	sword_clangs.pitch_scale = randf_range(.8, 1.2)
 	sword_clangs.stream = sword_block_sound
 	sword_clangs.play()
@@ -51,6 +54,12 @@ func _on_first_person_arms_sword_hit() -> void:
 
 
 func _on_health_took_damage(_amount, _source) -> void:
-	print("AAAA")
-	sword_clangs.pitch_scale = randf_range(.8, 1.2)
+	health_audio.pitch_scale = randf_range(.9, 1)
+	health_audio.stream = damaged_sound
+	health_audio.play()
+
+
+func _on_stamina_stamina_depleted() -> void:
+	health_audio.pitch_scale = 1.1
+	health_audio.stream = no_stamina_sound
 	health_audio.play()

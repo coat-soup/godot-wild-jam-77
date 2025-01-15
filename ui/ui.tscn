@@ -1,26 +1,92 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5bv25uu2jith"]
+[gd_scene load_steps=11 format=3 uid="uid://c5bv25uu2jith"]
 
 [ext_resource type="Script" path="res://player/PlayerHUD.gd" id="1_uvdbr"]
 [ext_resource type="Texture2D" uid="uid://0wta44t65n7x" path="res://ui/textures/health_bar_background.png" id="2_0ejho"]
-[ext_resource type="Texture2D" uid="uid://bdviuoolkc10s" path="res://ui/textures/health_bar_overlay.png" id="3_525hp"]
+[ext_resource type="Texture2D" uid="uid://yfocvi5kr3dt" path="res://ui/textures/stamina_bar_background.png" id="2_3hreg"]
+[ext_resource type="Texture2D" uid="uid://dnfojq4svvcxb" path="res://ui/textures/stamina_bar_fill.png" id="3_clxha"]
 [ext_resource type="Texture2D" uid="uid://baitnsd857ox7" path="res://ui/textures/health_bar_fill.png" id="4_qxbbk"]
 [ext_resource type="Script" path="res://system/VersionText.gd" id="5_2jina"]
 [ext_resource type="PackedScene" uid="uid://onydq804bkh3" path="res://ui/pause_menu.tscn" id="5_kdrak"]
 
+[sub_resource type="Animation" id="Animation_xmls8"]
+resource_name = "stamina_alert_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:tint_over")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wlgi6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:tint_over")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibmmm"]
+_data = {
+"RESET": SubResource("Animation_wlgi6"),
+"stamina_alert_anim": SubResource("Animation_xmls8")
+}
+
 [node name="UI" type="Node"]
 script = ExtResource("1_uvdbr")
 
+[node name="StaminaBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_right = 0.2
+offset_left = 14.0
+offset_top = 940.0
+offset_right = 19.0
+offset_bottom = 1068.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_under = ExtResource("2_3hreg")
+texture_over = ExtResource("2_3hreg")
+texture_progress = ExtResource("3_clxha")
+texture_progress_offset = Vector2(12.345, 0)
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.803226, 0.468311, 5.77569e-07, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaminaBar"]
+libraries = {
+"": SubResource("AnimationLibrary_ibmmm")
+}
+speed_scale = 5.0
+
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = 8.0
-offset_top = 987.0
-offset_right = 136.0
-offset_bottom = 1115.0
+anchors_preset = -1
+anchor_right = 0.2
+offset_left = 23.0
+offset_top = 982.0
+offset_right = 151.0
+offset_bottom = 1110.0
 max_value = 1.0
 step = 0.0
 value = 1.0
 texture_under = ExtResource("2_0ejho")
-texture_over = ExtResource("3_525hp")
 texture_progress = ExtResource("4_qxbbk")
+texture_progress_offset = Vector2(14.83, 0)
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.789304, 0, 0.160081, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_kdrak")]

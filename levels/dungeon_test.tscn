@@ -193,22 +193,45 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -32.3152, 0, 3.48548)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9834, 0, 5.53526)
 script = ExtResource("11_ul3d5")
 
-[node name="Trigger" type="Node3D" parent="EnemySpawn"]
+[node name="TriggerMultiple" type="Node3D" parent="EnemySpawn"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.91918, 0, -3.31098)
 
-[node name="Area3D" type="Area3D" parent="EnemySpawn/Trigger"]
+[node name="Area3DMulti" type="Area3D" parent="EnemySpawn/TriggerMultiple"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemySpawn/Trigger/Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemySpawn/TriggerMultiple/Area3DMulti"]
 transform = Transform3D(1, 0, 0, 0, 0.107964, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_yntb4")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawn/Trigger/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawn/TriggerMultiple/Area3DMulti"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.488041, 0)
 shape = SubResource("BoxShape3D_c26d1")
 
-[node name="Label3D" type="Label3D" parent="EnemySpawn/Trigger"]
+[node name="Label3D" type="Label3D" parent="EnemySpawn/TriggerMultiple"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13769, 0)
-text = "Spawn Enemies"
+text = "Spawn Enemies
+(group)"
 
-[connection signal="body_entered" from="EnemySpawn/Trigger/Area3D" to="EnemySpawn" method="_on_area_3d_body_entered"]
+[node name="TriggerSingle" type="Node3D" parent="EnemySpawn"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.91918, 0, 3.96829)
+
+[node name="Area3DSingle" type="Area3D" parent="EnemySpawn/TriggerSingle"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemySpawn/TriggerSingle/Area3DSingle"]
+transform = Transform3D(1, 0, 0, 0, 0.107964, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_yntb4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawn/TriggerSingle/Area3DSingle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.488041, 0)
+shape = SubResource("BoxShape3D_c26d1")
+
+[node name="Label3D" type="Label3D" parent="EnemySpawn/TriggerSingle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13769, 0)
+text = "Spawn Enemy
+(single)"
+
+[connection signal="body_entered" from="EnemySpawn/TriggerMultiple/Area3DMulti" to="EnemySpawn" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="EnemySpawn/TriggerMultiple/Area3DMulti" to="EnemySpawn" method="_on_area_3d_multi_body_entered"]
+[connection signal="body_entered" from="EnemySpawn/TriggerSingle/Area3DSingle" to="EnemySpawn" method="_on_area_3d_single_body_entered"]
+[connection signal="body_entered" from="EnemySpawn/TriggerSingle/Area3DSingle" to="EnemySpawn" method="_on_area_3d_body_entered"]
