@@ -6,6 +6,7 @@ class_name PlayerHUD
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var stamina_bar: TextureProgressBar = $StaminaBar
 @onready var stamina_anim: AnimationPlayer = $StaminaBar/AnimationPlayer
+@onready var death_blackout: ColorRect = $DeathBlackout
 
 var player: Node3D
 
@@ -14,18 +15,22 @@ var paused : bool = false
 var health : Health
 var stamina : Stamina
 
+var dead = false
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	
 	if player == null:
 		push_error("UI can't find player")
-	else:
+	else:		
 		health = player.get_node("Health") as Health
 		if health == null:
 			push_error("UI can't find health")
 		else:
 			health.took_damage.connect(update_health_bar)
+			health.healed.connect(update_health_bar)
+			health.died.connect(on_die)
 		stamina = player.get_node("Stamina")
 		if stamina == null:
 			push_error("UI can't find stamina")
@@ -39,7 +44,7 @@ func _input(event: InputEvent) -> void:
 		toggle_pause()
 
 
-func update_health_bar(_amount, _source):
+func update_health_bar(_amount = null, _source = null):
 	var fill : float = health.cur_health as float/health.max_health as float
 	health_bar.set_value_no_signal(fill)
 
@@ -48,7 +53,7 @@ func update_stamina_bar():
 	stamina_bar.set_value_no_signal(fill)
 
 func toggle_pause():
-	if paused:
+	if paused and !dead:
 		paused = false
 		pause_menu.hide()
 		Engine.time_scale = 1
@@ -61,3 +66,9 @@ func toggle_pause():
 
 func alert_stamina_bar():
 	stamina_anim.play("stamina_alert_anim")
+
+func on_die():
+	dead = true
+	pause_menu.get_node("MarginContainer/VBoxContainer/Resume").hide()
+	$DeathText.show()
+	toggle_pause()

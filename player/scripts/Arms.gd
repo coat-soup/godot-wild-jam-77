@@ -103,8 +103,6 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 		body = body if is_instance_of(body, CharacterBody3D) else body.owner
 		if body.name != "Player" and !to_damage.has(body):
 			to_damage.append(body)
-			print("arms got sword hit")
-			print("hit ", body.name)
 			
 			var health = HierarchyUtil.get_child_of_type(body, Health) as Health
 			if health:
@@ -144,7 +142,6 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	swinging = false
 
 func reset_combo():
-	print("Ending combo")
 	can_swing = false
 	timer = combo_interval/attack_speed
 	idle = true

@@ -32,7 +32,6 @@ func _ready() -> void:
 		push_error("Enemy ", self.name, " could not find animation tree.")
 	else:
 		anim_tree.advance_expression_base_node = "../.."
-		print("Base of ", self.name, " is ", anim_tree.get_node("../.."))
 		anim_tree.animation_finished.connect(on_anim_finished)
 		anim_tree.animation_started.connect(on_anim_started)
 		
@@ -77,9 +76,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 
 func on_attack_collision(body: Node3D):
 	if state == EnemyState.attacking:
-		print("attack hit ", body.name)
 		if body == player:
-			print("hit player properly")
 			var health = body.get_node("Health") as Health
 			if health:
 				health.take_damage(damage, model_interface.attack_collider)
@@ -92,7 +89,6 @@ func on_anim_started(anim_name):
 
 func on_anim_finished(anim_name):
 	if anim_name == "Attack":
-		print("finished attacke")
 		change_state_delay(EnemyState.idle, 0.5)
 
 

@@ -16,7 +16,6 @@ func take_damage(amount : int, source : Node3D):
 			return
 	camera.shake(20.0)
 	super.take_damage(amount, source)
-	
+
 func die():
-	pass
-	# override player death for now
+	died.emit()

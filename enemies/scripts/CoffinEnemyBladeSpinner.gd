@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		override_spin_start -= delta
 		cur_spin_speed = lerp(cur_spin_speed, spin_speed * (1 if is_attacking or override_spin_start > 0 else 0), 2 * delta)
 		
-		whirr_audio.volume_db = lerp(-100, 0, cur_spin_speed/spin_speed)
+		whirr_audio.volume_db = lerp(-100, 0, Engine.time_scale * cur_spin_speed/spin_speed)
 
 		circle_001.rotate_y(deg_to_rad(cur_spin_speed * delta))
 		circle_006.rotate_y(deg_to_rad(cur_spin_speed * delta))

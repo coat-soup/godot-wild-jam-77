@@ -14,3 +14,10 @@ func _on_area_3d_single_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		var enemy = ENEMY.instantiate()
 		add_child(enemy)
+
+
+func _on_area_3d_heal_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		var health = body.get_node("Health") as Health
+		if health:
+			health.heal(100)

@@ -12,11 +12,12 @@ signal alert_depleted
 
 @export var max_stamina : float = 100.0
 var cur_stamina : float
-@export var recharge_rate : float = 10
+@export var recharge_rate : float = 15
 
 @export var swing_stamina : float = 15
 @export var block_stamina : float = 7
-@export var dash_stamina : float = 15
+@export var dash_stamina : float = 25
+@export var jump_stamina : float = 15
 
 @export var recharge_delay : float = 1
 @export var depleted_recharge_delay: float = 3
@@ -27,7 +28,8 @@ func _ready() -> void:
 	cur_stamina = max_stamina
 	arms.swing_sword.connect(on_swing)
 	health.successful_block.connect(on_block)
-
+	player.jump_start.connect(on_jump)
+	player.dash.connect(on_dash)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,6 +42,11 @@ func _process(delta: float) -> void:
 	if arms.blocking:
 		drain_stamina(block_stamina * delta)
 
+func on_jump():
+	drain_stamina(jump_stamina)
+	
+func on_dash():
+	drain_stamina(dash_stamina)
 
 func on_swing():
 	drain_stamina(swing_stamina)

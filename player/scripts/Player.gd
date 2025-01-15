@@ -5,10 +5,18 @@ class_name Player
 @onready var arms: Node3D = $CameraPivot/ArmsPivot/FirstPersonArms
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera
+@onready var stamina: Stamina = $Stamina
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const SENSETIVITY = 0.005;
+@export var speed = 5.0
+@export var jump_velocity = 4.5
+@export var sensetivity = 0.005;
+
+@export var dash_speed = 15
+@export var dash_length = 0.2
+@export var dash_cooldown = 1.5
+var dash_cooldown_timer = 0
+var dash_timer = 0
+var dash_dir
 
 #viewbob
 const BOB_FREQ = 2.5
@@ -22,6 +30,7 @@ var landing : bool
 signal jump_start
 signal jump_land
 
+signal dash
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -32,13 +41,13 @@ func _input(event: InputEvent) -> void:
 
 		if event.is_action_released("block"):
 			arms.end_block()
-			
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var sens_mul = 1.0 if !arms.swinging else 0.3
-		rotate_y(-event.relative.x * SENSETIVITY * sens_mul)
-		camera_pivot.rotate_x(-event.relative.y * SENSETIVITY * sens_mul)
+		rotate_y(-event.relative.x * sensetivity * sens_mul)
+		camera_pivot.rotate_x(-event.relative.y * sensetivity * sens_mul)
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta: float) -> void:
@@ -51,30 +60,49 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		jump_start.emit()
-		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if is_on_floor():
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+	
+			# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		if stamina.cur_stamina > 0:
+			if input_dir.y < 0 or input_dir == Vector2.ZERO:
+				jump_start.emit()
+				velocity.y = jump_velocity
+			elif dash_cooldown_timer <= 0:
+				dash.emit()
+				dash_dir = direction
+				dash_timer = dash_length
 		else:
-			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 10)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 10)
+			stamina.alert_anim()
+		
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= delta
+		
+	if dash_timer > 0:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			dash_cooldown_timer = dash_cooldown
+		velocity.x = lerp(velocity.x, dash_dir.x * dash_speed, delta * 10)
+		velocity.z = lerp(velocity.z, dash_dir.z * dash_speed, delta * 10)
+	elif is_on_floor():
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+		else:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 10)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 10)
 		
 		if landing:
 			landing = false
 			if velocity.y < 1:
 				jump_land.emit()
 	else:
-		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 2)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 2)
+		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2)
+		velocity.z = lerp(velocity.z, direction.z * speed, delta * 2)
 		
 		if !landing:
 			landing = true

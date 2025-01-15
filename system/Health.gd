@@ -3,6 +3,7 @@ extends Node
 class_name Health
 
 signal took_damage
+signal healed
 signal died
 
 @onready var parent : Node3D = get_parent()
@@ -14,13 +15,16 @@ func _ready() -> void:
 	cur_health = max_health
 
 func take_damage(amount : int, source : Node3D):
-	print("taking damage")
 	cur_health -= amount
 	took_damage.emit(amount, source)
 	
 	
 	if cur_health <= 0:
 		die()
+	
+func heal(amount):
+	cur_health = min(cur_health + amount, max_health)
+	healed.emit()
 	
 func die():
 	print(parent.name, " died")

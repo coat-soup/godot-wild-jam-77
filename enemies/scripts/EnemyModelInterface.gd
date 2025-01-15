@@ -22,7 +22,5 @@ func play_footstep():
 	footsetp_audio.play()
 
 func play_attack_audio():
-	print(attack_audio)
 	for a in attack_audio:
-		print(a)
 		a.play()
