@@ -51,7 +51,7 @@ func set_sided_connector(side: String, is_connected: bool):
 
 
 func trigger_gates(body: Node3D):
-	if triggered:
+	if triggered or enemies.size() == 0:
 		return
 		
 	if body.name == "Player":

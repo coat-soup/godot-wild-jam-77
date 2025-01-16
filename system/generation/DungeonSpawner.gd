@@ -19,6 +19,8 @@ signal generation_completed
 var spawned_rooms : Array[DungeonRoom]
 var starting_room : DungeonRoom
 
+const FOUNTAIN_ROOM = preload("res://world/dungeonrooms/fountain_room.tscn")
+
 var generated_map
 
 # Called when the node enters the scene tree for the first time.
@@ -44,7 +46,12 @@ func spawn_dungeon():
 	for y in range(size_y):
 		for x in range(size_x):
 			if generated_map[y][x] > 0:
-				var room : DungeonRoom = room_prefabs.pick_random().instantiate() as DungeonRoom
+				var pref
+				match generated_map[y][x]:
+					3: pref = FOUNTAIN_ROOM
+					_: pref = room_prefabs.pick_random()
+					
+				var room : DungeonRoom = pref.instantiate() as DungeonRoom
 				room.grid_position = Vector2i(x,y)
 				room.position = Vector3(x * tile_size, 0, y * tile_size)
 				spawned_rooms.append(room)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjq5xrktr0wdn"]
+
+[ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_jrsnj"]
+[ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_don7c"]
+
+[node name="BaseDungeonScene" instance=ExtResource("1_jrsnj")]
+enemies = Array[ExtResource("2_don7c")]([])
+
+[node name="TileMap" parent="." index="0"]
+data = {
+"cells": PackedInt32Array(-8, 65535, 4, -8, 0, 4, -9, 65535, 4, -10, 0, 4, -9, 0, 4, -10, 65535, 4, -11, 65535, 4)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
