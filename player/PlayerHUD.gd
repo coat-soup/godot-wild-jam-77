@@ -2,12 +2,15 @@ extends Node
 
 class_name PlayerHUD
 
+@onready var dungeon_spawner: DungeonSpawner = $"../ViewBox/SubViewport/DungeonGenerationTest/NavigationRegion3D/DungeonSpawner" as DungeonSpawner
+
 @onready var menu: Control = $Menu
 @onready var pause_menu: Control = $PauseMenu
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var stamina_bar: TextureProgressBar = $StaminaBar
 @onready var stamina_anim: AnimationPlayer = $AnimationPlayer
 
+@onready var loading_screen: ColorRect = $LoadingScreen
 
 @onready var minimap_tile_holder: Node2D = $Minimap/MinimapTileHolder
 @onready var player_icon: TextureRect = $Minimap/PlayerIcon
@@ -24,6 +27,9 @@ var dead = false
 
 
 func _ready():
+	loading_screen.show()
+	dungeon_spawner.generation_completed.connect(on_generation_finished)
+	
 	player = get_tree().get_first_node_in_group("player")
 	
 	if player == null:
@@ -58,9 +64,11 @@ func update_health_bar(_amount = null, _source = null):
 	var fill : float = health.cur_health as float/health.max_health as float
 	health_bar.set_value_no_signal(fill)
 
+
 func update_stamina_bar():
 	var fill : float = stamina.cur_stamina/stamina.max_stamina
 	stamina_bar.set_value_no_signal(fill)
+
 
 func toggle_pause():
 	if paused and !dead:
@@ -74,14 +82,17 @@ func toggle_pause():
 		Engine.time_scale = 0
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
+
 func alert_stamina_bar():
 	stamina_anim.play("stamina_alert_anim")
+
 
 func on_die():
 	dead = true
 	pause_menu.get_node("MarginContainer/VBoxContainer/Resume").hide()
 	$DeathText.show()
 	toggle_pause()
+
 
 func toggle_menu():
 	in_menu = !in_menu
@@ -92,3 +103,7 @@ func toggle_menu():
 	else:
 		menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func on_generation_finished():
+	loading_screen.hide()

@@ -7,6 +7,8 @@ class_name Player
 @onready var camera: Camera3D = $CameraPivot/Camera
 @onready var stamina: Stamina = $Stamina
 
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+
 @export var speed = 5.0
 @export var jump_velocity = 4.5
 @export var sensetivity = 0.005;
@@ -32,6 +34,8 @@ signal jump_land
 
 signal dash
 
+var debug_mode = false
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -41,6 +45,13 @@ func _input(event: InputEvent) -> void:
 
 		if event.is_action_released("block"):
 			arms.end_block()
+			
+		if Input.is_key_pressed(KEY_SEMICOLON):
+			debug_mode = !debug_mode
+			if debug_mode:
+				collision_shape_3d.disabled = true
+			else:
+				collision_shape_3d.disabled = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -57,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		arms.block()
 	
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and !debug_mode:
 		velocity += get_gravity() * delta
 
 
@@ -65,6 +76,9 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if debug_mode:
+		velocity.y = (int(Input.is_key_pressed(KEY_SPACE)) - int(Input.is_key_pressed(KEY_CTRL))) * speed
 	
 			# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

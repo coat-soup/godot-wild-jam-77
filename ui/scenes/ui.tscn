@@ -173,23 +173,6 @@ text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VersionText" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1501.0
-offset_top = 1047.0
-offset_right = 1901.0
-offset_bottom = 1070.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Version text"
-horizontal_alignment = 2
-script = ExtResource("5_2jina")
-
 [node name="Minimap" type="Control" parent="."]
 clip_contents = true
 layout_mode = 2
@@ -245,3 +228,40 @@ color = Color(0.123733, 0.131383, 0.166441, 1)
 
 [node name="MapTileHolder" type="Node2D" parent="Menu/MenuBackground/MapBackground"]
 position = Vector2(6, 2)
+
+[node name="LoadingScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -257.0
+offset_top = -242.0
+offset_right = 2181.0
+offset_bottom = 1327.0
+color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="Text" type="Label" parent="LoadingScreen"]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 576.0
+offset_right = 1872.0
+offset_bottom = 985.0
+theme_override_font_sizes/font_size = 200
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VersionText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1501.0
+offset_top = 1047.0
+offset_right = 1901.0
+offset_bottom = 1070.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Version text"
+horizontal_alignment = 2
+script = ExtResource("5_2jina")

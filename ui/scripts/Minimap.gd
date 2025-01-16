@@ -1,7 +1,7 @@
 extends Control
 
 @onready var dungeon_generator: DungeonGeneration = $"../../ViewBox/SubViewport/DungeonGenerationTest" as DungeonGeneration
-@onready var dungeon_spawner: DungeonSpawner = $"../../ViewBox/SubViewport/DungeonGenerationTest/DungeonSpawner" as DungeonSpawner
+@onready var dungeon_spawner: DungeonSpawner = $"../../ViewBox/SubViewport/DungeonGenerationTest/NavigationRegion3D/DungeonSpawner" as DungeonSpawner
 @onready var tile_holder: Node2D = $MinimapTileHolder
 @onready var player_icon: TextureRect = $PlayerIcon
 @onready var map_tile_holder: Node2D = $"../Menu/MenuBackground/MapBackground/MapTileHolder"

@@ -4,8 +4,9 @@ class_name DungeonSpawner
 
 signal generation_completed
 
-@onready var generation: DungeonGeneration = $".."
-@onready var player: Player = $"../Player"
+@onready var generator: DungeonGeneration = $"../.."
+@onready var player: Player = $"../../Player"
+@onready var navmesh: NavigationRegion3D = $".."
 
 @export var room_prefabs : Array[PackedScene]
 
@@ -13,7 +14,7 @@ signal generation_completed
 @export var size_y : int = 10
 @export var n_rooms : int = 20
 
-@export var tile_size = 24
+@export var tile_size = 33
 
 var spawned_rooms : Array[DungeonRoom]
 var starting_room : DungeonRoom
@@ -29,12 +30,14 @@ func _input(event: InputEvent):
 		generate()
 
 func generate():
-	generated_map = await generation.generate(size_x,size_y,n_rooms)
+	generated_map = await generator.generate(size_x,size_y,n_rooms)
 	spawn_dungeon()
+	set_hallways()
 	
 	player.position = starting_room.position
 	player.position.y += 0.5
 	
+	navmesh.bake_navigation_mesh()
 	generation_completed.emit()
 
 func spawn_dungeon():
@@ -50,3 +53,17 @@ func spawn_dungeon():
 				if generated_map[y][x] == 2:
 					starting_room = room
 					print("set start room to ", starting_room.grid_position)
+
+func set_hallways():
+	for room in spawned_rooms:
+		var up = room.grid_position + Vector2i(0,-1)
+		room.set_sided_connector("Up", generator.is_valid_cell(up, generator.map) and generator.map[up.y][up.x] > 0)
+		
+		var down = room.grid_position + Vector2i(0,1)
+		room.set_sided_connector("Down", generator.is_valid_cell(down, generator.map) and generator.map[down.y][down.x] > 0)
+		
+		var left = room.grid_position + Vector2i(-1,0)
+		room.set_sided_connector("Left", generator.is_valid_cell(left, generator.map) and generator.map[left.y][left.x] > 0)
+		
+		var right = room.grid_position + Vector2i(1,0)
+		room.set_sided_connector("Right", generator.is_valid_cell(right, generator.map) and generator.map[right.y][right.x] > 0)
