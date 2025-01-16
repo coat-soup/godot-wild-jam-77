@@ -4,13 +4,15 @@ class_name PlayerHUD
 
 @onready var dungeon_spawner: DungeonSpawner = $"../ViewBox/SubViewport/DungeonGenerationTest/NavigationRegion3D/DungeonSpawner" as DungeonSpawner
 
-@onready var menu: Control = $Menu
+@onready var menu: Menu = $Menu
 @onready var pause_menu: Control = $PauseMenu
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var stamina_bar: TextureProgressBar = $StaminaBar
 @onready var stamina_anim: AnimationPlayer = $AnimationPlayer
 
 @onready var loading_screen: ColorRect = $LoadingScreen
+
+@onready var interact_text: Label = $InteractText
 
 @onready var minimap_tile_holder: Node2D = $Minimap/MinimapTileHolder
 @onready var player_icon: TextureRect = $Minimap/PlayerIcon
@@ -24,6 +26,8 @@ var health : Health
 var stamina : Stamina
 
 var dead = false
+
+var showing_prompt := false
 
 
 func _ready():
@@ -100,10 +104,27 @@ func toggle_menu():
 	if in_menu:
 		menu.show()
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		clear_interact_text()
 	else:
 		menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		menu.clear_display()
 
 
 func on_generation_finished():
 	loading_screen.hide()
+
+
+func set_interact_text(message: String):
+	interact_text.text = "[E] " + message
+
+
+func clear_interact_text():
+	interact_text.text = ""
+
+func show_prompt(message: String, duration:= 3.0):
+	interact_text.text = message
+	showing_prompt = true
+	await get_tree().create_timer(duration).timeout
+	clear_interact_text()
+	showing_prompt = false

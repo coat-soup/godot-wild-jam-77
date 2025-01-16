@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Player
 
+signal dash
+
 @onready var arms: Node3D = $CameraPivot/ArmsPivot/FirstPersonArms
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera
@@ -32,26 +34,33 @@ var landing : bool
 signal jump_start
 signal jump_land
 
-signal dash
+var HUD : PlayerHUD
 
 var debug_mode = false
 
+var interact_object
+
+
 func _ready():
+	HUD = get_tree().get_first_node_in_group("HUD")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-		if event.is_action_pressed("attack"):
-			arms.swing()
+	if event.is_action_pressed("interact") and interact_object:
+		interact_object.interact()
+	
+	if event.is_action_pressed("attack"):
+		arms.swing()
 
-		if event.is_action_released("block"):
-			arms.end_block()
-			
-		if Input.is_key_pressed(KEY_SEMICOLON):
-			debug_mode = !debug_mode
-			if debug_mode:
-				collision_shape_3d.disabled = true
-			else:
-				collision_shape_3d.disabled = false
+	if event.is_action_released("block"):
+		arms.end_block()
+		
+	if Input.is_key_pressed(KEY_SEMICOLON):
+		debug_mode = !debug_mode
+		if debug_mode:
+			collision_shape_3d.disabled = true
+		else:
+			collision_shape_3d.disabled = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,6 +72,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	#arms_pivot.rotation = lerp(arms_pivot.rotation, camera_pivot.rotation, delta * (1 if arms.swinging else 20))
+	
+	try_interact()
 	
 	if Input.is_action_pressed("block"):
 		arms.block()
@@ -136,3 +147,22 @@ func _physics_process(delta: float) -> void:
 
 func bob_calc(time : float) -> float:
 	return BOB_AMP * sin(time * BOB_FREQ)
+
+
+func try_interact():
+	if HUD.in_menu:
+		return
+		
+	var space_state = get_world_3d().direct_space_state
+	# use global coordinates, not local to node
+	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + -camera.global_basis.z * 3, 2, [self])
+	var result = space_state.intersect_ray(query)
+	if result:
+		interact_object = result.collider as Interactable
+		if interact_object:
+			HUD.set_interact_text(interact_object.observe())
+		else:
+			HUD.clear_interact_text()
+	else:
+		interact_object = null
+		HUD.clear_interact_text()

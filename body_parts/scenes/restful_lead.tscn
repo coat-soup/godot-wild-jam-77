@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4xhh4s3ovdlp"]
+
+[ext_resource type="PackedScene" uid="uid://6r3csufkllce" path="res://body_parts/models/RestfulLead.glb" id="1_yt8id"]
+[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_4wboe"]
+[ext_resource type="Texture2D" uid="uid://bhy4cvuilgnwg" path="res://body_parts/textures/restful_lead.png" id="2_rlb4d"]
+[ext_resource type="Texture2D" uid="uid://8bjy6mwytafq" path="res://body_parts/icons/restful_lead.png" id="3_sijfp"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="4_diy88"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e8wc"]
+albedo_texture = ExtResource("2_rlb4d")
+metallic = 1.0
+roughness = 0.67
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u5r4j"]
+radius = 0.180038
+height = 1.19858
+
+[node name="RestfulLead" instance=ExtResource("1_yt8id")]
+script = ExtResource("2_4wboe")
+item_name = "Restful Lead"
+body_slot = 3
+icon = ExtResource("3_sijfp")
+
+[node name="Circle_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="Cylinder" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="Cylinder_001" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="Torus" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="Torus_001" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="Torus_002" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="Torus_003" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0e8wc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_diy88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_u5r4j")

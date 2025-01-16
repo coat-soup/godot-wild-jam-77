@@ -6,7 +6,7 @@ signal room_entered
 
 @export var enemies : Array[EnemySpawns]
 var total_enemies_to_spawn: Array[PackedScene]
-@export var spawn_rate = 1/5
+@export var spawn_rate = 1.0/5.0
 
 var room_completed : bool = false
 var triggered : bool = false

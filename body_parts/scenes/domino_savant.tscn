@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2pmknil6rocd"]
+
+[ext_resource type="PackedScene" uid="uid://ticcwvfk4ef1" path="res://body_parts/models/DominoSavant.glb" id="1_610gn"]
+[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_go0en"]
+[ext_resource type="Texture2D" uid="uid://meh23kyh35i8" path="res://body_parts/textures/domino_savant.png" id="2_h8s4p"]
+[ext_resource type="Texture2D" uid="uid://j4yfbivhk1c3" path="res://body_parts/icons/domino_savant.png" id="3_q4p1c"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="4_x8hv5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8h4cx"]
+albedo_texture = ExtResource("2_h8s4p")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6baan"]
+radius = 0.180038
+height = 1.19858
+
+[node name="DominoSavant" instance=ExtResource("1_610gn")]
+script = ExtResource("2_go0en")
+item_name = "Domino Savant"
+body_slot = 3
+icon = ExtResource("3_q4p1c")
+
+[node name="Circle_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8h4cx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_x8hv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_6baan")

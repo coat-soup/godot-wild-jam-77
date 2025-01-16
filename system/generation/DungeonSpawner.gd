@@ -20,6 +20,7 @@ var spawned_rooms : Array[DungeonRoom]
 var starting_room : DungeonRoom
 
 const FOUNTAIN_ROOM = preload("res://world/dungeonrooms/fountain_room.tscn")
+const STARTING_ROOM = preload("res://world/dungeonrooms/starting_room.tscn")
 
 var generated_map
 
@@ -27,7 +28,7 @@ var generated_map
 func _ready() -> void:
 	generate()
 
-func _input(event: InputEvent):
+func _input(_event: InputEvent):
 	if Input.is_key_pressed(KEY_R):
 		generate()
 
@@ -37,7 +38,7 @@ func generate():
 	set_hallways()
 	
 	player.position = starting_room.position
-	player.position.y += 0.5
+	player.position.y += 2.5
 	
 	navmesh.bake_navigation_mesh()
 	generation_completed.emit()
@@ -48,6 +49,7 @@ func spawn_dungeon():
 			if generated_map[y][x] > 0:
 				var pref
 				match generated_map[y][x]:
+					2: pref = STARTING_ROOM
 					3: pref = FOUNTAIN_ROOM
 					_: pref = room_prefabs.pick_random()
 					
@@ -64,13 +66,13 @@ func spawn_dungeon():
 func set_hallways():
 	for room in spawned_rooms:
 		var up = room.grid_position + Vector2i(0,-1)
-		room.set_sided_connector("Up", generator.is_valid_cell(up, generator.map) and generator.map[up.y][up.x] > 0)
+		room.set_sided_connector("Up", DungeonGeneration.is_valid_cell(up, generator.map) and generator.map[up.y][up.x] > 0)
 		
 		var down = room.grid_position + Vector2i(0,1)
-		room.set_sided_connector("Down", generator.is_valid_cell(down, generator.map) and generator.map[down.y][down.x] > 0)
+		room.set_sided_connector("Down", DungeonGeneration.is_valid_cell(down, generator.map) and generator.map[down.y][down.x] > 0)
 		
 		var left = room.grid_position + Vector2i(-1,0)
-		room.set_sided_connector("Left", generator.is_valid_cell(left, generator.map) and generator.map[left.y][left.x] > 0)
+		room.set_sided_connector("Left", DungeonGeneration.is_valid_cell(left, generator.map) and generator.map[left.y][left.x] > 0)
 		
 		var right = room.grid_position + Vector2i(1,0)
-		room.set_sided_connector("Right", generator.is_valid_cell(right, generator.map) and generator.map[right.y][right.x] > 0)
+		room.set_sided_connector("Right", DungeonGeneration.is_valid_cell(right, generator.map) and generator.map[right.y][right.x] > 0)
