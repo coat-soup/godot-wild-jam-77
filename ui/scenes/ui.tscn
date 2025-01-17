@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5bv25uu2jith"]
+[gd_scene load_steps=16 format=3 uid="uid://c5bv25uu2jith"]
 
 [ext_resource type="Script" path="res://player/PlayerHUD.gd" id="1_uvdbr"]
 [ext_resource type="Texture2D" uid="uid://0wta44t65n7x" path="res://ui/textures/health_bar_background.png" id="2_0ejho"]
@@ -100,6 +100,8 @@ _data = {
 "RESET": SubResource("Animation_wlgi6"),
 "stamina_alert_anim": SubResource("Animation_xmls8")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tykbe"]
 
 [node name="UI" type="Control" groups=["HUD"]]
 layout_mode = 3
@@ -215,6 +217,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Menu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 561.0
 offset_top = 182.0
@@ -253,11 +256,6 @@ offset_right = 94.0
 offset_bottom = 99.0
 expand_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Head"]
-layout_mode = 0
-offset_right = 53.0
-offset_bottom = 53.0
-
 [node name="Lungs" type="Button" parent="Menu/MenuBackground/SlotsBackground"]
 layout_mode = 0
 offset_left = 104.0
@@ -272,10 +270,6 @@ offset_right = 91.0
 offset_bottom = 94.0
 expand_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Lungs"]
-offset_right = 53.0
-offset_bottom = 53.0
-
 [node name="Heart" type="Button" parent="Menu/MenuBackground/SlotsBackground"]
 layout_mode = 0
 offset_left = 104.0
@@ -289,10 +283,6 @@ offset_top = -38.0
 offset_right = 93.0
 offset_bottom = 93.0
 expand_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Heart"]
-offset_right = 53.0
-offset_bottom = 53.0
 
 [node name="Arm1" type="Button" parent="Menu/MenuBackground/SlotsBackground"]
 layout_mode = 0
@@ -309,10 +299,6 @@ offset_bottom = 243.0
 rotation = 3.14159
 expand_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Arm1"]
-offset_right = 34.0
-offset_bottom = 92.0
-
 [node name="Arm2" type="Button" parent="Menu/MenuBackground/SlotsBackground"]
 layout_mode = 0
 offset_left = 194.0
@@ -328,10 +314,6 @@ offset_bottom = 243.0
 rotation = 3.14159
 expand_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Arm2"]
-offset_right = 34.0
-offset_bottom = 92.0
-
 [node name="Leg1" type="Button" parent="Menu/MenuBackground/SlotsBackground"]
 layout_mode = 0
 offset_left = 67.0
@@ -346,10 +328,6 @@ offset_right = 83.0
 offset_bottom = 109.0
 expand_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Leg1"]
-offset_right = 34.0
-offset_bottom = 92.0
-
 [node name="Leg2" type="Button" parent="Menu/MenuBackground/SlotsBackground"]
 layout_mode = 0
 offset_left = 157.0
@@ -363,10 +341,6 @@ offset_top = -22.0
 offset_right = 83.0
 offset_bottom = 109.0
 expand_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground/SlotsBackground/Leg2"]
-offset_right = 34.0
-offset_bottom = 92.0
 
 [node name="MapBackground" type="ColorRect" parent="Menu/MenuBackground"]
 layout_mode = 0
@@ -434,11 +408,13 @@ offset_left = 26.0
 offset_top = 353.0
 offset_right = 180.0
 offset_bottom = 403.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tykbe")
+disabled = true
 
 [node name="Label" type="Label" parent="Menu/MenuBackground/DisplayBackground/SwapButton"]
 offset_right = 154.0
 offset_bottom = 50.0
-text = "SWAP"
+text = "NO SELECTION"
 horizontal_alignment = 1
 vertical_alignment = 1
 

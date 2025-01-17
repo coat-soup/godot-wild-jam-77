@@ -8,13 +8,13 @@ signal died
 
 @onready var parent : Node3D = get_parent()
 
-@export var max_health : int = 100
-var cur_health : int
+@export var max_health : float = 100
+var cur_health : float
 
 func _ready() -> void:
 	cur_health = max_health
 
-func take_damage(amount : int, source : Node3D):
+func take_damage(amount : float, source : Node3D):
 	cur_health -= amount
 	took_damage.emit(amount, source)
 	

@@ -12,7 +12,7 @@ var stamina : Stamina
 @onready var ap: AnimationPlayer = $AnimationPlayer
 @onready var at: AnimationTree = $AnimationTree
 
-@export var damage : int = 30
+@export var damage : float = 30
 @export var attack_speed : float = 1
 
 var blocking : bool = false

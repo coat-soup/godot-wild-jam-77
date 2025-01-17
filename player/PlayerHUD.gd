@@ -104,10 +104,12 @@ func toggle_menu():
 	if in_menu:
 		menu.show()
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		menu.evaluate_swap_button()
 		clear_interact_text()
 	else:
 		menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		menu.picking_part = null
 		menu.clear_display()
 
 

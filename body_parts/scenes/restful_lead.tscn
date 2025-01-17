@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4xhh4s3ovdlp"]
 
 [ext_resource type="PackedScene" uid="uid://6r3csufkllce" path="res://body_parts/models/RestfulLead.glb" id="1_yt8id"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_4wboe"]
+[ext_resource type="Script" path="res://body_parts/scripts/RestfulLead.gd" id="2_hr5pb"]
 [ext_resource type="Texture2D" uid="uid://bhy4cvuilgnwg" path="res://body_parts/textures/restful_lead.png" id="2_rlb4d"]
 [ext_resource type="Texture2D" uid="uid://8bjy6mwytafq" path="res://body_parts/icons/restful_lead.png" id="3_sijfp"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="4_diy88"]
@@ -17,8 +17,12 @@ radius = 0.180038
 height = 1.19858
 
 [node name="RestfulLead" instance=ExtResource("1_yt8id")]
-script = ExtResource("2_4wboe")
+script = ExtResource("2_hr5pb")
+damage_mul = 1.3
+attack_speed_mul = 0.7
 item_name = "Restful Lead"
+item_description = "Damage +
+Attack speed -"
 body_slot = 3
 icon = ExtResource("3_sijfp")
 

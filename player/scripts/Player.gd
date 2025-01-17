@@ -46,7 +46,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and interact_object:
+	if event.is_action_pressed("interact") and interact_object and !HUD.in_menu:
 		interact_object.interact()
 	
 	if event.is_action_pressed("attack"):
@@ -151,6 +151,7 @@ func bob_calc(time : float) -> float:
 
 func try_interact():
 	if HUD.in_menu:
+		interact_object = null
 		return
 		
 	var space_state = get_world_3d().direct_space_state

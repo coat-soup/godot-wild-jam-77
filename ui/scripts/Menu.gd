@@ -27,9 +27,15 @@ func pick_part(part: BodyPart):
 	picking_part = part
 	if !ui.in_menu:
 		ui.toggle_menu()
+	set_display(part)
+
+
+func set_display(part: BodyPart):
 	display_icon.texture = part.icon
 	$MenuBackground/DisplayBackground/TitleText.text = part.item_name
+	$MenuBackground/DisplayBackground/InfoText.text = part.item_description
 	display_valid_slots()
+
 
 func clear_display():
 	selected_slot = -1
@@ -37,36 +43,78 @@ func clear_display():
 	title_text.text = ""
 	info_text.text = ""
 	
+	evaluate_swap_button()
 	display_valid_slots()
 
+
 func slot_pressed(index: int):
-	print("pressed ", index)
 	selected_slot = index
+	evaluate_swap_button()
+
+
+func evaluate_swap_button():
+	if selected_slot >= 0 and picking_part and get_slot_type(selected_slot) != picking_part.body_slot:
+		swap_button.disabled = true
+		swap_button.get_child(0).text = "WRONG SLOT"
+	elif selected_slot >= 0 and equipped_parts[selected_slot] and picking_part:
+		swap_button.disabled = false
+		swap_button.get_child(0).text = "SWAP"
+	elif selected_slot >= 0 and equipped_parts[selected_slot] and !picking_part:
+		swap_button.disabled = false
+		set_display(equipped_parts[selected_slot])
+		swap_button.get_child(0).text = "DROP"
+	elif selected_slot >= 0 and picking_part:
+		swap_button.disabled = false
+		swap_button.get_child(0).text = "EQUIP"
+	else:
+		swap_button.disabled = true
+		swap_button.get_child(0).text = "NO SELECTION"
+		
+
 
 func swap_pressed():
-	var old_part: BodyPart = null
+	# if swapping
 	if picking_part != null and selected_slot >= 0:
+		if get_slot_type(selected_slot) != picking_part.body_slot:
+			ui.show_prompt("This item can only go in a " + BodyPart.BodySlotType.keys()[picking_part.body_slot] + " slot.")
+			return
+		
+		var old_part: BodyPart = null
+		
 		old_part = equipped_parts[selected_slot]
 		drop_part(selected_slot)
 		equip_part(picking_part, selected_slot)
-	picking_part = null
+		
+		picking_part = null
 	
-	if old_part:
-		pick_part(old_part)
-		print("repicking ", old_part)
-	else:
+		if old_part:
+			pick_part(old_part)
+			print("repicking ", old_part)
+		else:
+			clear_display()
+	elif picking_part == null and selected_slot >= 0:
+		drop_part(selected_slot)
 		clear_display()
+
 
 func drop_part(index: int):
 	if equipped_parts[index]:
+		equipped_parts[index].on_drop(ui.player.global_position)
+		equipped_parts[index].global_position = ui.player.global_position
 		get_icon(index).texture = null
 		equipped_parts[index] = null
-	
+
+
 func equip_part(part: BodyPart, index:int):
 	if equipped_parts[index] != null:
 		drop_part(index)
 	get_icon(index).texture = part.icon
 	equipped_parts[index] = part
+	
+	part.global_position = Vector3(0,-100,0)
+	
+	part.on_equip()
+
 
 func get_icon(index: int) -> TextureRect:
 	if index < 0 or index > 6:
@@ -77,15 +125,12 @@ func get_icon(index: int) -> TextureRect:
 
 func display_valid_slots():
 	for i in range(7):
-		var color = Color(randf(), randf(), randf())
-		(slots_holder.get_child(i) as Button).add_theme_stylebox_override("normal", preload("res://ui/style_box_valid_slot.tres"))
-		#return
-		if picking_part:
-			print("slot type ", get_slot_type(i), " part type: ", picking_part.body_slot)
 		if picking_part and get_slot_type(i) == picking_part.body_slot:
-			color = valid_slot_color
-			print("setting color")
-		((slots_holder.get_child(i) as Button).get_theme_stylebox("normal") as StyleBoxFlat).bg_color = color
+			(slots_holder.get_child(i) as Button).add_theme_stylebox_override("normal", preload("res://ui/style_box_valid_slot.tres"))
+			(slots_holder.get_child(i) as Button).add_theme_stylebox_override("hover", preload("res://ui/style_box_valid_slot_hover.tres"))
+		else:
+			(slots_holder.get_child(i) as Button).remove_theme_stylebox_override("normal")
+			(slots_holder.get_child(i) as Button).remove_theme_stylebox_override("hover")
 			
 
 
