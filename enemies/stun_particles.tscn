@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://pldi7k6h0see"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o3qt"]
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ko6k"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 1
+emission_sphere_radius = 2.0
+angular_velocity_min = -35.04
+angular_velocity_max = 146.55
+orbit_velocity_min = 0.4
+orbit_velocity_max = 0.4
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_2e4xh"]
+
+[node name="StunParticles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6o3qt")
+amount = 4
+lifetime = 5.0
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_1ko6k")
+draw_pass_1 = SubResource("QuadMesh_2e4xh")

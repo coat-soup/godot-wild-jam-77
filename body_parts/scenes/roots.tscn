@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce7g12i8qmeek"]
+[gd_scene load_steps=9 format=3 uid="uid://ce7g12i8qmeek"]
 
 [ext_resource type="PackedScene" uid="uid://try471gnhanp" path="res://body_parts/models/Roots.glb" id="1_k1kdn"]
+[ext_resource type="Script" path="res://body_parts/scripts/Roots.gd" id="2_bfjca"]
 [ext_resource type="Texture2D" uid="uid://cpfw7kk75flvs" path="res://body_parts/textures/roots.png" id="2_rb1ip"]
+[ext_resource type="Texture2D" uid="uid://ch8reccqxjolm" path="res://body_parts/icons/roots.png" id="3_0nkad"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_7edk7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7fc3"]
@@ -15,6 +17,13 @@ texture_filter = 0
 radius = 0.262742
 
 [node name="Roots" instance=ExtResource("1_k1kdn")]
+script = ExtResource("2_bfjca")
+stamina_regen_delay_mul = 0.001
+stamina_regen_mul = 0.6
+item_description = "No stamina regen delay
+Stamina regen rate -"
+body_slot = 1
+icon = ExtResource("3_0nkad")
 
 [node name="Cube" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_g55bd")

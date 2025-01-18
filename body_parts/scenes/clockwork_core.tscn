@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c05fubx3cyq61"]
+[gd_scene load_steps=8 format=3 uid="uid://c05fubx3cyq61"]
 
 [ext_resource type="PackedScene" uid="uid://y3cswd6t5mj" path="res://body_parts/models/ClockworkCore.glb" id="1_iibfs"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_0dee7"]
 [ext_resource type="Texture2D" uid="uid://dd6lvh17wrn0q" path="res://body_parts/textures/clockwork_core.png" id="2_22pbu"]
+[ext_resource type="Script" path="res://body_parts/scripts/ClockworkCore.gd" id="2_xwisn"]
+[ext_resource type="Texture2D" uid="uid://jcldb5rh3gpn" path="res://body_parts/icons/clockwork_core.png" id="3_7dnqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a75bs"]
 albedo_texture = ExtResource("2_22pbu")
@@ -13,6 +15,16 @@ texture_filter = 0
 radius = 0.328171
 
 [node name="ClockworkCore" instance=ExtResource("1_iibfs")]
+script = ExtResource("2_xwisn")
+fountain_health_mul = 0.6
+health_regen_speed = 2.0
+health_threshhold = 0.25
+damage_delay = 2.0
+item_name = "Clockwork Core"
+item_description = "Regen health when below 25%
+Less health from fountains"
+body_slot = 2
+icon = ExtResource("3_7dnqc")
 
 [node name="Circle" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_a75bs")

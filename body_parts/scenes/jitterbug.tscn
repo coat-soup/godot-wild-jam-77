@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvsupn0ebouo5"]
+[gd_scene load_steps=8 format=3 uid="uid://cvsupn0ebouo5"]
 
 [ext_resource type="PackedScene" uid="uid://mm50sts6t0o0" path="res://body_parts/models/Jitterbug.glb" id="1_pj40k"]
+[ext_resource type="Script" path="res://body_parts/scripts/Jitterbug.gd" id="2_lah4s"]
 [ext_resource type="Texture2D" uid="uid://c4w2nwq4kf4h0" path="res://body_parts/textures/jitterbug.png" id="2_xv08g"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_xvh8h"]
+[ext_resource type="Texture2D" uid="uid://bogn5f8cptamg" path="res://body_parts/icons/jitterbug.png" id="3_xdp6u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goxqt"]
 albedo_texture = ExtResource("2_xv08g")
@@ -13,6 +15,16 @@ radius = 0.180038
 height = 1.16382
 
 [node name="Jitterbug" instance=ExtResource("1_pj40k")]
+script = ExtResource("2_lah4s")
+dash_distance_mul = 0.5
+dash_cooldown_mul = 0.5
+dash_stamina_mul = 0.7
+item_name = "Jitterbug"
+item_description = "Dash cooldown -
+Dash stamina -
+Dash distance --"
+body_slot = 4
+icon = ExtResource("3_xdp6u")
 
 [node name="Cube_006" parent="." index="0"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)

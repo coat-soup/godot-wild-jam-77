@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1q55nt0nxsjm"]
+[gd_scene load_steps=8 format=3 uid="uid://d1q55nt0nxsjm"]
 
 [ext_resource type="PackedScene" uid="uid://bi74x4ovuxxhj" path="res://body_parts/models/PointGuard.glb" id="1_0qq2a"]
 [ext_resource type="Texture2D" uid="uid://bx73yuh38asn4" path="res://body_parts/textures/point_guard.png" id="2_88lbg"]
+[ext_resource type="Script" path="res://body_parts/scripts/PointGuard.gd" id="2_aw4dm"]
+[ext_resource type="Texture2D" uid="uid://cx0ksxi1mjxbq" path="res://body_parts/icons/point_guard.png" id="3_1tgnt"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_ev5bh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrnef"]
@@ -14,6 +16,13 @@ texture_filter = 0
 radius = 0.365166
 
 [node name="PointGuard" instance=ExtResource("1_0qq2a")]
+script = ExtResource("2_aw4dm")
+block_angle_mul = 0.7
+block_hold_stamina_mul = 0.001
+item_name = "Point Guard"
+item_description = "No stamina cost for holding block
+Block angle --"
+icon = ExtResource("3_1tgnt")
 
 [node name="Cube_001" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_lrnef")

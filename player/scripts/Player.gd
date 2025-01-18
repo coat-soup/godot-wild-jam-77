@@ -3,11 +3,13 @@ extends CharacterBody3D
 class_name Player
 
 signal dash
+signal killed_enemy
 
 @onready var arms: Node3D = $CameraPivot/ArmsPivot/FirstPersonArms
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera
 @onready var stamina: Stamina = $Stamina
+@onready var health: PlayerHealth = $Health
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
@@ -167,3 +169,6 @@ func try_interact():
 	else:
 		interact_object = null
 		HUD.clear_interact_text()
+
+func on_enemy_died():
+	killed_enemy.emit()

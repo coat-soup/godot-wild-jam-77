@@ -5,6 +5,7 @@ class_name Arms
 signal sword_hit
 signal sword_bounce
 signal swing_sword
+signal on_attempt_block
 
 @onready var weapon_hitbox: Area3D = $Armature/Skeleton3D/SwordHilt/WeaponHitbox
 var stamina : Stamina
@@ -66,6 +67,7 @@ func set_attack_speed(speed: float, rel: bool = false):
 
 
 func block():
+	on_attempt_block.emit()
 	if !swinging:
 		if stamina.cur_stamina <= 0:
 			stamina.alert_anim()
@@ -76,10 +78,12 @@ func block():
 
 
 func end_block():
-	blocking = false
-	can_swing = true
-	idle = true
-	swinging = false
+	if blocking:
+		blocking = false
+		if timer < 0:
+			can_swing = true
+		idle = true
+		swinging = false
 
 
 func bounce_sword():
@@ -107,7 +111,7 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 			var health = HierarchyUtil.get_child_of_type(body, Health) as Health
 			if health:
 				health.take_damage(damage, self)
-				sword_hit.emit()
+				sword_hit.emit(health)
 			else:
 				if bounce_timer > 0:
 					bounce_sword()

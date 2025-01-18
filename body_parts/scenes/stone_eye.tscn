@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx7vaca16eic2"]
+[gd_scene load_steps=8 format=3 uid="uid://bx7vaca16eic2"]
 
 [ext_resource type="PackedScene" uid="uid://b835oq217ku4n" path="res://body_parts/models/StoneEye.glb" id="1_yyfg4"]
+[ext_resource type="Script" path="res://body_parts/scripts/StoneEye.gd" id="2_om2u7"]
 [ext_resource type="Texture2D" uid="uid://o4hap6uxvths" path="res://body_parts/textures/stone_eye.png" id="2_ovo61"]
+[ext_resource type="Texture2D" uid="uid://dssw0ule5bmta" path="res://body_parts/icons/stone_eye.png" id="3_ndd8h"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_q2k20"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxn23"]
@@ -12,6 +14,13 @@ texture_filter = 0
 radius = 0.365166
 
 [node name="StoneEye" instance=ExtResource("1_yyfg4")]
+script = ExtResource("2_om2u7")
+block_angle_mul = 2.0
+block_hold_stamina_mul = 1.3
+item_name = "Stone Eye"
+item_description = "Block angle +
+Block hold stamina +"
+icon = ExtResource("3_ndd8h")
 
 [node name="Sphere" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_nxn23")

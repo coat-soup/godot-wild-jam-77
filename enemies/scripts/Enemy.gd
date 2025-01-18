@@ -3,12 +3,13 @@ extends CharacterBody3D
 class_name Enemy
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+const STUN_PARTICLES = preload("res://enemies/stun_particles.tscn")
 
 @export var speed: float = 3.0
 @export var turn_rate: float = 2.0
 @export var damage: int = 20
 
-@export var attack_windup_time: float = 0.7
+@export var attack_windup_time: float = 0.4
 
 @onready var player: Node3D
 
@@ -18,7 +19,7 @@ var anim_tree : AnimationTree
 
 var attack_trigger: bool = false
 
-enum EnemyState {idle, walking, attacking, nothing_lol = -1, }
+enum EnemyState {idle, walking, attacking, stunned, nothing_lol = -1, }
 var state : EnemyState = EnemyState.idle
 
 
@@ -38,6 +39,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	if not player:
 		push_error("Enemy could not find player")
+	($Health as Health).died.connect(player.on_enemy_died)
 
 
 func set_target(pos: Vector3):
@@ -97,3 +99,16 @@ func change_state_delay(new_state, delay_time: float, intermediate_null: bool = 
 		state = EnemyState.nothing_lol
 	await get_tree().create_timer(delay_time).timeout
 	state = new_state
+
+
+func stun(duration: float, zero_velocity = true):
+	print("stunning enemy")
+	var particles = STUN_PARTICLES.instantiate()
+	add_child(particles)
+	particles.position = Vector3(0, 2, 0)
+	if zero_velocity:
+		nav_agent.velocity = Vector3.ZERO
+	state = EnemyState.stunned
+	await change_state_delay(EnemyState.idle, duration, false)
+	remove_child(particles)
+	particles.queue_free()

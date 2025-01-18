@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4uy5aqhcrki3"]
+[gd_scene load_steps=8 format=3 uid="uid://b4uy5aqhcrki3"]
 
 [ext_resource type="PackedScene" uid="uid://ca65owr7jx24m" path="res://body_parts/models/VampireHeart.glb" id="1_febcf"]
+[ext_resource type="Script" path="res://body_parts/scripts/VampireHeart.gd" id="2_56uaj"]
 [ext_resource type="Texture2D" uid="uid://cnue8hkt30w1c" path="res://body_parts/textures/vampire_heart.png" id="2_axeke"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_t42ih"]
+[ext_resource type="Texture2D" uid="uid://h2u5cjrpagxl" path="res://body_parts/icons/vampire_heart.png" id="3_5utsb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg8gb"]
 albedo_texture = ExtResource("2_axeke")
@@ -12,6 +14,14 @@ texture_filter = 0
 radius = 0.457754
 
 [node name="VampireHeart" instance=ExtResource("1_febcf")]
+script = ExtResource("2_56uaj")
+health_mul = 0.9
+health_percent_on_kill = 0.05
+item_name = "Vampire Heart"
+item_description = "Health on kill
+Max health -"
+body_slot = 2
+icon = ExtResource("3_5utsb")
 
 [node name="Sphere" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qg8gb")

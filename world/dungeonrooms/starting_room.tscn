@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bepo7bs2w31mr"]
+[gd_scene load_steps=26 format=3 uid="uid://bepo7bs2w31mr"]
 
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_q4org"]
 [ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_eepon"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dqxipd1jhnjjw" path="res://body_parts/scenes/sprinter.tscn" id="22_5ts1q"]
 [ext_resource type="PackedScene" uid="uid://dyob4w8du2qc0" path="res://body_parts/scenes/goat_leg.tscn" id="23_i2s1k"]
 [ext_resource type="PackedScene" uid="uid://b2tgmo4b88cso" path="res://body_parts/scenes/loaded_shot.tscn" id="24_86r2m"]
+[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/debug_testing/target_dummy.tscn" id="25_6alfm"]
 
 [node name="BaseDungeonScene" instance=ExtResource("1_q4org")]
 enemies = Array[ExtResource("2_eepon")]([])
@@ -120,3 +121,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.508975, 1.5, 2.69698)
 
 [node name="LoadedShot" parent="." index="32" instance=ExtResource("24_86r2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197096, 1.5, 2.74118)
+
+[node name="TargetDummy" parent="." index="33" instance=ExtResource("25_6alfm")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.6253, -4.76837e-07, -4.7866)
+
+[node name="TargetDummy2" parent="." index="34" instance=ExtResource("25_6alfm")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.53904, -4.76837e-07, -5.87286)
+
+[node name="TargetDummy3" parent="." index="35" instance=ExtResource("25_6alfm")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.54106, -4.76837e-07, -6.87084)
+
+[node name="TargetDummy4" parent="." index="36" instance=ExtResource("25_6alfm")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.46218, -4.76837e-07, -7.94972)

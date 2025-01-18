@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c0leca5tvjl4c" path="res://body_parts/models/CopperBoiler.glb" id="1_tgyo6"]
 [ext_resource type="Texture2D" uid="uid://48idnncm672m" path="res://body_parts/textures/copper_boiler.png" id="2_cc57p"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_dgdj4"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_i1u3o"]
+[ext_resource type="Script" path="res://body_parts/scripts/CopperBoiler.gd" id="2_ygle1"]
 [ext_resource type="Texture2D" uid="uid://cgpgb41jvphud" path="res://body_parts/icons/copper_boiler.png" id="3_8w14v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7jlb"]
@@ -15,8 +15,12 @@ height = 0.774475
 radius = 0.389753
 
 [node name="CopperBoiler" instance=ExtResource("1_tgyo6")]
-script = ExtResource("2_dgdj4")
+script = ExtResource("2_ygle1")
+stamina_regen_mul = 1.5
+stamina_deplete_delay_mul = 2.0
 item_name = "Copper Boiler"
+item_description = "Stamina regen +
+Stamina regen delay on depletion +"
 body_slot = 1
 icon = ExtResource("3_8w14v")
 

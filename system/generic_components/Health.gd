@@ -15,6 +15,7 @@ func _ready() -> void:
 	cur_health = max_health
 
 func take_damage(amount : float, source : Node3D):
+	#print(name, " taking ", amount, " damage")
 	cur_health -= amount
 	took_damage.emit(amount, source)
 	

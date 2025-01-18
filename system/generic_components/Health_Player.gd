@@ -5,12 +5,16 @@ class_name PlayerHealth
 @onready var arms: Arms = $"../CameraPivot/ArmsPivot/FirstPersonArms"
 @onready var camera: CameraShake = $"../CameraPivot/Camera"
 
+@export var fountain_health := 70.0
+
+var block_angle := 45.0
+
 signal successful_block
 
 func take_damage(amount : float, source : Node3D):
 	if arms.blocking:
 		print("ANGLE: ", rad_to_deg((-arms.global_basis.z).angle_to(source.global_position - arms.global_position)))
-		if rad_to_deg((-arms.global_basis.z).angle_to(source.global_position - arms.global_position)) < 45:
+		if rad_to_deg((-arms.global_basis.z).angle_to(source.global_position - arms.global_position)) < block_angle:
 			successful_block.emit(amount)
 			camera.shake(5)
 			return

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwjevovd7nf7e"]
 
 [ext_resource type="PackedScene" uid="uid://cpkrpebrdlq7o" path="res://body_parts/models/SwordArm.glb" id="1_fcvyj"]
+[ext_resource type="Script" path="res://body_parts/scripts/SwordArm.gd" id="2_5cgvc"]
 [ext_resource type="Texture2D" uid="uid://cj3x73gcip38l" path="res://body_parts/textures/sword_arm.png" id="2_bbom5"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_c4i5h"]
 [ext_resource type="Texture2D" uid="uid://cmlruxxwyn8q7" path="res://body_parts/icons/sword_arm.png" id="3_fb2w3"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_ivhih"]
 
@@ -15,8 +15,12 @@ radius = 0.180038
 height = 1.54173
 
 [node name="SwordArm" instance=ExtResource("1_fcvyj")]
-script = ExtResource("2_c4i5h")
+script = ExtResource("2_5cgvc")
+damage_mul = 2.0
+attack_stamina_mul = 2.0
 item_name = "Not Like Other Girls"
+item_description = "Attack damage +
+Attack stamina +"
 body_slot = 3
 icon = ExtResource("3_fb2w3")
 

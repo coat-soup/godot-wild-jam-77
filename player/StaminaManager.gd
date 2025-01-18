@@ -18,6 +18,7 @@ var cur_stamina : float
 @export var block_stamina : float = 7
 @export var dash_stamina : float = 25
 @export var jump_stamina : float = 15
+@export var block_damage_stamina_mul : float = 0.5
 
 @export var recharge_delay : float = 1
 @export var depleted_recharge_delay: float = 3
@@ -34,7 +35,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if recharge_delay_timer <= 0 and cur_stamina < max_stamina:
-		cur_stamina += recharge_rate * delta
+		add_stamina(recharge_rate * delta)
 		stamina_changed.emit()
 	elif recharge_delay_timer > 0:
 		recharge_delay_timer -= delta
@@ -65,6 +66,9 @@ func drain_stamina(amount: float):
 		cur_stamina = 0
 		stamina_depleted.emit()
 		alert_depleted.emit()
+
+func add_stamina(amount: float):
+	cur_stamina = min(cur_stamina + amount, max_stamina)
 
 func alert_anim():
 	alert_depleted.emit()

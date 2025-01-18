@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqxipd1jhnjjw"]
+[gd_scene load_steps=8 format=3 uid="uid://dqxipd1jhnjjw"]
 
 [ext_resource type="PackedScene" uid="uid://dnko6uecog8mf" path="res://body_parts/models/Sprinter.glb" id="1_q1nef"]
+[ext_resource type="Script" path="res://body_parts/scripts/Sprinter.gd" id="2_2shlg"]
 [ext_resource type="Texture2D" uid="uid://dgbvlilefrkws" path="res://body_parts/textures/sprinter.png" id="2_nvres"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_2ceqh"]
+[ext_resource type="Texture2D" uid="uid://p6wjkgvo2ng3" path="res://body_parts/icons/sprinter.png" id="3_f5olf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8scqd"]
 albedo_texture = ExtResource("2_nvres")
@@ -13,6 +15,15 @@ radius = 0.187615
 height = 1.18265
 
 [node name="Sprinter" instance=ExtResource("1_q1nef")]
+script = ExtResource("2_2shlg")
+speed_burst_mul = 1.5
+duration = 2.0
+dash_distance_mul = 0.7
+item_name = "Sprinter"
+item_description = "Short move speed increase after dashing
+Dash distance --"
+body_slot = 4
+icon = ExtResource("3_f5olf")
 
 [node name="Cylinder" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_8scqd")

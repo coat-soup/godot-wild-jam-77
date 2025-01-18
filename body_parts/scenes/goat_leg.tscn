@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyob4w8du2qc0"]
+[gd_scene load_steps=8 format=3 uid="uid://dyob4w8du2qc0"]
 
 [ext_resource type="PackedScene" uid="uid://bmt11teyl8ln" path="res://body_parts/models/GoatLeg.glb" id="1_micga"]
+[ext_resource type="Script" path="res://body_parts/scripts/GoatLeg.gd" id="2_b7xmb"]
 [ext_resource type="Texture2D" uid="uid://n6gyfi8il1nb" path="res://body_parts/textures/goat_leg.png" id="2_rp14i"]
+[ext_resource type="Texture2D" uid="uid://c7d7ah5wjk2ju" path="res://body_parts/icons/goat_leg.png" id="3_dmv2v"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_syi3o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmxxr"]
@@ -13,6 +15,16 @@ radius = 0.187615
 height = 1.18265
 
 [node name="GoatLeg" instance=ExtResource("1_micga")]
+script = ExtResource("2_b7xmb")
+dash_distance_mul = 2.0
+dash_cooldown_mul = 1.5
+dash_stamina_mul = 1.3
+item_name = "Goat Leg"
+item_description = "Dash distance ++
+Dash cooldown +
+Dash stamina +"
+body_slot = 4
+icon = ExtResource("3_dmv2v")
 
 [node name="Cube_002" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_cmxxr")

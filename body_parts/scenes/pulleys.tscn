@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://etx0o7i3guhy"]
+[gd_scene load_steps=8 format=3 uid="uid://etx0o7i3guhy"]
 
 [ext_resource type="PackedScene" uid="uid://ccfclieddo0b5" path="res://body_parts/models/Pulleys.glb" id="1_htfco"]
+[ext_resource type="Script" path="res://body_parts/scripts/Pulleys.gd" id="2_1nmdl"]
 [ext_resource type="Texture2D" uid="uid://cpa4pnsqxxafr" path="res://body_parts/textures/pulleys.png" id="2_4bvb7"]
+[ext_resource type="Texture2D" uid="uid://bme548egdant1" path="res://body_parts/icons/pulleys.png" id="3_7so1p"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_imn8u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j02hh"]
@@ -13,6 +15,14 @@ radius = 0.180038
 height = 1.19858
 
 [node name="Pulleys" instance=ExtResource("1_htfco")]
+script = ExtResource("2_1nmdl")
+attack_speed_mul = 1.3
+damage_mul = 0.7
+item_name = "Pulleys"
+item_description = "Attack speed +
+Attack damage -"
+body_slot = 3
+icon = ExtResource("3_7so1p")
 
 [node name="Circle_002" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")

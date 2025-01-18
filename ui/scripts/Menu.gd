@@ -137,8 +137,8 @@ func display_valid_slots():
 static func get_slot_type(index: int):
 	match index:
 		0: return BodyPart.BodySlotType.FACE
-		1: return BodyPart.BodySlotType.HEART
-		2: return BodyPart.BodySlotType.LUNGS
+		1: return BodyPart.BodySlotType.LUNGS
+		2: return BodyPart.BodySlotType.HEART
 		3,4: return BodyPart.BodySlotType.ARM
 		5,6: return BodyPart.BodySlotType.LEG
 		_: return -1

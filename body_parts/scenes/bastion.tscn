@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://myup6v46f6x1"]
 
 [ext_resource type="PackedScene" uid="uid://gsecr5tgumg8" path="res://body_parts/models/Bastion.glb" id="1_3qmkb"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_3tc5h"]
 [ext_resource type="Texture2D" uid="uid://dx56b3e0cxp5v" path="res://body_parts/textures/bastion.png" id="2_1870g"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_t8g47"]
+[ext_resource type="Script" path="res://body_parts/scripts/Bastion.gd" id="2_ya3vt"]
 [ext_resource type="Texture2D" uid="uid://sfaetrkdh0mj" path="res://body_parts/icons/bastion.png" id="3_ebfkr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut8g4"]
@@ -15,8 +15,12 @@ texture_filter = 0
 radius = 0.328171
 
 [node name="Bastion" instance=ExtResource("1_3qmkb")]
-script = ExtResource("2_3tc5h")
+script = ExtResource("2_ya3vt")
+health_mul = 1.5
+damage_mul = 0.7
 item_name = "Bastion"
+item_description = "Max health +
+Damage -"
 body_slot = 2
 icon = ExtResource("3_ebfkr")
 

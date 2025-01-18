@@ -61,7 +61,7 @@ func _on_health_successful_block(_damage) -> void:
 	sword_clangs.play()
 
 
-func _on_first_person_arms_sword_hit() -> void:
+func _on_first_person_arms_sword_hit(_enemy) -> void:
 	sword_clangs.pitch_scale = randf_range(.8, 1.2)
 	sword_clangs.stream = sword_hit_sound
 	sword_clangs.play()

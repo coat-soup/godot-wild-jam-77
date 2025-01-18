@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://djuyk1ebo43up"]
+[gd_scene load_steps=8 format=3 uid="uid://djuyk1ebo43up"]
 
 [ext_resource type="PackedScene" uid="uid://dwg283404f3jm" path="res://body_parts/models/Frenzy.glb" id="1_344my"]
+[ext_resource type="Script" path="res://body_parts/scripts/Frenzy.gd" id="2_jr50i"]
 [ext_resource type="Texture2D" uid="uid://dhrq8odb77g4h" path="res://body_parts/textures/frenzy.png" id="2_qvpei"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_c36jo"]
+[ext_resource type="Texture2D" uid="uid://dbhejiu2d0v2x" path="res://body_parts/icons/frenzy.png" id="3_loie0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2q1x"]
 albedo_texture = ExtResource("2_qvpei")
@@ -13,6 +15,15 @@ radius = 0.180038
 height = 1.19858
 
 [node name="Frenzy" instance=ExtResource("1_344my")]
+script = ExtResource("2_jr50i")
+attack_speed_mul = 2.0
+duration = 3.0
+health_threshhold = 0.25
+item_name = "Frenzy"
+item_description = "Attack speed boost when dropping below 25% health
+Idk man being at 25% is pretty bad"
+body_slot = 3
+icon = ExtResource("3_loie0")
 
 [node name="Circle_006" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_x2q1x")

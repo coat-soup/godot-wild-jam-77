@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2pmknil6rocd"]
 
 [ext_resource type="PackedScene" uid="uid://ticcwvfk4ef1" path="res://body_parts/models/DominoSavant.glb" id="1_610gn"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_go0en"]
+[ext_resource type="Script" path="res://body_parts/scripts/DominoSavant.gd" id="2_h6bju"]
 [ext_resource type="Texture2D" uid="uid://meh23kyh35i8" path="res://body_parts/textures/domino_savant.png" id="2_h8s4p"]
 [ext_resource type="Texture2D" uid="uid://j4yfbivhk1c3" path="res://body_parts/icons/domino_savant.png" id="3_q4p1c"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="4_x8hv5"]
@@ -15,8 +15,12 @@ radius = 0.180038
 height = 1.19858
 
 [node name="DominoSavant" instance=ExtResource("1_610gn")]
-script = ExtResource("2_go0en")
+script = ExtResource("2_h6bju")
+damage_mul = 1.3
+attack_speed_mul = 0.8
 item_name = "Domino Savant"
+item_description = "Deal more damage for every extra enemy you hit in 1 swing
+Attack speed -"
 body_slot = 3
 icon = ExtResource("3_q4p1c")
 

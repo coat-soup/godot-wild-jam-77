@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://del6tfpteexcw"]
 
 [ext_resource type="PackedScene" uid="uid://cbe6e3tjx2ia4" path="res://body_parts/models/EarMass.glb" id="1_clgjg"]
+[ext_resource type="Script" path="res://body_parts/scripts/EarMass.gd" id="2_hw20k"]
 [ext_resource type="Texture2D" uid="uid://cg6b2tq5gs3wu" path="res://body_parts/textures/ear_mass.png" id="2_pygkr"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_xltms"]
 [ext_resource type="Texture2D" uid="uid://c5vag4ysn58d1" path="res://body_parts/icons/ear_mass.png" id="3_pceox"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_x8004"]
 
@@ -14,8 +14,11 @@ texture_filter = 0
 radius = 0.365166
 
 [node name="EarMass" instance=ExtResource("1_clgjg")]
-script = ExtResource("2_xltms")
+script = ExtResource("2_hw20k")
+block_hold_stamina_mul = 1.3
 item_name = "Mass of Ears"
+item_description = "Blocking can interrupt a swing
+Block hold stamina +"
 icon = ExtResource("3_pceox")
 
 [node name="Cube" parent="." index="0"]

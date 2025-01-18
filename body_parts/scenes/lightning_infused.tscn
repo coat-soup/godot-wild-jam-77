@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://2tlba11ys56a"]
 
 [ext_resource type="PackedScene" uid="uid://bfh1d275vyhdj" path="res://body_parts/models/LightningInfused.glb" id="1_y3kj2"]
+[ext_resource type="Script" path="res://body_parts/scripts/LightningInfused.gd" id="2_0wqn0"]
 [ext_resource type="Texture2D" uid="uid://b3e52qe6a5g76" path="res://body_parts/textures/lightning_infused.png" id="2_cdu44"]
 [ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_n53jc"]
-[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_ped1i"]
 [ext_resource type="Texture2D" uid="uid://bn2prnfd1rkb5" path="res://body_parts/icons/lightning_infused.png" id="3_dwda8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atj2p"]
@@ -15,8 +15,12 @@ radius = 0.180038
 height = 1.19858
 
 [node name="LightningInfused" instance=ExtResource("1_y3kj2")]
-script = ExtResource("2_ped1i")
+script = ExtResource("2_0wqn0")
+stun_chance = 0.2
+stun_duration = 1.0
 item_name = "Lightning Catcher"
+item_description = "Chance to stun enemies on hit
+Stun time -"
 body_slot = 3
 icon = ExtResource("3_dwda8")
 
