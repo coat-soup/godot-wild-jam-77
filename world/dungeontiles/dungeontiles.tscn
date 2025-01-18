@@ -1,5 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2ojdgknsingr"]
+[gd_scene load_steps=5 format=3 uid="uid://d2ojdgknsingr"]
 
 [ext_resource type="PackedScene" uid="uid://bbnnrnbleqwth" path="res://world/dungeontiles/models/dungeontiles.glb" id="1_ny463"]
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ggvb1"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 2, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 2, 0.5, -0.5, 2, 0.5, 0.5, 2, 0.5, -0.5, 3, 0.5, -0.5, 2, 0.5, 0.5, 2, 0.5, 0.5, 3, 0.5, -0.5, 3, 0.5)
+backface_collision = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80vvc"]
+size = Vector3(1, 0.501953, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0ntke"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 2, -0.5, -0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, 2, 0.5, -0.5, 2, -0.5, 0.5, 2, 0.5, -0.5, 3, -0.5, -0.5, 2, -0.5, 0.5, 2, 0.5, 0.5, 3, 0.5, -0.5, 3, -0.5)
+backface_collision = true
+
 [node name="dungeontiles" instance=ExtResource("1_ny463")]
+
+[node name="CollisionShape3D" parent="wall-tall/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_ggvb1")
+
+[node name="CollisionShape3D" parent="floor-half/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249023, 0)
+shape = SubResource("BoxShape3D_80vvc")
+
+[node name="CollisionShape3D" parent="wall-diagonal-tall/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_0ntke")

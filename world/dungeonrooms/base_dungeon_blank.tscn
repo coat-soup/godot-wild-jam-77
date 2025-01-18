@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjq5xrktr0wdn"]
+[gd_scene load_steps=3 format=3 uid="uid://cactl0re1ifvt"]
 
-[ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_jrsnj"]
-[ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_don7c"]
+[ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_77pxk"]
+[ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_rncte"]
 
-[node name="BaseDungeonScene" instance=ExtResource("1_jrsnj")]
-enemies = Array[ExtResource("2_don7c")]([])
+[node name="BaseDungeonScene" instance=ExtResource("1_77pxk")]
+enemies = Array[ExtResource("2_rncte")]([])
 
 [node name="TileMap" parent="." index="0"]
 data = {

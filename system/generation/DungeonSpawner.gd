@@ -21,6 +21,7 @@ var starting_room : DungeonRoom
 
 const FOUNTAIN_ROOM = preload("res://world/dungeonrooms/fountain_room.tscn")
 const STARTING_ROOM = preload("res://world/dungeonrooms/starting_room.tscn")
+const UPGRADE_ROOMS = [preload("res://world/dungeonrooms/upgrade_room_01.tscn"), preload("res://world/dungeonrooms/upgrade_room_02.tscn")]
 
 var generated_map
 
@@ -51,6 +52,7 @@ func spawn_dungeon():
 				match generated_map[y][x]:
 					2: pref = STARTING_ROOM
 					3: pref = FOUNTAIN_ROOM
+					4: pref = UPGRADE_ROOMS.pick_random()
 					_: pref = room_prefabs.pick_random()
 					
 				var room : DungeonRoom = pref.instantiate() as DungeonRoom

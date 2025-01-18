@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://pex0l20kjqke"]
+
+[ext_resource type="PackedScene" uid="uid://bxcufygn2rur5" path="res://world/props/models/pedestal.glb" id="1_q0bdo"]
+[ext_resource type="Script" path="res://world/props/BodyPartSpawner.gd" id="2_psv2e"]
+[ext_resource type="Texture2D" uid="uid://bbp186kgawsi5" path="res://world/props/textures/pedestal.png" id="2_tja7c"]
+[ext_resource type="Texture2D" uid="uid://dq8oxobuyinlp" path="res://world/props/textures/pedestal_n.png" id="3_5xtat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5x3w"]
+albedo_texture = ExtResource("2_tja7c")
+normal_enabled = true
+normal_texture = ExtResource("3_5xtat")
+texture_filter = 0
+
+[node name="pedestal" instance=ExtResource("1_q0bdo")]
+script = ExtResource("2_psv2e")
+
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j5x3w")
+
+[node name="SpawnPoint" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20344, 0)

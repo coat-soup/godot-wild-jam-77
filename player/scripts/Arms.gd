@@ -24,7 +24,7 @@ var idle : bool = true
 
 var timer : float = 0
 var bounce_timer : float = 0
-var bounce_time : float = 10
+var bounce_delay : float = 0.4
 
 var combo_interval = 1
 var combo_window = 0.75
@@ -57,7 +57,7 @@ func swing():
 			_on_weapon_hitbox_body_entered(body)
 		
 		# bounce timer
-		bounce_timer = bounce_time
+		bounce_timer = bounce_delay
 		to_damage.clear()
 
 
@@ -113,7 +113,7 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 				health.take_damage(damage, self)
 				sword_hit.emit(health)
 			else:
-				if bounce_timer > 0:
+				if bounce_timer <= 0:
 					bounce_sword()
 					return
 

@@ -3,12 +3,14 @@ extends Node3D
 class_name DungeonRoom
 
 signal room_entered
+signal room_completed
 
 @export var enemies : Array[EnemySpawns]
 var total_enemies_to_spawn: Array[PackedScene]
-@export var spawn_rate = 1.0/5.0
+@export var spawn_interval = 2
+var enemies_to_kill : int
 
-var room_completed : bool = false
+var completed : bool = false
 var triggered : bool = false
 
 var grid_position : Vector2i
@@ -31,6 +33,7 @@ func _ready():
 	for enemy in enemies:
 		for i in enemy.num_spawns:
 			total_enemies_to_spawn.append(enemy.enemy)
+			enemies_to_kill += 1
 	total_enemies_to_spawn.shuffle()
 
 
@@ -61,15 +64,17 @@ func trigger_gates(body: Node3D):
 				gate.get_node("GateAudio").play()
 		spawn_enemy()
 		gate_pos = gate_position.x
+		await get_tree().create_timer(0.2).timeout
+		(body.get_node("CameraPivot/Camera") as CameraShake).shake()
 
 
 func _physics_process(delta: float) -> void:
-	if !room_completed and triggered and gate_pos > gate_position.y:
+	if !completed and triggered and gate_pos > gate_position.y:
 		gate_pos = max(gate_pos - delta * 10, gate_position.y)
 		for gate in gate_triggers:
 			if gate.is_inside_tree():
 				gate.position.y = gate_pos
-	elif room_completed and gate_pos < gate_position.x:
+	elif completed and gate_pos < gate_position.x:
 		gate_pos = min(gate_pos + delta * 1, gate_position.x)
 		for gate in gate_triggers:
 			if gate.is_inside_tree():
@@ -84,16 +89,18 @@ func spawn_enemy():
 	total_enemies_to_spawn.remove_at(0)
 	
 	if total_enemies_to_spawn.size() > 0:
-		await get_tree().create_timer(spawn_rate).timeout
+		await get_tree().create_timer(spawn_interval).timeout
 		spawn_enemy()
 
 
 func on_enemy_died():
-	if total_enemies_to_spawn.size() == 0:
+	enemies_to_kill -= 1
+	if enemies_to_kill == 0:
 		await get_tree().create_timer(1).timeout
-		room_completed = true
+		completed = true
+		room_completed.emit()
 		
-	for gate in gate_triggers:
-		if gate.is_inside_tree():
-			gate.get_node("GateAudio").stream = preload("res://sfx/props/iron_gates_retract.wav")
-			gate.get_node("GateAudio").play()
+		for gate in gate_triggers:
+			if gate.is_inside_tree():
+				gate.get_node("GateAudio").stream = preload("res://sfx/props/iron_gates_retract.wav")
+				gate.get_node("GateAudio").play()

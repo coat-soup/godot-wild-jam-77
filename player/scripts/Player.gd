@@ -152,6 +152,9 @@ func bob_calc(time : float) -> float:
 
 
 func try_interact():
+	if not HUD:
+		return # so it doesn't crash on testing
+	
 	if HUD.in_menu:
 		interact_object = null
 		return
