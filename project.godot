@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="dungeon crawler thing"
+config/name="Dungeons of Avarice"
 config/description="Godot Wild Jam 77 entry by Kye Electriciteh (Coat Soup)"
-config/version="0.2.2t"
+config/version="0.3.0t"
 run/main_scene="res://levels/resolution_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=4
 window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"

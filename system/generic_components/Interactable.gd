@@ -4,11 +4,19 @@ class_name Interactable
 
 signal interacted
 
+var active := true
+
+var tooltip := true
+
 @export var observe_message : String
 
 func interact():
-	interacted.emit()
-	print("INTERACTING")
+	if active:
+		interacted.emit()
+		print("INTERACTING")
 
 func observe() -> String:
-	return observe_message
+	if active:
+		return observe_message
+	else:
+		return ""

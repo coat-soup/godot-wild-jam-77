@@ -20,6 +20,14 @@ func _ready():
 
 
 func on_world_generated():
+	for tile in tile_holder.get_children():
+		tile_holder.remove_child(tile)
+		tile.queue_free()
+	for tile in map_tile_holder.get_children():
+		map_tile_holder.remove_child(tile)
+		tile.queue_free()
+	tile_dict = {}
+	
 	draw_map(dungeon_generator.map, tile_holder)
 	draw_map(dungeon_generator.map, map_tile_holder)
 	for room in dungeon_spawner.spawned_rooms:

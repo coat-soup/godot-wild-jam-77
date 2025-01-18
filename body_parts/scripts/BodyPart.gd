@@ -15,6 +15,8 @@ var menu : Menu
 
 var player : Player
 
+var attuned := false
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")

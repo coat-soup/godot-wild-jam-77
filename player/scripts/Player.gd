@@ -165,8 +165,8 @@ func try_interact():
 	var result = space_state.intersect_ray(query)
 	if result:
 		interact_object = result.collider as Interactable
-		if interact_object:
-			HUD.set_interact_text(interact_object.observe())
+		if interact_object and interact_object.active:
+			HUD.set_interact_text(interact_object.observe(), interact_object.tooltip)
 		else:
 			HUD.clear_interact_text()
 	else:

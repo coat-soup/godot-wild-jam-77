@@ -5,7 +5,7 @@ class_name DungeonSpawner
 signal generation_completed
 
 @onready var generator: DungeonGeneration = $"../.."
-@onready var player: Player = $"../../Player"
+@onready var player: Player
 @onready var navmesh: NavigationRegion3D = $".."
 
 @export var room_prefabs : Array[PackedScene]
@@ -22,11 +22,13 @@ var starting_room : DungeonRoom
 const FOUNTAIN_ROOM = preload("res://world/dungeonrooms/fountain_room.tscn")
 const STARTING_ROOM = preload("res://world/dungeonrooms/starting_room.tscn")
 const UPGRADE_ROOMS = [preload("res://world/dungeonrooms/upgrade_room_01.tscn"), preload("res://world/dungeonrooms/upgrade_room_02.tscn")]
+const ENDING_ROOM = preload("res://world/dungeonrooms/ending_room.tscn")
 
 var generated_map
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
 	generate()
 
 func _input(_event: InputEvent):
@@ -34,6 +36,11 @@ func _input(_event: InputEvent):
 		generate()
 
 func generate():
+	for room in spawned_rooms:
+		remove_child(room)
+		room.queue_free()
+	spawned_rooms = []
+	
 	generated_map = await generator.generate(size_x,size_y,n_rooms)
 	spawn_dungeon()
 	set_hallways()
@@ -53,6 +60,7 @@ func spawn_dungeon():
 					2: pref = STARTING_ROOM
 					3: pref = FOUNTAIN_ROOM
 					4: pref = UPGRADE_ROOMS.pick_random()
+					5: pref = ENDING_ROOM
 					_: pref = room_prefabs.pick_random()
 					
 				var room : DungeonRoom = pref.instantiate() as DungeonRoom

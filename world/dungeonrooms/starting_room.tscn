@@ -1,30 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bepo7bs2w31mr"]
+[gd_scene load_steps=4 format=3 uid="uid://bepo7bs2w31mr"]
 
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_q4org"]
 [ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_eepon"]
 [ext_resource type="PackedScene" uid="uid://bdst4tv46kcy2" path="res://world/props/brazier.tscn" id="3_5xr7u"]
-[ext_resource type="PackedScene" uid="uid://b2pmknil6rocd" path="res://body_parts/scenes/domino_savant.tscn" id="4_3ncd1"]
-[ext_resource type="PackedScene" uid="uid://c4xhh4s3ovdlp" path="res://body_parts/scenes/restful_lead.tscn" id="5_pe150"]
-[ext_resource type="PackedScene" uid="uid://c05fubx3cyq61" path="res://body_parts/scenes/clockwork_core.tscn" id="6_p4qgf"]
-[ext_resource type="PackedScene" uid="uid://ccddvmn156s6u" path="res://body_parts/scenes/copper_boiler.tscn" id="7_kkba2"]
-[ext_resource type="PackedScene" uid="uid://del6tfpteexcw" path="res://body_parts/scenes/ear_mass.tscn" id="8_7gwd3"]
-[ext_resource type="PackedScene" uid="uid://d1q55nt0nxsjm" path="res://body_parts/scenes/point_guard.tscn" id="9_c7t25"]
-[ext_resource type="PackedScene" uid="uid://ce7g12i8qmeek" path="res://body_parts/scenes/roots.tscn" id="10_3bqjj"]
-[ext_resource type="PackedScene" uid="uid://bx7vaca16eic2" path="res://body_parts/scenes/stone_eye.tscn" id="11_shv20"]
-[ext_resource type="PackedScene" uid="uid://b4uy5aqhcrki3" path="res://body_parts/scenes/vampire_heart.tscn" id="12_muaq8"]
-[ext_resource type="PackedScene" uid="uid://myup6v46f6x1" path="res://body_parts/scenes/bastion.tscn" id="13_fa3di"]
-[ext_resource type="PackedScene" uid="uid://2tlba11ys56a" path="res://body_parts/scenes/lightning_infused.tscn" id="14_msl5n"]
-[ext_resource type="PackedScene" uid="uid://qhagqfir05g7" path="res://body_parts/scenes/penitence.tscn" id="15_x6out"]
-[ext_resource type="PackedScene" uid="uid://etx0o7i3guhy" path="res://body_parts/scenes/pulleys.tscn" id="16_o8fep"]
-[ext_resource type="PackedScene" uid="uid://djuyk1ebo43up" path="res://body_parts/scenes/frenzy.tscn" id="17_p2ccf"]
-[ext_resource type="PackedScene" uid="uid://bwjevovd7nf7e" path="res://body_parts/scenes/sword_arm.tscn" id="18_mb44d"]
-[ext_resource type="PackedScene" uid="uid://cvsupn0ebouo5" path="res://body_parts/scenes/jitterbug.tscn" id="19_3m58s"]
-[ext_resource type="PackedScene" uid="uid://cfv0qtaes45td" path="res://body_parts/scenes/springjack.tscn" id="20_3f42f"]
-[ext_resource type="PackedScene" uid="uid://5q6y66e8760m" path="res://body_parts/scenes/lost_love.tscn" id="21_dg2qr"]
-[ext_resource type="PackedScene" uid="uid://dqxipd1jhnjjw" path="res://body_parts/scenes/sprinter.tscn" id="22_5ts1q"]
-[ext_resource type="PackedScene" uid="uid://dyob4w8du2qc0" path="res://body_parts/scenes/goat_leg.tscn" id="23_i2s1k"]
-[ext_resource type="PackedScene" uid="uid://b2tgmo4b88cso" path="res://body_parts/scenes/loaded_shot.tscn" id="24_86r2m"]
-[ext_resource type="PackedScene" uid="uid://wna3nbn4nvab" path="res://system/debug_testing/target_dummy.tscn" id="25_6alfm"]
 
 [node name="BaseDungeonScene" instance=ExtResource("1_q4org")]
 enemies = Array[ExtResource("2_eepon")]([])
@@ -58,78 +36,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09087, 0, -3.10012)
 
 [node name="brazier8" parent="Props" index="7" instance=ExtResource("3_5xr7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90913, 0, -3.10012)
-
-[node name="DominoSavant" parent="." index="12" instance=ExtResource("4_3ncd1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87377, 1.5, -1.92997)
-
-[node name="RestfulLead" parent="." index="13" instance=ExtResource("5_pe150")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96536, 1.5, 1.90724)
-
-[node name="ClockworkCore" parent="." index="14" instance=ExtResource("6_p4qgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56527, 1.5, -2.09402)
-
-[node name="CopperBoiler" parent="." index="15" instance=ExtResource("7_kkba2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6657, 1.5, -1.17969)
-
-[node name="EarMass" parent="." index="16" instance=ExtResource("8_7gwd3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63764, 1.5, -0.0538013)
-
-[node name="PointGuard" parent="." index="17" instance=ExtResource("9_c7t25")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38601, 1.5, 1.44446)
-
-[node name="Roots" parent="." index="18" instance=ExtResource("10_3bqjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23391, 1.5, 2.54879)
-
-[node name="StoneEye" parent="." index="19" instance=ExtResource("11_shv20")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22394, 1.5, -2.65083)
-
-[node name="VampireHeart" parent="." index="20" instance=ExtResource("12_muaq8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187126, 1.5, -2.36406)
-
-[node name="Bastion" parent="." index="21" instance=ExtResource("13_fa3di")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84175, 1.5, 1.7772)
-
-[node name="LightningInfused" parent="." index="22" instance=ExtResource("14_msl5n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65458, 1.5, 0.941291)
-
-[node name="Penitence" parent="." index="23" instance=ExtResource("15_x6out")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.988315, 1.5, 2.60614)
-
-[node name="Pulleys" parent="." index="24" instance=ExtResource("16_o8fep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43885, 1.5, 1.34112)
-
-[node name="Frenzy" parent="." index="25" instance=ExtResource("17_p2ccf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63871, 1.5, 0.62979)
-
-[node name="SwordArm" parent="." index="26" instance=ExtResource("18_mb44d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72874, 1.5, -1.44086)
-
-[node name="Jitterbug" parent="." index="27" instance=ExtResource("19_3m58s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59615, 1.5, -0.00554484)
-
-[node name="Springjack" parent="." index="28" instance=ExtResource("20_3f42f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81834, 1.5, 2.43628)
-
-[node name="LostLove" parent="." index="29" instance=ExtResource("21_dg2qr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62298, 1.5, -0.806165)
-
-[node name="Sprinter" parent="." index="30" instance=ExtResource("22_5ts1q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36848, 1.5, -2.40878)
-
-[node name="GoatLeg" parent="." index="31" instance=ExtResource("23_i2s1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.508975, 1.5, 2.69698)
-
-[node name="LoadedShot" parent="." index="32" instance=ExtResource("24_86r2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197096, 1.5, 2.74118)
-
-[node name="TargetDummy" parent="." index="33" instance=ExtResource("25_6alfm")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.6253, -4.76837e-07, -4.7866)
-
-[node name="TargetDummy2" parent="." index="34" instance=ExtResource("25_6alfm")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.53904, -4.76837e-07, -5.87286)
-
-[node name="TargetDummy3" parent="." index="35" instance=ExtResource("25_6alfm")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.54106, -4.76837e-07, -6.87084)
-
-[node name="TargetDummy4" parent="." index="36" instance=ExtResource("25_6alfm")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.46218, -4.76837e-07, -7.94972)

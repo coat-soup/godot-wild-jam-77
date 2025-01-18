@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://eqjmqnhqmchq"]
+[gd_scene load_steps=10 format=3 uid="uid://eqjmqnhqmchq"]
 
 [ext_resource type="Script" path="res://system/generation/DungeonGenerator.gd" id="1_2rl5c"]
 [ext_resource type="Script" path="res://system/generation/DungeonSpawner.gd" id="2_yctm7"]
 [ext_resource type="PackedScene" uid="uid://dmket6u1wv02u" path="res://world/dungeonrooms/open_room_01.tscn" id="3_hyvh3"]
 [ext_resource type="PackedScene" uid="uid://bjv005741r768" path="res://world/dungeonrooms/corridors_room.tscn" id="4_5ad1v"]
-[ext_resource type="PackedScene" uid="uid://cyk67kv73er43" path="res://player/player.tscn" id="4_e3ei5"]
 [ext_resource type="PackedScene" uid="uid://bn6ovcheufod0" path="res://world/dungeonrooms/pillars_room.tscn" id="5_7n1uy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cpbqp"]
@@ -33,6 +32,7 @@ script = ExtResource("1_2rl5c")
 environment = SubResource("Environment_0qb2h")
 
 [node name="MinimapHolder" type="Node2D" parent="."]
+visible = false
 position = Vector2(32, 31)
 scale = Vector2(0.2, 0.2)
 
@@ -42,6 +42,3 @@ navigation_mesh = SubResource("NavigationMesh_y1ohp")
 [node name="DungeonSpawner" type="Node" parent="NavigationRegion3D"]
 script = ExtResource("2_yctm7")
 room_prefabs = Array[PackedScene]([ExtResource("3_hyvh3"), ExtResource("4_5ad1v"), ExtResource("5_7n1uy")])
-
-[node name="Player" parent="." instance=ExtResource("4_e3ei5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9574, 0)

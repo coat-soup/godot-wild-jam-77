@@ -18,16 +18,26 @@ var selected_slot : int = -1
 
 var equipped_parts : Array[BodyPart] = [null, null, null, null, null, null, null]
 
+var attuning_table : RitualTable
+
+
 func _ready():
 	swap_button.pressed.connect(swap_pressed)
 	for button in slots_holder.get_children():
 		(button as Button).pressed.connect(slot_pressed.bind(button.get_index()))
+
 
 func pick_part(part: BodyPart):
 	picking_part = part
 	if !ui.in_menu:
 		ui.toggle_menu()
 	set_display(part)
+
+
+func try_attunement(table):
+	attuning_table = table
+	if !ui.in_menu:
+		ui.toggle_menu()
 
 
 func set_display(part: BodyPart):
@@ -53,12 +63,20 @@ func slot_pressed(index: int):
 
 
 func evaluate_swap_button():
-	if selected_slot >= 0 and picking_part and get_slot_type(selected_slot) != picking_part.body_slot:
+	if selected_slot >= 0 and equipped_parts[selected_slot] and equipped_parts[selected_slot].attuned:
+		swap_button.disabled = true
+		set_display(equipped_parts[selected_slot])
+		swap_button.get_child(0).text = "ITEM ATTUNED"
+	elif selected_slot >= 0 and picking_part and get_slot_type(selected_slot) != picking_part.body_slot:
 		swap_button.disabled = true
 		swap_button.get_child(0).text = "WRONG SLOT"
 	elif selected_slot >= 0 and equipped_parts[selected_slot] and picking_part:
 		swap_button.disabled = false
 		swap_button.get_child(0).text = "SWAP"
+	elif selected_slot >= 0 and equipped_parts[selected_slot] and !picking_part and attuning_table != null:
+		swap_button.disabled = false
+		set_display(equipped_parts[selected_slot])
+		swap_button.get_child(0).text = "ATTUNE"
 	elif selected_slot >= 0 and equipped_parts[selected_slot] and !picking_part:
 		swap_button.disabled = false
 		set_display(equipped_parts[selected_slot])
@@ -92,6 +110,11 @@ func swap_pressed():
 			print("repicking ", old_part)
 		else:
 			clear_display()
+	elif selected_slot >= 0 and attuning_table != null:
+		equipped_parts[selected_slot].attuned = true
+		attuning_table.disactivate()
+		attuning_table = null
+		evaluate_swap_button()
 	elif picking_part == null and selected_slot >= 0:
 		drop_part(selected_slot)
 		clear_display()
@@ -99,6 +122,7 @@ func swap_pressed():
 
 func drop_part(index: int):
 	if equipped_parts[index]:
+		equipped_parts[index].reparent(ui.dungeon_spawner.spawned_rooms[0])
 		equipped_parts[index].on_drop(ui.player.global_position)
 		equipped_parts[index].global_position = ui.player.global_position
 		get_icon(index).texture = null
@@ -113,6 +137,7 @@ func equip_part(part: BodyPart, index:int):
 	
 	part.global_position = Vector3(0,-100,0)
 	
+	part.reparent(ui.player)
 	part.on_equip()
 
 

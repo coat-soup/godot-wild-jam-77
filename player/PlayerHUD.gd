@@ -110,6 +110,7 @@ func toggle_menu():
 		menu.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		menu.picking_part = null
+		menu.attuning_table = null
 		menu.clear_display()
 
 
@@ -117,8 +118,8 @@ func on_generation_finished():
 	loading_screen.hide()
 
 
-func set_interact_text(message: String):
-	interact_text.text = "[E] " + message
+func set_interact_text(message: String, tooltip = true):
+	interact_text.text = ("[E] " + message) if tooltip else message
 
 
 func clear_interact_text():
