@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx7vaca16eic2"]
+
+[ext_resource type="PackedScene" uid="uid://b835oq217ku4n" path="res://body_parts/models/StoneEye.glb" id="1_yyfg4"]
+[ext_resource type="Texture2D" uid="uid://o4hap6uxvths" path="res://body_parts/textures/stone_eye.png" id="2_ovo61"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_q2k20"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxn23"]
+albedo_texture = ExtResource("2_ovo61")
+texture_filter = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qyl1a"]
+radius = 0.365166
+
+[node name="StoneEye" instance=ExtResource("1_yyfg4")]
+
+[node name="Sphere" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nxn23")
+
+[node name="Cube" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nxn23")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_q2k20")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0379509, 0)
+shape = SubResource("SphereShape3D_qyl1a")

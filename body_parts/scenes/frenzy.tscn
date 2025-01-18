@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://djuyk1ebo43up"]
+
+[ext_resource type="PackedScene" uid="uid://dwg283404f3jm" path="res://body_parts/models/Frenzy.glb" id="1_344my"]
+[ext_resource type="Texture2D" uid="uid://dhrq8odb77g4h" path="res://body_parts/textures/frenzy.png" id="2_qvpei"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_c36jo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2q1x"]
+albedo_texture = ExtResource("2_qvpei")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o50cg"]
+radius = 0.180038
+height = 1.19858
+
+[node name="Frenzy" instance=ExtResource("1_344my")]
+
+[node name="Circle_006" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_x2q1x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_c36jo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_o50cg")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://myup6v46f6x1"]
+
+[ext_resource type="PackedScene" uid="uid://gsecr5tgumg8" path="res://body_parts/models/Bastion.glb" id="1_3qmkb"]
+[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_3tc5h"]
+[ext_resource type="Texture2D" uid="uid://dx56b3e0cxp5v" path="res://body_parts/textures/bastion.png" id="2_1870g"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_t8g47"]
+[ext_resource type="Texture2D" uid="uid://sfaetrkdh0mj" path="res://body_parts/icons/bastion.png" id="3_ebfkr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut8g4"]
+albedo_texture = ExtResource("2_1870g")
+roughness = 0.2
+texture_filter = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sbfnx"]
+radius = 0.328171
+
+[node name="Bastion" instance=ExtResource("1_3qmkb")]
+script = ExtResource("2_3tc5h")
+item_name = "Bastion"
+body_slot = 2
+icon = ExtResource("3_ebfkr")
+
+[node name="Sphere_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8g4")
+
+[node name="Cylinder" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8g4")
+
+[node name="Cylinder_001" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8g4")
+
+[node name="Cylinder_002" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8g4")
+
+[node name="Cylinder_003" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8g4")
+
+[node name="Cylinder_004" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ut8g4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_t8g47")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0379509, 0)
+shape = SubResource("SphereShape3D_sbfnx")

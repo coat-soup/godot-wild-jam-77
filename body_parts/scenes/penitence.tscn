@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://qhagqfir05g7"]
+
+[ext_resource type="PackedScene" uid="uid://bs6r2kuy0vomb" path="res://body_parts/models/Penitence.glb" id="1_ttaet"]
+[ext_resource type="Texture2D" uid="uid://d3xp4f7umoisf" path="res://body_parts/textures/penitence.png" id="2_70wbq"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_7io3j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ts0p"]
+albedo_texture = ExtResource("2_70wbq")
+roughness = 0.2
+texture_filter = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_os0r6"]
+radius = 0.522236
+
+[node name="Penitence" instance=ExtResource("1_ttaet")]
+
+[node name="Sphere" parent="." index="0"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.483929, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube" parent="." index="1"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_001" parent="." index="2"]
+transform = Transform3D(0.546133, 0, 0.584585, 0, 0.8, 0, -0.584585, 0, 0.546133, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_002" parent="." index="3"]
+transform = Transform3D(-0.00156606, 0, 0.799998, 0, 0.8, 0, -0.799998, 0, -0.00156606, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_003" parent="." index="4"]
+transform = Transform3D(-0.626365, 0, 0.497661, 0, 0.8, 0, -0.497661, 0, -0.626365, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_004" parent="." index="5"]
+transform = Transform3D(-0.799994, 0, -0.00313732, 0, 0.8, 0, 0.00313732, 0, -0.799994, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_005" parent="." index="6"]
+transform = Transform3D(-0.544295, 0, -0.586296, 0, 0.8, 0, 0.586296, 0, -0.544295, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_006" parent="." index="7"]
+transform = Transform3D(0.00961353, 0, -0.799942, 0, 0.8, 0, 0.799942, 0, 0.00961353, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_007" parent="." index="8"]
+transform = Transform3D(0.589469, 0, -0.540857, 0, 0.8, 0, 0.540857, 0, 0.589469, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_008" parent="." index="9"]
+transform = Transform3D(-3.62818e-09, 0.8, 8.58431e-08, -0.641273, 4.84148e-08, -0.478297, -0.478297, -7.09803e-08, 0.641273, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_009" parent="." index="10"]
+transform = Transform3D(-2.25704e-07, 0.8, -3.49691e-08, 0, -3.49691e-08, -0.8, -0.8, -2.25704e-07, 9.86583e-15, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_010" parent="." index="11"]
+transform = Transform3D(-1.35543e-07, 0.8, -9.45785e-08, 0.626365, 4.72893e-08, -0.497661, -0.497661, -1.58369e-07, -0.626365, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_011" parent="." index="12"]
+transform = Transform3D(1.44166e-07, 0.8, -2.34958e-07, 0.603363, 4.55526e-08, 0.525312, 0.525312, -2.71872e-07, -0.603363, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_012" parent="." index="13"]
+transform = Transform3D(-1.1129e-08, 0.8, 2.86457e-10, -0.00961191, -4.2015e-10, 0.799942, 0.799942, 1.11247e-08, 0.00961191, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_013" parent="." index="14"]
+transform = Transform3D(-2.73151e-09, 0.8, 3.51351e-08, -0.589469, -2.57665e-08, 0.540857, 0.540857, -2.40421e-08, 0.589469, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_014" parent="." index="15"]
+transform = Transform3D(0.252041, 0.538678, 0.535072, -0.460548, 0.556688, -0.343502, -0.603631, -0.199812, 0.485494, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_015" parent="." index="16"]
+transform = Transform3D(-0.00108992, 0.574542, 0.556687, 0.00112472, 0.556688, -0.574541, -0.799998, -1.11759e-07, -0.00156618, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_016" parent="." index="17"]
+transform = Transform3D(-0.333852, 0.564168, 0.458538, 0.449841, 0.556688, -0.357409, -0.571127, 0.108684, -0.549547, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_017" parent="." index="18"]
+transform = Transform3D(-0.256577, 0.551716, -0.519402, 0.433322, 0.556688, 0.377267, 0.621611, -0.160337, -0.47738, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_018" parent="." index="19"]
+transform = Transform3D(0.00668988, 0.574542, -0.556648, -0.00690434, 0.556688, 0.5745, 0.799942, -6.33299e-08, 0.00961376, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_019" parent="." index="20"]
+transform = Transform3D(0.310486, 0.565887, -0.472621, -0.423343, 0.556688, 0.388431, 0.603638, 0.0993478, 0.51551, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_020" parent="." index="21"]
+transform = Transform3D(-0.259232, 0.592782, -0.470541, -0.49463, -0.509154, -0.368923, -0.572835, 0.171384, 0.531496, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_021" parent="." index="22"]
+transform = Transform3D(0.00099668, 0.61706, -0.509153, 0.00120817, -0.509154, -0.617059, -0.799998, -1.65589e-07, -0.00156622, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_022" parent="." index="23"]
+transform = Transform3D(0.200686, 0.578541, -0.514796, 0.483131, -0.509154, -0.383858, -0.605235, -0.214599, -0.477114, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_023" parent="." index="24"]
+transform = Transform3D(0.296225, 0.609316, 0.425423, 0.465389, -0.509153, 0.405186, 0.579365, 0.0974508, -0.542991, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_024" parent="." index="25"]
+transform = Transform3D(-0.00611861, 0.61706, 0.509117, -0.00741545, -0.509154, 0.617015, 0.799942, -6.85453e-08, 0.00961386, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="Cube_025" parent="." index="26"]
+transform = Transform3D(-0.190154, 0.587006, 0.509181, -0.454672, -0.509153, 0.417176, 0.630171, -0.190228, 0.454641, 0, 0.484591, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_1ts0p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_7io3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0379509, 0)
+shape = SubResource("SphereShape3D_os0r6")

@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://5q6y66e8760m"]
+
+[ext_resource type="PackedScene" uid="uid://c6kw878e51wei" path="res://body_parts/models/LostLove.glb" id="1_87rcn"]
+[ext_resource type="Texture2D" uid="uid://oh77yqbpyrm4" path="res://body_parts/textures/lost_love.png" id="2_143r3"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_wevio"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s7w7"]
+albedo_texture = ExtResource("2_143r3")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0euv5"]
+radius = 0.187615
+height = 1.18265
+
+[node name="LostLove" instance=ExtResource("1_87rcn")]
+
+[node name="Cube_002" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube_001" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube_003" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube_004" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube_005" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube_006" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Cube_007" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_001" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_002" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_003" parent="." index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_004" parent="." index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_005" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_006" parent="." index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_007" parent="." index="15"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_008" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_009" parent="." index="17"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_010" parent="." index="18"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_011" parent="." index="19"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_012" parent="." index="20"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_013" parent="." index="21"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_014" parent="." index="22"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_015" parent="." index="23"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="Plane_016" parent="." index="24"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6s7w7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_wevio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_0euv5")

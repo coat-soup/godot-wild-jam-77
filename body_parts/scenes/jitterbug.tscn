@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvsupn0ebouo5"]
+
+[ext_resource type="PackedScene" uid="uid://mm50sts6t0o0" path="res://body_parts/models/Jitterbug.glb" id="1_pj40k"]
+[ext_resource type="Texture2D" uid="uid://c4w2nwq4kf4h0" path="res://body_parts/textures/jitterbug.png" id="2_xv08g"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_xvh8h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_goxqt"]
+albedo_texture = ExtResource("2_xv08g")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0euv5"]
+radius = 0.180038
+height = 1.16382
+
+[node name="Jitterbug" instance=ExtResource("1_pj40k")]
+
+[node name="Cube_006" parent="." index="0"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_goxqt")
+
+[node name="Cube_001" parent="." index="1"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_goxqt")
+
+[node name="Cube" parent="." index="2"]
+transform = Transform3D(0.700683, 0.974188, 0, -0.974188, 0.700683, 0, 0, 0, 1.2, 0.159806, 0.261201, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_goxqt")
+
+[node name="Cube_002" parent="." index="3"]
+transform = Transform3D(0.700266, 0.974488, 0, -0.974488, 0.700266, 0, 0, 0, 1.2, 0.208372, 0.283601, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_goxqt")
+
+[node name="Cube_003" parent="." index="4"]
+transform = Transform3D(0.742825, 0.942449, 0, -0.942449, 0.742825, 0, 0, 0, 1.2, 0.118217, 0.265076, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_goxqt")
+
+[node name="Cube_004" parent="." index="5"]
+transform = Transform3D(0.742825, 0.942449, 0, -0.942449, 0.742825, 0, 0, 0, 1.2, 0.0212509, 0.0663642, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_goxqt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_xvh8h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_0euv5")

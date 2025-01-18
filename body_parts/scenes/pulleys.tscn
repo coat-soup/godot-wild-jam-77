@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://etx0o7i3guhy"]
+
+[ext_resource type="PackedScene" uid="uid://ccfclieddo0b5" path="res://body_parts/models/Pulleys.glb" id="1_htfco"]
+[ext_resource type="Texture2D" uid="uid://cpa4pnsqxxafr" path="res://body_parts/textures/pulleys.png" id="2_4bvb7"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_imn8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j02hh"]
+albedo_texture = ExtResource("2_4bvb7")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3232"]
+radius = 0.180038
+height = 1.19858
+
+[node name="Pulleys" instance=ExtResource("1_htfco")]
+
+[node name="Circle_002" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Circle_003" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Cube" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Cube_001" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Sphere" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Cube_002" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Circle_001" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Circle_004" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Cube_003" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Circle_005" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="Cube_004" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j02hh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_imn8u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_k3232")

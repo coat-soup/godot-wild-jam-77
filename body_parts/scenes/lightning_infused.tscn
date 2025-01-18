@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://2tlba11ys56a"]
+
+[ext_resource type="PackedScene" uid="uid://bfh1d275vyhdj" path="res://body_parts/models/LightningInfused.glb" id="1_y3kj2"]
+[ext_resource type="Texture2D" uid="uid://b3e52qe6a5g76" path="res://body_parts/textures/lightning_infused.png" id="2_cdu44"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="2_n53jc"]
+[ext_resource type="Script" path="res://body_parts/scripts/BodyPart.gd" id="2_ped1i"]
+[ext_resource type="Texture2D" uid="uid://bn2prnfd1rkb5" path="res://body_parts/icons/lightning_infused.png" id="3_dwda8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atj2p"]
+albedo_texture = ExtResource("2_cdu44")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_essgk"]
+radius = 0.180038
+height = 1.19858
+
+[node name="LightningInfused" instance=ExtResource("1_y3kj2")]
+script = ExtResource("2_ped1i")
+item_name = "Lightning Catcher"
+body_slot = 3
+icon = ExtResource("3_dwda8")
+
+[node name="Circle_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cube" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cylinder" parent="Cube" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Sphere" parent="Cube" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cube_001" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cylinder_001" parent="Cube_001" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Sphere_001" parent="Cube_001" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cube_002" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cylinder_002" parent="Cube_002" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Sphere_002" parent="Cube_002" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cube_003" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cylinder_003" parent="Cube_003" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Sphere_003" parent="Cube_003" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cube_004" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Cylinder_004" parent="Cube_004" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="Sphere_004" parent="Cube_004" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_atj2p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_n53jc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_essgk")

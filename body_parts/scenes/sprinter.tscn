@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqxipd1jhnjjw"]
+
+[ext_resource type="PackedScene" uid="uid://dnko6uecog8mf" path="res://body_parts/models/Sprinter.glb" id="1_q1nef"]
+[ext_resource type="Texture2D" uid="uid://dgbvlilefrkws" path="res://body_parts/textures/sprinter.png" id="2_nvres"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_2ceqh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8scqd"]
+albedo_texture = ExtResource("2_nvres")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0euv5"]
+radius = 0.187615
+height = 1.18265
+
+[node name="Sprinter" instance=ExtResource("1_q1nef")]
+
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8scqd")
+
+[node name="Cube" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8scqd")
+
+[node name="Cube_001" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8scqd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_2ceqh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_0euv5")

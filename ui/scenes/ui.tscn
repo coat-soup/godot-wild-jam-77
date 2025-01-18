@@ -236,6 +236,7 @@ offset_bottom = 544.0
 color = Color(0.219678, 0.231218, 0.283976, 1)
 
 [node name="SlotsBackground" type="ColorRect" parent="Menu/MenuBackground"]
+layout_mode = 0
 offset_left = 286.0
 offset_top = 22.0
 offset_right = 547.0
@@ -250,6 +251,7 @@ offset_right = 157.0
 offset_bottom = 100.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Head"]
+layout_mode = 0
 offset_left = -37.0
 offset_top = -32.0
 offset_right = 94.0
@@ -264,6 +266,7 @@ offset_right = 157.0
 offset_bottom = 175.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Lungs"]
+layout_mode = 0
 offset_left = -40.0
 offset_top = -37.0
 offset_right = 91.0
@@ -278,6 +281,7 @@ offset_right = 157.0
 offset_bottom = 253.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Heart"]
+layout_mode = 0
 offset_left = -38.0
 offset_top = -38.0
 offset_right = 93.0
@@ -292,6 +296,7 @@ offset_right = 67.0
 offset_bottom = 214.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Arm1"]
+layout_mode = 0
 offset_left = 82.0
 offset_top = 112.0
 offset_right = 213.0
@@ -307,6 +312,7 @@ offset_right = 228.0
 offset_bottom = 214.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Arm2"]
+layout_mode = 0
 offset_left = 82.0
 offset_top = 112.0
 offset_right = 213.0
@@ -322,6 +328,7 @@ offset_right = 101.0
 offset_bottom = 357.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Leg1"]
+layout_mode = 0
 offset_left = -48.0
 offset_top = -22.0
 offset_right = 83.0
@@ -336,6 +343,7 @@ offset_right = 191.0
 offset_bottom = 357.0
 
 [node name="DisplayIcon" type="TextureRect" parent="Menu/MenuBackground/SlotsBackground/Leg2"]
+layout_mode = 0
 offset_left = -48.0
 offset_top = -22.0
 offset_right = 83.0
@@ -412,6 +420,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tykbe")
 disabled = true
 
 [node name="Label" type="Label" parent="Menu/MenuBackground/DisplayBackground/SwapButton"]
+layout_mode = 0
 offset_right = 154.0
 offset_bottom = 50.0
 text = "NO SELECTION"

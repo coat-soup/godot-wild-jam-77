@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyob4w8du2qc0"]
+
+[ext_resource type="PackedScene" uid="uid://bmt11teyl8ln" path="res://body_parts/models/GoatLeg.glb" id="1_micga"]
+[ext_resource type="Texture2D" uid="uid://n6gyfi8il1nb" path="res://body_parts/textures/goat_leg.png" id="2_rp14i"]
+[ext_resource type="Script" path="res://system/generic_components/Interactable.gd" id="3_syi3o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmxxr"]
+albedo_texture = ExtResource("2_rp14i")
+texture_filter = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0euv5"]
+radius = 0.187615
+height = 1.18265
+
+[node name="GoatLeg" instance=ExtResource("1_micga")]
+
+[node name="Cube_002" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_cmxxr")
+
+[node name="Cube_001" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_cmxxr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514471, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_syi3o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("CapsuleShape3D_0euv5")
