@@ -9,7 +9,7 @@ const OFFSETS: Array[Vector2i] = [Vector2i(0, 1), Vector2i(-1,0), Vector2i(1,0),
 var map : Array
 
   # [minFountain, maxFountain, minBody, maxBody]
-var special_distribution: Array[int] = [2,3,3,5]
+var special_distribution: Array[int] = [1,2,3,5]
 
 
 # Called when the node enters the scene tree for the first time.

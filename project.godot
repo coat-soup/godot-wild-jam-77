@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Dungeons of Avarice"
 config/description="Godot Wild Jam 77 entry by Kye Electriciteh (Coat Soup)"
-config/version="0.3.0t"
+config/version="0.3.2t"
 run/main_scene="res://levels/resolution_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"

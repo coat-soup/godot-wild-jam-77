@@ -10,6 +10,8 @@ class_name Menu
 @onready var title_text: Label = $MenuBackground/DisplayBackground/TitleText
 @onready var info_text: Label = $MenuBackground/DisplayBackground/InfoText
 
+@onready var stats_text: Label = $MenuBackground/StatsBackground/StatsText
+
 @export var slot_color : Color
 @export var valid_slot_color : Color
 
@@ -121,6 +123,7 @@ func swap_pressed():
 
 
 func drop_part(index: int):
+	display_stats()
 	if equipped_parts[index]:
 		equipped_parts[index].reparent(ui.dungeon_spawner.spawned_rooms[0])
 		equipped_parts[index].on_drop(ui.player.global_position)
@@ -130,6 +133,7 @@ func drop_part(index: int):
 
 
 func equip_part(part: BodyPart, index:int):
+	display_stats()
 	if equipped_parts[index] != null:
 		drop_part(index)
 	get_icon(index).texture = part.icon
@@ -167,3 +171,6 @@ static func get_slot_type(index: int):
 		3,4: return BodyPart.BodySlotType.ARM
 		5,6: return BodyPart.BodySlotType.LEG
 		_: return -1
+
+func display_stats():
+	stats_text.text = "Max Health: " + str(ui.player.get_node("Health").max_health) + "\nDamage: " + str(ui.player.arms.damage)

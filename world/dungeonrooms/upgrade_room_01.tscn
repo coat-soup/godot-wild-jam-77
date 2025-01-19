@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_dco0x"]
 script = ExtResource("2_rncte")
 enemy = ExtResource("3_22wlf")
-num_spawns = 6
+num_spawns = 3
 
 [sub_resource type="Resource" id="Resource_cw76s"]
 script = ExtResource("2_rncte")
@@ -23,7 +23,7 @@ num_spawns = 3
 
 [node name="BaseDungeonScene" instance=ExtResource("1_77pxk")]
 enemies = Array[ExtResource("2_rncte")]([SubResource("Resource_dco0x"), SubResource("Resource_cw76s")])
-spawn_interval = 5
+spawn_interval = 10
 
 [node name="TileMap" parent="." index="0"]
 data = {

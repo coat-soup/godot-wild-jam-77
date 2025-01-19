@@ -26,3 +26,6 @@ func play_attack_audio():
 		await get_tree().create_timer(attack_audio_delays[0]).timeout
 	for a in attack_audio:
 		a.play()
+
+func override_set_not_attacking():
+	(get_parent() as Enemy).state = Enemy.EnemyState.idle

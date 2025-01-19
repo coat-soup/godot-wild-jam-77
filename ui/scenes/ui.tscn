@@ -369,6 +369,14 @@ offset_right = 229.0
 offset_bottom = 436.0
 color = Color(0.123733, 0.131383, 0.166441, 1)
 
+[node name="StatsText" type="Label" parent="Menu/MenuBackground/StatsBackground"]
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 174.0
+offset_bottom = 188.0
+text = "Body part info text goes here"
+autowrap_mode = 2
+
 [node name="DisplayBackground" type="ColorRect" parent="Menu/MenuBackground"]
 layout_mode = 0
 offset_left = 581.0
@@ -395,7 +403,7 @@ default_color = Color(0.109804, 0.109804, 0.12549, 1)
 layout_mode = 0
 offset_left = 24.0
 offset_top = 173.0
-offset_right = 176.0
+offset_right = 282.0
 offset_bottom = 222.0
 theme_override_font_sizes/font_size = 20
 text = "PART NAME"

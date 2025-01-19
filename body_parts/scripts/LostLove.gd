@@ -8,6 +8,7 @@ var moving := false
 
 func on_equip():
 	player.stamina.dash_stamina *= dash_stamina_mul
+	player.arms.damage *= damage_mul
 	active = true
 
 func on_drop(pos: Vector3):

@@ -87,6 +87,8 @@ volume_db = 20.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("13_stqgr")
+fountain_health_percent = 1.0
+max_health = 150.0
 
 [node name="Stamina" type="Node" parent="."]
 script = ExtResource("16_2hk28")

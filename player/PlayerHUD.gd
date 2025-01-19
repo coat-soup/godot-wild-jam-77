@@ -100,6 +100,7 @@ func on_die():
 
 func toggle_menu():
 	in_menu = !in_menu
+	menu.display_stats()
 	
 	if in_menu:
 		menu.show()
