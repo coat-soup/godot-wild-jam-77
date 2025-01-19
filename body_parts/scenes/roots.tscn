@@ -22,6 +22,7 @@ stamina_regen_delay_mul = 0.001
 stamina_regen_mul = 0.6
 item_description = "No stamina regen delay
 Stamina regen rate -"
+lore_description = "A refreshing sign of life in an otherwise barren place."
 body_slot = 1
 icon = ExtResource("3_0nkad")
 

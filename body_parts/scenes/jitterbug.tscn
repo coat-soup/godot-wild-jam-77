@@ -23,6 +23,7 @@ item_name = "Jitterbug"
 item_description = "Dash cooldown -
 Dash stamina -
 Dash distance --"
+lore_description = "Is this what they meant about \"losing your humanity?\""
 body_slot = 4
 icon = ExtResource("3_xdp6u")
 

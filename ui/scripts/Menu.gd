@@ -9,6 +9,7 @@ class_name Menu
 @onready var display_icon: TextureRect = $MenuBackground/DisplayBackground/DisplayIcon
 @onready var title_text: Label = $MenuBackground/DisplayBackground/TitleText
 @onready var info_text: Label = $MenuBackground/DisplayBackground/InfoText
+@onready var description_text: Label = $MenuBackground/DisplayBackground/DescriptionText
 
 @onready var stats_text: Label = $MenuBackground/StatsBackground/StatsText
 
@@ -27,6 +28,8 @@ func _ready():
 	swap_button.pressed.connect(swap_pressed)
 	for button in slots_holder.get_children():
 		(button as Button).pressed.connect(slot_pressed.bind(button.get_index()))
+		
+	clear_display()
 
 
 func pick_part(part: BodyPart):
@@ -46,6 +49,7 @@ func set_display(part: BodyPart):
 	display_icon.texture = part.icon
 	$MenuBackground/DisplayBackground/TitleText.text = part.item_name
 	$MenuBackground/DisplayBackground/InfoText.text = part.item_description
+	description_text.text = part.lore_description
 	display_valid_slots()
 
 
@@ -54,6 +58,7 @@ func clear_display():
 	display_icon.texture = null
 	title_text.text = ""
 	info_text.text = ""
+	description_text.text = ""
 	
 	evaluate_swap_button()
 	display_valid_slots()

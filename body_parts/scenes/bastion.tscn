@@ -21,6 +21,7 @@ damage_mul = 0.7
 item_name = "Bastion"
 item_description = "Max health +
 Damage -"
+lore_description = "A remnant of the once revered angel warriors"
 body_slot = 2
 icon = ExtResource("3_ebfkr")
 

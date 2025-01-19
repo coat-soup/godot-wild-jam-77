@@ -41,6 +41,7 @@ func _ready():
 	set_attack_speed(attack_speed)
 
 func swing():
+	print("SWINGING - canswing: ", can_swing, " timer: ", timer, " idle: ", idle)
 	if can_swing and (timer > 0 or idle):
 		if stamina.cur_stamina <= 0:
 			stamina.alert_anim()
@@ -119,7 +120,7 @@ func _on_weapon_hitbox_body_entered(body: Node3D) -> void:
 
 
 func _process(delta: float) -> void:
-	if timer > 0:
+	if timer >= 0:
 		timer -= delta
 		if timer <= 0:
 			if can_swing:

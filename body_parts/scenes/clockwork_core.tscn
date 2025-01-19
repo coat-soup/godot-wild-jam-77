@@ -23,6 +23,7 @@ damage_delay = 2.0
 item_name = "Clockwork Core"
 item_description = "Regen health when below 25%
 Less health from fountains"
+lore_description = "Too shiny for a place like this. Wonder where it came from..."
 body_slot = 2
 icon = ExtResource("3_7dnqc")
 

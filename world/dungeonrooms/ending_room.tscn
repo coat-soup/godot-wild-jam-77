@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://8y7537tp8gu6"]
+[gd_scene load_steps=9 format=3 uid="uid://8y7537tp8gu6"]
 
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_udhcs"]
 [ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_1b0gr"]
 [ext_resource type="PackedScene" uid="uid://bdst4tv46kcy2" path="res://world/props/brazier.tscn" id="3_42bsa"]
 [ext_resource type="PackedScene" uid="uid://behyuimsd1sib" path="res://world/props/iron_bars.tscn" id="5_ttyck"]
 [ext_resource type="Script" path="res://system/generic_components/FinishLevelInteractable.gd" id="6_oa2kb"]
+[ext_resource type="PackedScene" uid="uid://pex0l20kjqke" path="res://world/props/pedestal.tscn" id="7_7jcdl"]
 [ext_resource type="PackedScene" uid="uid://clkygn8hp1oke" path="res://world/props/ritual_table.tscn" id="26_0ujcm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rdoju"]
@@ -58,5 +59,14 @@ observe_message = "Use the table to attune an item"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="iron_bars/StaticBody3D2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.044309, -0.176025)
 shape = SubResource("BoxShape3D_rdoju")
+
+[node name="pedestal" parent="." index="14" instance=ExtResource("7_7jcdl")]
+transform = Transform3D(1.78814e-07, 0, 1, 0, 1, 0, -1, 0, 1.78814e-07, -8.24742, -0.00826728, 3.23301)
+script = null
+
+[node name="Label3D" type="Label3D" parent="pedestal" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31209, 0)
+text = "Attuning an item will lock it
+to that slot"
 
 [connection signal="attuned" from="ritual_table" to="iron_bars/StaticBody3D2" method="_on_ritual_table_attuned"]

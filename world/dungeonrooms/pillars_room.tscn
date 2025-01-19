@@ -18,6 +18,7 @@ num_spawns = 1
 
 [node name="BaseDungeonScene" instance=ExtResource("1_su5mq")]
 enemies = Array[ExtResource("2_p6gyk")]([SubResource("Resource_152dh"), SubResource("Resource_ril3r")])
+spawn_interval = 5
 
 [node name="TileMap" parent="." index="0"]
 data = {

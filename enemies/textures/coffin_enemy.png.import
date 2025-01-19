@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://m25c5xxcv34l"
 path.s3tc="res://.godot/imported/coffin_enemy.png-96dd67c9c7d77cca8860ff788bef3cb2.s3tc.ctex"
+path.etc2="res://.godot/imported/coffin_enemy.png-96dd67c9c7d77cca8860ff788bef3cb2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://enemies/textures/coffin_enemy.png"
-dest_files=["res://.godot/imported/coffin_enemy.png-96dd67c9c7d77cca8860ff788bef3cb2.s3tc.ctex"]
+dest_files=["res://.godot/imported/coffin_enemy.png-96dd67c9c7d77cca8860ff788bef3cb2.s3tc.ctex", "res://.godot/imported/coffin_enemy.png-96dd67c9c7d77cca8860ff788bef3cb2.etc2.ctex"]
 
 [params]
 

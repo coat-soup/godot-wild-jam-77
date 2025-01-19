@@ -22,6 +22,7 @@ block_hold_stamina_mul = 0.001
 item_name = "Point Guard"
 item_description = "No stamina cost for holding block
 Block angle --"
+lore_description = "Honored garb of guardum pinochius."
 icon = ExtResource("3_1tgnt")
 
 [node name="Cube_001" parent="." index="0"]

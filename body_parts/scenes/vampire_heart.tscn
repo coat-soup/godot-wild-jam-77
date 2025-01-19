@@ -20,6 +20,7 @@ health_percent_on_kill = 0.05
 item_name = "Vampire Heart"
 item_description = "Health on kill
 Max health -"
+lore_description = "A trophy from days gone. Reeks of blood and mildew."
 body_slot = 2
 icon = ExtResource("3_5utsb")
 

@@ -21,6 +21,7 @@ var attack_trigger: bool = false
 
 enum EnemyState {idle, walking, attacking, stunned, nothing_lol = -1, }
 var state : EnemyState = EnemyState.idle
+var damage_window_active := false
 
 
 func _ready() -> void:
@@ -77,7 +78,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 
 
 func on_attack_collision(body: Node3D):
-	if state == EnemyState.attacking:
+	if state == EnemyState.attacking and damage_window_active:
 		if body == player:
 			var health = body.get_node("Health") as Health
 			if health:
@@ -91,6 +92,7 @@ func on_anim_started(anim_name):
 
 func on_anim_finished(anim_name):
 	if anim_name == "Attack":
+		damage_window_active = false
 		change_state_delay(EnemyState.idle, 0.5)
 
 
@@ -103,6 +105,7 @@ func change_state_delay(new_state, delay_time: float, intermediate_null: bool = 
 
 func stun(duration: float, zero_velocity = true):
 	print("stunning enemy")
+	damage_window_active = false
 	var particles = STUN_PARTICLES.instantiate()
 	add_child(particles)
 	particles.position = Vector3(0, 2, 0)

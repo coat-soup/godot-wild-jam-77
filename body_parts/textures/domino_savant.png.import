@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://meh23kyh35i8"
 path.s3tc="res://.godot/imported/domino_savant.png-19252d2218c2b00d6e9cbaa7e00f5708.s3tc.ctex"
+path.etc2="res://.godot/imported/domino_savant.png-19252d2218c2b00d6e9cbaa7e00f5708.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://body_parts/textures/domino_savant.png"
-dest_files=["res://.godot/imported/domino_savant.png-19252d2218c2b00d6e9cbaa7e00f5708.s3tc.ctex"]
+dest_files=["res://.godot/imported/domino_savant.png-19252d2218c2b00d6e9cbaa7e00f5708.s3tc.ctex", "res://.godot/imported/domino_savant.png-19252d2218c2b00d6e9cbaa7e00f5708.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://7lefvgvqxy77"
 path.s3tc="res://.godot/imported/dungeontiles_brick_wall_n.png-777d2b34356761ca301cf6465c3ec7bc.s3tc.ctex"
+path.etc2="res://.godot/imported/dungeontiles_brick_wall_n.png-777d2b34356761ca301cf6465c3ec7bc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://world/dungeontiles/models/dungeontiles_brick_wall_n.png"
-dest_files=["res://.godot/imported/dungeontiles_brick_wall_n.png-777d2b34356761ca301cf6465c3ec7bc.s3tc.ctex"]
+dest_files=["res://.godot/imported/dungeontiles_brick_wall_n.png-777d2b34356761ca301cf6465c3ec7bc.s3tc.ctex", "res://.godot/imported/dungeontiles_brick_wall_n.png-777d2b34356761ca301cf6465c3ec7bc.etc2.ctex"]
 
 [params]
 

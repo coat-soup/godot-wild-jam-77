@@ -21,6 +21,7 @@ stun_duration = 1.0
 item_name = "Lightning Catcher"
 item_description = "Chance to stun enemies on hit
 Stun time -"
+lore_description = "Smells of sulphur and burnt flesh. Hopefully it goes both ways."
 body_slot = 3
 icon = ExtResource("3_dwda8")
 

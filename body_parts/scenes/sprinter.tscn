@@ -22,6 +22,7 @@ dash_distance_mul = 0.7
 item_name = "Sprinter"
 item_description = "Short move speed increase after dashing
 Dash distance --"
+lore_description = "A repurposed prosthetic from the Autumn War. Nothing magical about it."
 body_slot = 4
 icon = ExtResource("3_f5olf")
 

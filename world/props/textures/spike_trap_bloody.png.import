@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmlewq6cgl8hl"
 path.s3tc="res://.godot/imported/spike_trap_bloody.png-7783f3af93ea65b91a321384cf81a75d.s3tc.ctex"
+path.etc2="res://.godot/imported/spike_trap_bloody.png-7783f3af93ea65b91a321384cf81a75d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://world/props/textures/spike_trap_bloody.png"
-dest_files=["res://.godot/imported/spike_trap_bloody.png-7783f3af93ea65b91a321384cf81a75d.s3tc.ctex"]
+dest_files=["res://.godot/imported/spike_trap_bloody.png-7783f3af93ea65b91a321384cf81a75d.s3tc.ctex", "res://.godot/imported/spike_trap_bloody.png-7783f3af93ea65b91a321384cf81a75d.etc2.ctex"]
 
 [params]
 

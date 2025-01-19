@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd6lvh17wrn0q"
 path.s3tc="res://.godot/imported/clockwork_core.png-02223f35d0e23d928a6a723ea8703474.s3tc.ctex"
+path.etc2="res://.godot/imported/clockwork_core.png-02223f35d0e23d928a6a723ea8703474.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://body_parts/textures/clockwork_core.png"
-dest_files=["res://.godot/imported/clockwork_core.png-02223f35d0e23d928a6a723ea8703474.s3tc.ctex"]
+dest_files=["res://.godot/imported/clockwork_core.png-02223f35d0e23d928a6a723ea8703474.s3tc.ctex", "res://.godot/imported/clockwork_core.png-02223f35d0e23d928a6a723ea8703474.etc2.ctex"]
 
 [params]
 

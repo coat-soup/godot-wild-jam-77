@@ -11,11 +11,14 @@ config_version=5
 [application]
 
 config/name="Dungeons of Avarice"
-config/description="Godot Wild Jam 77 entry by Kye Electriciteh (Coat Soup)"
-config/version="0.3.2t"
+config/description="Dungeons of Avarice is a first person dungeon crawler made for the Godot Wild Jam 77.
+All works by Kye Electriciteh (Coat Soup), with commercially licensed sound effects from Pixabay."
+config/version="1.0.0p"
 run/main_scene="res://levels/resolution_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://ui/textures/splash_screen.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=2000
 
 [display]
 
@@ -31,6 +34,10 @@ window/stretch/aspect="expand"
 player=""
 enemies=""
 HUD=""
+
+[gui]
+
+theme/custom_font="res://ui/BirchLeaf.ttf"
 
 [input]
 
@@ -88,4 +95,6 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 textures/lossless_compression/force_png=true

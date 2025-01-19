@@ -5,6 +5,7 @@ enum BodySlotType {FACE, LUNGS, HEART, ARM, LEG}
 
 @export var item_name : String
 @export_multiline var item_description: String
+@export_multiline var lore_description: String
 @export var body_slot : BodySlotType
 @export var icon : Texture
 

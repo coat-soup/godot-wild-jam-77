@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgbvlilefrkws"
 path.s3tc="res://.godot/imported/sprinter.png-6bc39d8cb312daaec25f8419a61f8f1e.s3tc.ctex"
+path.etc2="res://.godot/imported/sprinter.png-6bc39d8cb312daaec25f8419a61f8f1e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://body_parts/textures/sprinter.png"
-dest_files=["res://.godot/imported/sprinter.png-6bc39d8cb312daaec25f8419a61f8f1e.s3tc.ctex"]
+dest_files=["res://.godot/imported/sprinter.png-6bc39d8cb312daaec25f8419a61f8f1e.s3tc.ctex", "res://.godot/imported/sprinter.png-6bc39d8cb312daaec25f8419a61f8f1e.etc2.ctex"]
 
 [params]
 

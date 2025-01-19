@@ -11,7 +11,10 @@ class_name EnemyModelInterface
 
 signal attack_collision
 
+var enemy : Enemy
+
 func _ready():
+	enemy = get_owner() as Enemy
 	attack_collider.body_entered.connect(on_trigger_body_entered)
 	
 func on_trigger_body_entered(body: Node3D):
@@ -27,5 +30,8 @@ func play_attack_audio():
 	for a in attack_audio:
 		a.play()
 
-func override_set_not_attacking():
-	(get_parent() as Enemy).state = Enemy.EnemyState.idle
+func start_damage_window():
+	enemy.damage_window_active = true
+
+func end_damage_window():
+	enemy.damage_window_active = false

@@ -26,16 +26,20 @@ const ENDING_ROOM = preload("res://world/dungeonrooms/ending_room.tscn")
 
 var generated_map
 
+var level_iteration = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	generate()
 
 func _input(_event: InputEvent):
-	if Input.is_key_pressed(KEY_R):
+	if Input.is_key_pressed(KEY_R) and false:
 		generate()
 
 func generate():
+	level_iteration += 1
+	print("LEVEL ", level_iteration)
 	for room in spawned_rooms:
 		remove_child(room)
 		room.queue_free()

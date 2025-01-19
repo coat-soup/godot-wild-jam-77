@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("block"):
 		arms.end_block()
 		
-	if Input.is_key_pressed(KEY_SEMICOLON):
+	if Input.is_key_pressed(KEY_SEMICOLON) and false:
 		debug_mode = !debug_mode
 		if debug_mode:
 			collision_shape_3d.disabled = true

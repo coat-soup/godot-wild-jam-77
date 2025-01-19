@@ -21,6 +21,7 @@ attack_speed_mul = 0.8
 item_name = "Domino Savant"
 item_description = "Deal more damage for every extra enemy you hit in 1 swing
 Attack speed -"
+lore_description = "Yes I will take my piece of kitchen floor, thank you very much."
 body_slot = 3
 icon = ExtResource("3_q4p1c")
 

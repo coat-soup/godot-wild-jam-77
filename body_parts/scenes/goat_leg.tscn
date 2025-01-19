@@ -23,6 +23,7 @@ item_name = "Goat Leg"
 item_description = "Dash distance ++
 Dash cooldown +
 Dash stamina +"
+lore_description = "A little love from the man downstairs."
 body_slot = 4
 icon = ExtResource("3_dmv2v")
 

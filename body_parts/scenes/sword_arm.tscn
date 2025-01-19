@@ -21,6 +21,7 @@ attack_stamina_mul = 2.0
 item_name = "Not Like Other Girls"
 item_description = "Attack damage +
 Attack stamina +"
+lore_description = "Makes it easier to get hot people's carrier pigeons."
 body_slot = 3
 icon = ExtResource("3_fb2w3")
 

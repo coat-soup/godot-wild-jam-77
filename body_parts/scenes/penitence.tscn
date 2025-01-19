@@ -18,8 +18,10 @@ radius = 0.522236
 script = ExtResource("2_scsi0")
 health_mul = 0.9
 damage_to_stamina_mul = 1.0
+item_name = "Penitence"
 item_description = "Stamina gain on taking damage
 Max health -"
+lore_description = "I sense a theme..."
 body_slot = 1
 icon = ExtResource("3_k5kwk")
 

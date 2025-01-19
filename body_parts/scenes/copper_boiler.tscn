@@ -21,6 +21,7 @@ stamina_deplete_delay_mul = 2.0
 item_name = "Copper Boiler"
 item_description = "Stamina regen +
 Stamina regen delay on depletion +"
+lore_description = "A relic of the past and harbinger of the future."
 body_slot = 1
 icon = ExtResource("3_8w14v")
 

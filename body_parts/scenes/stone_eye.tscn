@@ -20,6 +20,7 @@ block_hold_stamina_mul = 1.3
 item_name = "Stone Eye"
 item_description = "Block angle +
 Block hold stamina +"
+lore_description = "mmmm rock"
 icon = ExtResource("3_ndd8h")
 
 [node name="Sphere" parent="." index="0"]

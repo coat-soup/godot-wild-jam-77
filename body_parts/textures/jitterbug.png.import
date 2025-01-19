@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4w2nwq4kf4h0"
 path.s3tc="res://.godot/imported/jitterbug.png-9d34bd91753e1ef2df850a3459f600ad.s3tc.ctex"
+path.etc2="res://.godot/imported/jitterbug.png-9d34bd91753e1ef2df850a3459f600ad.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://body_parts/textures/jitterbug.png"
-dest_files=["res://.godot/imported/jitterbug.png-9d34bd91753e1ef2df850a3459f600ad.s3tc.ctex"]
+dest_files=["res://.godot/imported/jitterbug.png-9d34bd91753e1ef2df850a3459f600ad.s3tc.ctex", "res://.godot/imported/jitterbug.png-9d34bd91753e1ef2df850a3459f600ad.etc2.ctex"]
 
 [params]
 

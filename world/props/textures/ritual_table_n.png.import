@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bte0klpg8g57f"
 path.s3tc="res://.godot/imported/ritual_table_n.png-9e1b15ee7f184bb6152b0d46174472ec.s3tc.ctex"
+path.etc2="res://.godot/imported/ritual_table_n.png-9e1b15ee7f184bb6152b0d46174472ec.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://world/props/textures/ritual_table_n.png"
-dest_files=["res://.godot/imported/ritual_table_n.png-9e1b15ee7f184bb6152b0d46174472ec.s3tc.ctex"]
+dest_files=["res://.godot/imported/ritual_table_n.png-9e1b15ee7f184bb6152b0d46174472ec.s3tc.ctex", "res://.godot/imported/ritual_table_n.png-9e1b15ee7f184bb6152b0d46174472ec.etc2.ctex"]
 
 [params]
 

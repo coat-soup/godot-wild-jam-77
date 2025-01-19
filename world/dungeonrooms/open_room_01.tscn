@@ -21,7 +21,7 @@ num_spawns = 1
 
 [node name="BaseDungeonScene" instance=ExtResource("1_8s1s5")]
 enemies = Array[ExtResource("2_fsa33")]([SubResource("Resource_vq8pk"), SubResource("Resource_tmenl")])
-spawn_interval = 4
+spawn_interval = 5
 
 [node name="TileMap" parent="." index="0"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -3, 0)

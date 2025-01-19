@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://pex0l20kjqke"]
+[gd_scene load_steps=7 format=3 uid="uid://pex0l20kjqke"]
 
 [ext_resource type="PackedScene" uid="uid://bxcufygn2rur5" path="res://world/props/models/pedestal.glb" id="1_q0bdo"]
 [ext_resource type="Script" path="res://world/props/BodyPartSpawner.gd" id="2_psv2e"]
@@ -11,11 +11,21 @@ normal_enabled = true
 normal_texture = ExtResource("3_5xtat")
 texture_filter = 0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uiop2"]
+height = 0.955912
+radius = 0.370061
+
 [node name="pedestal" instance=ExtResource("1_q0bdo")]
 script = ExtResource("2_psv2e")
 
 [node name="Cylinder" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_j5x3w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cylinder" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484863, 0)
+shape = SubResource("CylinderShape3D_uiop2")
 
 [node name="SpawnPoint" type="Node3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20344, 0)

@@ -5,6 +5,7 @@ extends Control
 @onready var tile_holder: Node2D = $MinimapTileHolder
 @onready var player_icon: TextureRect = $PlayerIcon
 @onready var map_tile_holder: Node2D = $"../Menu/MenuBackground/MapBackground/MapTileHolder"
+@onready var map_location_marker: TextureRect = $"../Menu/MenuBackground/MapBackground/LocationMarker"
 
 const MINIMAP_TILE = preload("res://ui/scenes/minimap_tile.tscn")
 const MAP_SPACING = 100
@@ -43,6 +44,10 @@ func _process(delta: float) -> void:
 	tile_holder.position = -player_01 * MAP_SPACING * map_dimension * tile_holder.scale
 	tile_holder.position += size/2
 	player_icon.rotation = -player.rotation.y
+	
+	var real_pos = (player_01 * 200) - Vector2(32,32)
+	var grid_size = MAP_SPACING * map_tile_holder.scale.x
+	map_location_marker.position = floor(real_pos/grid_size) * grid_size + Vector2(13,10)
 
 func draw_map(m, holder):
 	tile_dict.get_or_add(holder, {})

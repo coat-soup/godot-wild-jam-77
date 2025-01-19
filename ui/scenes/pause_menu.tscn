@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://onydq804bkh3"]
+[gd_scene load_steps=6 format=3 uid="uid://onydq804bkh3"]
 
 [ext_resource type="Script" path="res://ui/scripts/PauseMenu.gd" id="1_j32ul"]
 [ext_resource type="Shader" path="res://ui/BackgroundBlur.gdshader" id="1_o2aq3"]
+[ext_resource type="Texture2D" uid="uid://cv6l0oemvydfp" path="res://ui/textures/GWJ-Full-Logo-noBG-4k.png" id="3_av2yu"]
+[ext_resource type="Texture2D" uid="uid://cvx830wybx84k" path="res://ui/textures/I-get-u-receive.png" id="4_q2efi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5erc5"]
 shader = ExtResource("1_o2aq3")
@@ -34,18 +36,45 @@ layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 64
 text = "RESUME"
 
 [node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 64
 text = "RESTART"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 64
 text = "QUIT"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -556.0
+offset_top = -29.0
+offset_right = 3444.0
+offset_bottom = 2221.0
+scale = Vector2(0.117013, 0.117013)
+texture = ExtResource("3_av2yu")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_left = -447.0
+offset_top = -313.0
+offset_right = 1129.0
+offset_bottom = -185.0
+theme_override_font_sizes/font_size = 128
+text = "Dungeons of Avarice"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 574.0
+offset_top = -21.0
+offset_right = 1434.0
+offset_bottom = 1183.0
+scale = Vector2(0.209249, 0.209249)
+texture = ExtResource("4_q2efi")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

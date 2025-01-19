@@ -23,6 +23,7 @@ attack_speed_mul = 0.7
 item_name = "Restful Lead"
 item_description = "Damage +
 Attack speed -"
+lore_description = "Metal doesn't move. Unless it does."
 body_slot = 3
 icon = ExtResource("3_sijfp")
 

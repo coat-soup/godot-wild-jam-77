@@ -22,6 +22,7 @@ health_threshhold = 0.25
 item_name = "Frenzy"
 item_description = "Attack speed boost when dropping below 25% health
 Idk man being at 25% is pretty bad"
+lore_description = "If only I had an axe."
 body_slot = 3
 icon = ExtResource("3_loie0")
 

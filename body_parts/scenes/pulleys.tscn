@@ -21,6 +21,7 @@ damage_mul = 0.7
 item_name = "Pulleys"
 item_description = "Attack speed +
 Attack damage -"
+lore_description = "That's a lot of rope. Too bad I'm not pulling."
 body_slot = 3
 icon = ExtResource("3_7so1p")
 

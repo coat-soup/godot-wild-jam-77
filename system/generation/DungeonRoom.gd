@@ -35,6 +35,9 @@ func _ready():
 			total_enemies_to_spawn.append(enemy.enemy)
 			enemies_to_kill += 1
 	total_enemies_to_spawn.shuffle()
+	# level 1 = 100% spawn interval, level 7 = 0%
+	spawn_interval = spawn_interval * (1.0 - (((get_parent() as DungeonSpawner).level_iteration-1)/7.0))
+	print("spawn intervarl for ", name, " is ", spawn_interval)
 
 
 func _on_enter_room_trigger_body_entered(body: Node3D) -> void:

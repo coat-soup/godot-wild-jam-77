@@ -19,6 +19,7 @@ block_hold_stamina_mul = 1.3
 item_name = "Mass of Ears"
 item_description = "Blocking can interrupt a swing
 Block hold stamina +"
+lore_description = "Disturbing. Frightful. Eery."
 icon = ExtResource("3_pceox")
 
 [node name="Cube" parent="." index="0"]

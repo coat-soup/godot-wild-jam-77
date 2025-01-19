@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://31mmb7mm2knm"
 path.s3tc="res://.godot/imported/spring_loaded.png-a9c7f2c5f1b6cfd37d5c5124bfa29648.s3tc.ctex"
+path.etc2="res://.godot/imported/spring_loaded.png-a9c7f2c5f1b6cfd37d5c5124bfa29648.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://body_parts/icons/spring_loaded.png"
-dest_files=["res://.godot/imported/spring_loaded.png-a9c7f2c5f1b6cfd37d5c5124bfa29648.s3tc.ctex"]
+dest_files=["res://.godot/imported/spring_loaded.png-a9c7f2c5f1b6cfd37d5c5124bfa29648.s3tc.ctex", "res://.godot/imported/spring_loaded.png-a9c7f2c5f1b6cfd37d5c5124bfa29648.etc2.ctex"]
 
 [params]
 
