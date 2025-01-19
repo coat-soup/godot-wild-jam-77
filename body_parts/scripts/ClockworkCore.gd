@@ -11,12 +11,12 @@ var suppressed := 0.0
 func on_equip():
 	active = true
 	player.health.took_damage.connect(suppress)
-	player.health.fountain_health *= fountain_health_mul
+	player.health.fountain_health_percent *= fountain_health_mul
 
 func on_drop(pos: Vector3):
 	active = false
 	player.health.took_damage.disconnect(suppress)
-	player.health.fountain_health /= fountain_health_mul
+	player.health.fountain_health_percent /= fountain_health_mul
 	
 	super.on_drop(pos)
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcl4av1der515"]
+[gd_scene load_steps=5 format=3 uid="uid://dcl4av1der515"]
 
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_yi7uq"]
 [ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_34122"]
 [ext_resource type="PackedScene" uid="uid://ct6xxcocgimjv" path="res://world/props/torch.tscn" id="3_cuwtr"]
+[ext_resource type="PackedScene" uid="uid://cww278jeb088r" path="res://world/props/fountain.tscn" id="4_7lqxy"]
 
 [node name="BaseDungeonScene" instance=ExtResource("1_yi7uq")]
 enemies = Array[ExtResource("2_34122")]([])
@@ -80,3 +81,5 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="torch4" parent="Props" index="3" instance=ExtResource("3_cuwtr")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.57505, 2, 3.68129)
+
+[node name="fountain" parent="Props" index="4" instance=ExtResource("4_7lqxy")]

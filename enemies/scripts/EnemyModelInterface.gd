@@ -22,5 +22,7 @@ func play_footstep():
 	footsetp_audio.play()
 
 func play_attack_audio():
+	if attack_audio_delays.size() > 0:
+		await get_tree().create_timer(attack_audio_delays[0]).timeout
 	for a in attack_audio:
 		a.play()

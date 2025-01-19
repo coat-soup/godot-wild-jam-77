@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjq5xrktr0wdn"]
+[gd_scene load_steps=13 format=3 uid="uid://bjq5xrktr0wdn"]
 
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_77pxk"]
 [ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_rncte"]
+[ext_resource type="PackedScene" uid="uid://bludxqpn5k6ss" path="res://enemies/coffin_enemy.tscn" id="3_22wlf"]
 [ext_resource type="PackedScene" uid="uid://bdst4tv46kcy2" path="res://world/props/brazier.tscn" id="3_prer8"]
-[ext_resource type="PackedScene" uid="uid://dbyevw4vq02kk" path="res://enemies/enemy.tscn" id="3_vfi1a"]
+[ext_resource type="PackedScene" uid="uid://bletsp354lyil" path="res://enemies/knight_enemy.tscn" id="4_xe80g"]
 [ext_resource type="PackedScene" uid="uid://ct6xxcocgimjv" path="res://world/props/torch.tscn" id="5_elaus"]
 [ext_resource type="PackedScene" uid="uid://de5qrfgt25he3" path="res://world/props/pot_1.tscn" id="5_mnjj0"]
 [ext_resource type="PackedScene" uid="uid://sfjwj4k1xn83" path="res://world/props/pot_2.tscn" id="6_i3cce"]
@@ -12,11 +13,17 @@
 
 [sub_resource type="Resource" id="Resource_dco0x"]
 script = ExtResource("2_rncte")
-enemy = ExtResource("3_vfi1a")
+enemy = ExtResource("3_22wlf")
 num_spawns = 6
 
+[sub_resource type="Resource" id="Resource_cw76s"]
+script = ExtResource("2_rncte")
+enemy = ExtResource("4_xe80g")
+num_spawns = 3
+
 [node name="BaseDungeonScene" instance=ExtResource("1_77pxk")]
-enemies = Array[ExtResource("2_rncte")]([SubResource("Resource_dco0x")])
+enemies = Array[ExtResource("2_rncte")]([SubResource("Resource_dco0x"), SubResource("Resource_cw76s")])
+spawn_interval = 5
 
 [node name="TileMap" parent="." index="0"]
 data = {

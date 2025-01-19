@@ -5,7 +5,7 @@ class_name PlayerHealth
 @onready var arms: Arms = $"../CameraPivot/ArmsPivot/FirstPersonArms"
 @onready var camera: CameraShake = $"../CameraPivot/Camera"
 
-@export var fountain_health := 70.0
+@export var fountain_health_percent := 0.7
 
 var block_angle := 45.0
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://cww278jeb088r"]
+
+[ext_resource type="PackedScene" uid="uid://bytqlumue4i2w" path="res://world/props/models/fountain.glb" id="1_knlej"]
+[ext_resource type="Texture2D" uid="uid://dflkv2xkmtnuh" path="res://world/dungeontiles/textures/brick_wall.png" id="2_ibh0j"]
+[ext_resource type="Script" path="res://world/props/scripts/FountainInteractable.gd" id="3_teul8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs1kp"]
+albedo_texture = ExtResource("2_ibh0j")
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c2wf1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e344j"]
+albedo_color = Color(0.129863, 0.191136, 0.29493, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_772qh"]
+height = 2.47726
+radius = 2.67343
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i81be"]
+height = 1.41829
+radius = 2.81481
+
+[node name="fountain" instance=ExtResource("1_knlej")]
+
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fs1kp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinder" index="0"]
+transform = Transform3D(4.4765, 0, 0, 0, 0.0219461, 0, 0, 0, 4.4765, 0, 0.60549, 0)
+mesh = SubResource("CylinderMesh_c2wf1")
+surface_material_override/0 = SubResource("StandardMaterial3D_e344j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cylinder" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06425, 0)
+shape = SubResource("CylinderShape3D_772qh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_teul8")
+observe_message = "Drink from the fountain"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42016, 0)
+shape = SubResource("CylinderShape3D_i81be")

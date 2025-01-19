@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bletsp354lyil"]
+
+[ext_resource type="PackedScene" uid="uid://dbyevw4vq02kk" path="res://enemies/enemy.tscn" id="1_ue8rs"]
+[ext_resource type="PackedScene" uid="uid://ca46g6tf2ao4y" path="res://enemies/models/model_scenes/knight_model_scene.tscn" id="2_byi1b"]
+
+[node name="KnightEnemy" instance=ExtResource("1_ue8rs")]
+speed = 1.5
+damage = 40
+
+[node name="knight" parent="." index="0" instance=ExtResource("2_byi1b")]
+
+[node name="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35651, 0)

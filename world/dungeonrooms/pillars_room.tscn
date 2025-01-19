@@ -1,17 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn6ovcheufod0"]
+[gd_scene load_steps=8 format=3 uid="uid://bn6ovcheufod0"]
 
 [ext_resource type="PackedScene" uid="uid://8sbmwuvuyadl" path="res://world/dungeonrooms/base_dungeon_room.tscn" id="1_su5mq"]
 [ext_resource type="Script" path="res://system/generation/EnemySpawns.gd" id="2_p6gyk"]
+[ext_resource type="PackedScene" uid="uid://bludxqpn5k6ss" path="res://enemies/coffin_enemy.tscn" id="3_0j6p3"]
 [ext_resource type="PackedScene" uid="uid://ct6xxcocgimjv" path="res://world/props/torch.tscn" id="3_aqta8"]
-[ext_resource type="PackedScene" uid="uid://dbyevw4vq02kk" path="res://enemies/enemy.tscn" id="3_tegun"]
+[ext_resource type="PackedScene" uid="uid://bletsp354lyil" path="res://enemies/knight_enemy.tscn" id="4_h2456"]
 
 [sub_resource type="Resource" id="Resource_152dh"]
 script = ExtResource("2_p6gyk")
-enemy = ExtResource("3_tegun")
-num_spawns = 3
+enemy = ExtResource("3_0j6p3")
+num_spawns = 2
+
+[sub_resource type="Resource" id="Resource_ril3r"]
+script = ExtResource("2_p6gyk")
+enemy = ExtResource("4_h2456")
+num_spawns = 1
 
 [node name="BaseDungeonScene" instance=ExtResource("1_su5mq")]
-enemies = Array[ExtResource("2_p6gyk")]([SubResource("Resource_152dh")])
+enemies = Array[ExtResource("2_p6gyk")]([SubResource("Resource_152dh"), SubResource("Resource_ril3r")])
 
 [node name="TileMap" parent="." index="0"]
 data = {
